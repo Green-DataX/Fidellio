@@ -1,0 +1,34 @@
+.brands-section {
+  padding: 80px 6vw;
+  text-align: center;
+  background: var(--cream);  
+}
+
+.brands-section h2 { margin-bottom: 12px; }
+
+.brands-logos {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.brand-pill {
+  background: #fff;
+  border: 1.5px solid rgba(255, 107, 43, .12);
+  border-radius: 50px;
+  padding: 14px 28px;
+  font-weight: 600;
+  font-size: .9rem;
+  color: var(--dark);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: border-color .2s, box-shadow .2s;
+}
+.brand-pill:hover {
+  border-color: var(--orange);
+  box-shadow: 0 6px 20px rgba(255, 107, 43, .12);
+}
+
+.brand-pill span { font-size: 1.2rem; }

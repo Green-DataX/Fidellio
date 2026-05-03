@@ -1,0 +1,289 @@
+/* Overlay sombre */
+.modal-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.55);
+  z-index: 9999;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  backdrop-filter: blur(4px);
+  animation: fadeOverlay .2s ease;
+}
+.modal-overlay.open {
+  display: flex;
+}
+@keyframes fadeOverlay {
+  from { opacity:0; }
+  to   { opacity:1; }
+}
+
+/* Boîte modale */
+.modal-box {
+  background: #fff;
+  border-radius: 24px;
+  width: 100%;
+  max-width: 480px;
+  max-height: 92vh;
+  overflow-y: auto;
+  box-shadow: 0 32px 80px rgba(0,0,0,.25);
+  animation: slideUp .25s ease;
+  scrollbar-width: none;
+}
+.modal-box::-webkit-scrollbar { display: none; }
+@keyframes slideUp {
+  from { transform: translateY(30px); opacity:0; }
+  to   { transform: translateY(0);    opacity:1; }
+}
+
+/* Header */
+.modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 24px 28px 16px;
+  border-bottom: 1px solid #f0f0f0;
+}
+.modal-plan-info {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.modal-plan-icon {
+  width: 48px; height: 48px;
+  border-radius: 14px;
+  background: var(--cream2);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.4rem;
+}
+.modal-plan-name {
+  font-family: 'Bebas Neue','Impact',sans-serif;
+  font-size: 1.4rem;
+  letter-spacing: 1px;
+  color: var(--dark);
+}
+.modal-plan-price {
+  font-size: .85rem;
+  color: var(--orange);
+  font-weight: 700;
+}
+.modal-close {
+  background: #f5f5f5;
+  border: none;
+  width: 36px; height: 36px;
+  border-radius: 50%;
+  font-size: .9rem;
+  cursor: pointer;
+  color: var(--dark);
+  transition: background .2s;
+  display: flex; align-items: center; justify-content: center;
+}
+.modal-close:hover { background: #eee; }
+
+/* Badge sécurité */
+.modal-secure {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 28px;
+  background: #F0FFF4;
+  color: #2E7D32;
+  font-size: .8rem;
+  font-weight: 600;
+}
+
+/* Formulaire */
+.payment-form {
+  padding: 24px 28px 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.form-group label {
+  font-size: .82rem;
+  font-weight: 600;
+  color: var(--dark);
+  letter-spacing: .3px;
+}
+.form-group input {
+  border: 1.5px solid #e0e0e0;
+  border-radius: 12px;
+  padding: 12px 14px;
+  font-size: .95rem;
+  font-family: 'Inter', sans-serif;
+  color: var(--dark);
+  background: #fafafa;
+  transition: border-color .2s, box-shadow .2s, background .2s;
+  outline: none;
+}
+.form-group input:focus {
+  border-color: var(--orange);
+  box-shadow: 0 0 0 3px rgba(255,107,43,.12);
+  background: #fff;
+}
+.form-group input::placeholder { color: #bbb; }
+
+/* Ligne expiry + CVV */
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+/* Input numéro de carte avec logos */
+.card-input-wrap {
+  position: relative;
+}
+.card-input-wrap input {
+  width: 100%;
+  padding-right: 90px;
+  letter-spacing: 2px;
+}
+.card-icons {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+.card-icons img {
+  height: 20px;
+  width: auto;
+  object-fit: contain;
+  opacity: .7;
+}
+
+/* CVV avec tooltip */
+.cvv-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.cvv-wrap input { flex: 1; letter-spacing: 3px; }
+.cvv-tooltip {
+  width: 22px; height: 22px;
+  background: #e8e8e8;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: .7rem;
+  font-weight: 700;
+  color: #888;
+  cursor: help;
+  flex-shrink: 0;
+  position: relative;
+}
+.cvv-tooltip:hover .tooltip-text { display: block; }
+.tooltip-text {
+  display: none;
+  position: absolute;
+  right: 30px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: var(--dark);
+  color: #fff;
+  font-size: .75rem;
+  padding: 6px 10px;
+  border-radius: 8px;
+  white-space: nowrap;
+  font-weight: 400;
+  z-index: 10;
+}
+
+/* Résumé commande */
+.order-summary {
+  background: #fafafa;
+  border-radius: 14px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  border: 1px solid #f0f0f0;
+}
+.order-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: .88rem;
+  color: var(--text-muted);
+}
+.order-row.total {
+  border-top: 1px solid #e8e8e8;
+  padding-top: 10px;
+  margin-top: 4px;
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--dark);
+}
+.order-row.total span:last-child {
+  color: var(--orange);
+  font-size: 1.1rem;
+}
+
+/* Bouton payer */
+.pay-btn {
+  background: var(--orange);
+  color: #fff;
+  border: none;
+  border-radius: 14px;
+  padding: 16px;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: 'Inter', sans-serif;
+  transition: transform .2s, box-shadow .2s;
+  box-shadow: 0 8px 24px rgba(255,107,43,.3);
+  width: 100%;
+}
+.pay-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 32px rgba(255,107,43,.4);
+}
+.pay-btn:disabled {
+  opacity: .7;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.modal-terms {
+  text-align: center;
+  font-size: .75rem;
+  color: #aaa;
+  line-height: 1.5;
+}
+
+/* Succès */
+.payment-success {
+  padding: 48px 28px;
+  text-align: center;
+}
+.success-icon {
+  font-size: 4rem;
+  margin-bottom: 16px;
+}
+.payment-success h3 {
+  font-family: 'Bebas Neue','Impact',sans-serif;
+  font-size: 2rem;
+  letter-spacing: 1px;
+  margin-bottom: 8px;
+}
+.payment-success p {
+  color: var(--text-muted);
+  margin-bottom: 28px;
+  line-height: 1.6;
+}
+
+/* Responsive */
+@media (max-width: 520px) {
+  .modal-box { border-radius: 20px; }
+  .payment-form { padding: 20px; }
+  .modal-header { padding: 20px; }
+}

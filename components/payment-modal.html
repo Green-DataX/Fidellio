@@ -1,0 +1,104 @@
+<!-- MODAL PAIEMENT CARTE BANCAIRE -->
+<div class="modal-overlay" id="paymentModal" onclick="closeModalOutside(event)">
+  <div class="modal-box">
+
+    <!-- Header -->
+    <div class="modal-header">
+      <div class="modal-plan-info">
+        <div class="modal-plan-icon" id="modalPlanIcon">⭐</div>
+        <div>
+          <div class="modal-plan-name" id="modalPlanName">Plan Pro</div>
+          <div class="modal-plan-price" id="modalPlanPrice">99 DH / mois</div>
+        </div>
+      </div>
+      <button class="modal-close" onclick="closeModal()">✕</button>
+    </div>
+
+    <!-- Sécurité badge -->
+    <div class="modal-secure">
+      🔒 <span data-i18n="payment.secure">Paiement 100% sécurisé — SSL 256 bits</span>
+    </div>
+
+    <!-- Formulaire -->
+    <form class="payment-form" onsubmit="submitPayment(event)">
+
+      <!-- Nom sur la carte -->
+      <div class="form-group">
+        <label data-i18n="payment.name">Nom sur la carte</label>
+        <input type="text" id="cardName" placeholder="Ahmed Benali" autocomplete="cc-name" required />
+      </div>
+
+      <!-- Numéro de carte -->
+      <div class="form-group">
+        <label data-i18n="payment.number">Numéro de carte</label>
+        <div class="card-input-wrap">
+          <input type="text" id="cardNumber" placeholder="1234 5678 9012 3456"
+            maxlength="19" oninput="formatCardNumber(this)" autocomplete="cc-number" required />
+          <div class="card-icons">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Mastercard-logo.svg/200px-Mastercard-logo.svg.png" alt="MC" />
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Visa_Inc._logo.svg/200px-Visa_Inc._logo.svg.png" alt="Visa" />
+          </div>
+        </div>
+      </div>
+
+      <!-- Expiry + CVV -->
+      <div class="form-row">
+        <div class="form-group">
+          <label data-i18n="payment.expiry">Date d'expiration</label>
+          <input type="text" id="cardExpiry" placeholder="MM / AA"
+            maxlength="7" oninput="formatExpiry(this)" autocomplete="cc-exp" required />
+        </div>
+        <div class="form-group">
+          <label data-i18n="payment.cvv">CVV</label>
+          <div class="cvv-wrap">
+            <input type="text" id="cardCvv" placeholder="123"
+              maxlength="3" oninput="this.value=this.value.replace(/\D/g,'')" autocomplete="cc-csc" required />
+            <div class="cvv-tooltip">?
+              <span class="tooltip-text" data-i18n="payment.cvv_tip">Les 3 chiffres au dos de votre carte</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Email -->
+      <div class="form-group">
+        <label data-i18n="payment.email">Email</label>
+        <input type="email" id="payEmail" placeholder="vous@email.com" autocomplete="email" required />
+      </div>
+
+      <!-- Résumé commande -->
+      <div class="order-summary">
+        <div class="order-row">
+          <span data-i18n="payment.plan">Plan</span>
+          <span id="summaryPlan">Pro</span>
+        </div>
+        <div class="order-row">
+          <span data-i18n="payment.billing">Facturation</span>
+          <span data-i18n="payment.monthly">Mensuelle</span>
+        </div>
+        <div class="order-row total">
+          <span data-i18n="payment.total">Total</span>
+          <span id="summaryTotal">99 DH</span>
+        </div>
+      </div>
+
+      <!-- Bouton payer -->
+      <button type="submit" class="pay-btn" id="payBtn">
+        <span id="payBtnText" data-i18n="payment.pay">🔒 Payer maintenant</span>
+      </button>
+
+      <p class="modal-terms" data-i18n="payment.terms">
+        En confirmant, vous acceptez nos CGU. Résiliable à tout moment.
+      </p>
+    </form>
+
+    <!-- Succès -->
+    <div class="payment-success" id="paymentSuccess" style="display:none">
+      <div class="success-icon">✅</div>
+      <h3 data-i18n="payment.success_title">Paiement confirmé !</h3>
+      <p data-i18n="payment.success_sub">Bienvenue dans Fidelio. Vérifiez votre email pour activer votre compte.</p>
+      <button class="pay-btn" onclick="closeModal()" data-i18n="payment.success_btn">Fermer</button>
+    </div>
+
+  </div>
+</div>

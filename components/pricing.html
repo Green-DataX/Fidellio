@@ -1,0 +1,73 @@
+<section class="pricing-section" id="tarifs">
+  <!-- <div class="section-tag" data-i18n="pricing.tag">Tarifs</div> -->
+  <h2 data-i18n="pricing.title">Choisissez votre plan</h2>
+  <p class="section-sub" data-i18n="pricing.sub">Commencez gratuitement, passez au niveau supérieur quand vous êtes prêt.</p>
+
+  <div class="pricing-grid">
+
+    <!-- GRATUIT -->
+    <div class="pricing-card">
+      <div class="pricing-badge free" data-i18n="pricing.free.badge">Gratuit</div>
+      <div class="pricing-price">
+        <span class="price-amount">0</span>
+        <span class="price-currency">DH</span>
+        <span class="price-period" data-i18n="pricing.period">/mois</span>
+      </div>
+      <div class="pricing-name" data-i18n="pricing.free.name">Starter</div>
+      <p class="pricing-desc" data-i18n="pricing.free.desc">Parfait pour débuter et découvrir Fidelio.</p>
+      <ul class="pricing-features">
+        <li><span class="feat-check">✓</span><span data-i18n="pricing.free.f1">50 scans par mois</span></li>
+        <li><span class="feat-check">✓</span><span data-i18n="pricing.free.f2">Récompenses de base</span></li>
+        <li><span class="feat-check">✓</span><span data-i18n="pricing.free.f3">Historique 30 jours</span></li>
+        <li class="disabled"><span class="feat-x">✗</span><span data-i18n="pricing.free.f4">Double points</span></li>
+        <li class="disabled"><span class="feat-x">✗</span><span data-i18n="pricing.free.f5">Récompenses VIP</span></li>
+        <li class="disabled"><span class="feat-x">✗</span><span data-i18n="pricing.free.f6">Support prioritaire</span></li>
+      </ul>
+      <button class="pricing-btn outline" data-i18n="pricing.free.cta">Commencer gratuitement</button>
+    </div>
+
+    <!-- PRO -->
+    <div class="pricing-card popular">
+      <div class="pricing-popular-tag" data-i18n="pricing.popular">⭐ Le plus populaire</div>
+      <div class="pricing-badge pro" data-i18n="pricing.pro.badge">Pro</div>
+      <div class="pricing-price">
+        <span class="price-amount">99</span>
+        <span class="price-currency">DH</span>
+        <span class="price-period" data-i18n="pricing.period">/mois</span>
+      </div>
+      <div class="pricing-name" data-i18n="pricing.pro.name">Pro</div>
+      <p class="pricing-desc" data-i18n="pricing.pro.desc">Pour les vrais fans de snacks qui veulent plus.</p>
+      <ul class="pricing-features">
+        <li><span class="feat-check">✓</span><span data-i18n="pricing.pro.f1">Scans illimités</span></li>
+        <li><span class="feat-check">✓</span><span data-i18n="pricing.pro.f2">Toutes les récompenses</span></li>
+        <li><span class="feat-check">✓</span><span data-i18n="pricing.pro.f3">Historique complet</span></li>
+        <li><span class="feat-check">✓</span><span data-i18n="pricing.pro.f4">Double points weekend</span></li>
+        <li><span class="feat-check">✓</span><span data-i18n="pricing.pro.f5">Offres exclusives</span></li>
+        <li class="disabled"><span class="feat-x">✗</span><span data-i18n="pricing.pro.f6">Support prioritaire</span></li>
+      </ul>
+      <button class="pricing-btn primary" onclick="openPayment('Pro','99','⭐')" data-i18n="pricing.pro.cta">Passer au Pro</button>
+    </div>
+
+    <!-- PREMIUM -->
+    <div class="pricing-card premium">
+      <div class="pricing-badge prem" data-i18n="pricing.premium.badge">Premium</div>
+      <div class="pricing-price">
+        <span class="price-amount">299</span>
+        <span class="price-currency">DH</span>
+        <span class="price-period" data-i18n="pricing.period">/mois</span>
+      </div>
+      <div class="pricing-name" data-i18n="pricing.premium.name">Premium</div>
+      <p class="pricing-desc" data-i18n="pricing.premium.desc">L'expérience ultime, tout inclus sans limite.</p>
+      <ul class="pricing-features">
+        <li><span class="feat-check">✓</span><span data-i18n="pricing.premium.f1">Scans illimités</span></li>
+        <li><span class="feat-check">✓</span><span data-i18n="pricing.premium.f2">Toutes les récompenses</span></li>
+        <li><span class="feat-check">✓</span><span data-i18n="pricing.premium.f3">Historique complet</span></li>
+        <li><span class="feat-check">✓</span><span data-i18n="pricing.premium.f4">Triple points tous les jours</span></li>
+        <li><span class="feat-check">✓</span><span data-i18n="pricing.premium.f5">Récompenses VIP exclusives</span></li>
+        <li><span class="feat-check">✓</span><span data-i18n="pricing.premium.f6">Support prioritaire 24/7</span></li>
+      </ul>
+      <button class="pricing-btn dark" onclick="openPayment('Premium','299','🔥')" data-i18n="pricing.premium.cta">Devenir Premium</button>
+    </div>
+
+  </div>
+</section>

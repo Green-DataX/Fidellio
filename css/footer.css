@@ -1,0 +1,165 @@
+/* ══════════════════════════════════════════
+   FOOTER — CSS complet avec badges officiels
+   ══════════════════════════════════════════ */
+
+footer {
+  background: var(--dark);
+  color: rgba(255, 255, 255, .6);
+  padding: 60px 6vw 32px;
+}
+
+.footer-top {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 48px;
+  margin-bottom: 48px;
+}
+
+/* ── Colonne marque ── */
+.footer-brand .logo {
+  color: #fff;
+  margin-bottom: 14px;
+  display: flex;
+  font-family: 'Bebas Neue', 'Impact', sans-serif;
+  letter-spacing: 2px;
+}
+
+.footer-brand p {
+  font-size: .9rem;
+  line-height: 1.7;
+  max-width: 240px;
+}
+
+/* ── Colonnes liens ── */
+.footer-col h5 {
+  color: #fff;
+  font-weight: 700;
+  font-size: .95rem;
+  margin-bottom: 18px;
+}
+
+.footer-col ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.footer-col a {
+  color: rgba(255, 255, 255, .5);
+  text-decoration: none;
+  font-size: .9rem;
+  transition: color .2s;
+}
+.footer-col a:hover { color: var(--orange); }
+
+/* ── Bas de page ── */
+.footer-bottom {
+  border-top: 1px solid rgba(255, 255, 255, .07);
+  padding-top: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: .85rem;
+}
+
+.footer-bottom a {
+  color: rgba(255, 255, 255, .35);
+  text-decoration: none;
+  transition: color .2s;
+}
+.footer-bottom a:hover { color: rgba(255, 255, 255, .7); }
+
+/* ══════════════════════════════════════════
+   BADGES APP STORE — Style officiel
+   ══════════════════════════════════════════ */
+.app-badges {
+  display: flex;
+  flex-direction: column; /* empilés verticalement */
+  gap: 10px;
+  margin-top: 24px;
+}
+
+.app-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  background: #000;
+  color: #fff;
+  border: 1.5px solid rgba(255, 255, 255, .2);
+  border-radius: 12px;
+  padding: 10px 18px;
+  text-decoration: none;
+  min-width: 175px;
+  transition: transform .2s ease, border-color .2s ease, box-shadow .2s ease;
+}
+
+.app-badge:hover {
+  transform: translateY(-2px);
+  border-color: rgba(255, 255, 255, .4);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, .4);
+}
+
+.app-badge svg {
+  flex-shrink: 0;
+}
+
+.badge-sub {
+  display: block;
+  font-family: var(--font-body);
+  font-size: .58rem;
+  font-weight: 400;
+  opacity: .65;
+  letter-spacing: .8px;
+  text-transform: uppercase;
+  line-height: 1;
+  margin-bottom: 3px;
+}
+
+.badge-name {
+  display: block;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: .2px;
+  line-height: 1.1;
+  color: #fff;
+}
+
+/* ══════════════════════════════════════════
+   RESPONSIVE — TABLETTE
+   ══════════════════════════════════════════ */
+@media (max-width: 900px) {
+  .footer-top {
+    grid-template-columns: 1fr 1fr;
+    gap: 36px;
+  }
+  .footer-brand {
+    grid-column: 1 / -1; /* pleine largeur sur tablette */
+  }
+  .app-badges {
+    flex-direction: row; /* côte à côte sur tablette */
+  }
+}
+
+/* ══════════════════════════════════════════
+   RESPONSIVE — MOBILE
+   ══════════════════════════════════════════ */
+@media (max-width: 560px) {
+  .footer-top {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  .footer-bottom {
+    flex-direction: column;
+    gap: 16px;
+    text-align: center;
+  }
+  .app-badges {
+    flex-direction: column; /* redevient vertical sur mobile */
+    align-items: flex-start;
+  }
+  .app-badge {
+    min-width: 160px;
+  }
+}
