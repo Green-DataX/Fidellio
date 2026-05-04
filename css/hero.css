@@ -308,7 +308,7 @@
 .hero-phone-wrap {
   position: relative;
   z-index: 1;
-  margin-top: 140px; /* ajustez selon l'espace voulu */
+  margin-top: 142px; /* ajustez selon l'espace voulu */
   display: flex;
   align-items: center;
   justify-content: center;
