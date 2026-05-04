@@ -461,3 +461,48 @@
     height: 440px !important;
   }
 }
+
+/* ══════════════════════════════
+   FIX TÉLÉPHONE MOBILE — OVERRIDE TOTAL
+══════════════════════════════ */
+@media (max-width: 1024px) {
+
+  .hero {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    padding: 80px 5vw 60px !important;
+    min-height: auto !important;
+  }
+
+  .hero-phone-wrap {
+    order: -1 !important;
+    position: relative !important;
+    width: 100% !important;
+    display: flex !important;
+    justify-content: center !important;
+    margin-bottom: 40px !important;
+    min-height: 480px !important;   /* ← CRUCIAL : donne de la place au téléphone */
+  }
+
+  .hero-phone {
+    position: relative !important;
+    margin-top: 0 !important;       /* ← supprime le -160px */
+    transform: none !important;
+  }
+
+  .phone-frame {
+    width: 220px !important;
+    height: 460px !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .hero-phone-wrap {
+    min-height: 440px !important;
+  }
+  .phone-frame {
+    width: 200px !important;
+    height: 420px !important;
+  }
+}
