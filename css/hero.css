@@ -1,5 +1,5 @@
 /* ═══════════════════════════════════════════
-   HERO — Version finale corrigée mobile
+   HERO — Version finale mobile corrigée
    ═══════════════════════════════════════════ */
 
 :root {
@@ -28,7 +28,7 @@
 }
 
 /* ══════════════════════════════
-   SECTION HERO — DESKTOP
+   SECTION HERO
 ══════════════════════════════ */
 .hero {
   min-height: 100vh;
@@ -38,10 +38,9 @@
   gap: 40px;
   padding: 120px 6vw 80px;
   position: relative;
-  overflow: hidden; /* ← hidden sur desktop */
+  overflow: hidden;
 }
 
-/* ── Fond ── */
 .hero-bg {
   position: absolute; inset: 0; z-index: 0;
   background:
@@ -55,7 +54,6 @@
   background-size: 200px 200px; pointer-events: none; opacity: .6;
 }
 
-/* ── Blobs ── */
 .hero-blobs { position: absolute; inset: 0; z-index: 0; pointer-events: none; }
 .blob { position: absolute; border-radius: 50%; filter: blur(80px); opacity: .3; will-change: transform; }
 .blob-1 { width: 500px; height: 500px; background: var(--orange); top: -120px; right: 0; animation: blobDrift1 12s ease-in-out infinite alternate; }
@@ -67,7 +65,7 @@
 @keyframes blobDrift3 { from { transform: translate(0,0) scale(1); } to { transform: translate(15px,20px) scale(1.1); } }
 
 /* ══════════════════════════════
-   CONTENU GAUCHE
+   CONTENU
 ══════════════════════════════ */
 .hero-content { position: relative; z-index: 1; max-width: 580px; }
 
@@ -79,12 +77,10 @@
   animation: fadeUp .7s ease both;
   box-shadow: 0 4px 20px rgba(26,18,8,.2);
 }
-
 .badge-dot {
   width: 8px; height: 8px; background: var(--green);
   border-radius: 50%; animation: pulse 1.5s ease-in-out infinite;
 }
-
 @keyframes pulse {
   0%   { box-shadow: 0 0 0 0 rgba(6,214,160,.6); }
   70%  { box-shadow: 0 0 0 8px rgba(6,214,160,0); }
@@ -99,7 +95,6 @@
 }
 .hero-title .line-1 { display: block; animation: slideInLeft .6s .1s cubic-bezier(0.22,1,0.36,1) both; }
 .hero-title .line-2 { display: block; animation: slideInLeft .6s .25s cubic-bezier(0.22,1,0.36,1) both; }
-
 @keyframes slideInLeft { from { opacity: 0; transform: translateX(-30px); } to { opacity: 1; transform: translateX(0); } }
 
 .hero-title .highlight {
@@ -144,7 +139,6 @@
   display: flex; gap: 14px; flex-wrap: wrap;
   animation: fadeUp .7s .3s ease both; margin-bottom: 56px;
 }
-
 .btn-primary {
   display: inline-flex; align-items: center; gap: 8px;
   background: var(--orange); color: #fff; border: none;
@@ -179,14 +173,13 @@
 .stat-label { font-size: .72rem; color: var(--text-muted); margin-top: 5px; font-weight: 500; letter-spacing: .6px; text-transform: uppercase; }
 
 /* ══════════════════════════════════════════
-   PHONE MOCKUP — DESKTOP UNIQUEMENT
+   PHONE MOCKUP
    ══════════════════════════════════════════ */
 .hero-phone-wrap {
   position: relative; z-index: 1;
   display: flex; align-items: center; justify-content: center;
   animation: fadeUp .9s .3s ease both;
 }
-
 .hero-phone-wrap::before {
   content: ''; position: absolute;
   width: 320px; height: 320px;
@@ -199,10 +192,10 @@
   50%       { transform: scale(1.1); opacity: .4; }
 }
 
-/* ── Desktop : téléphone avec décalage vers le haut ── */
+/* ── DESKTOP : décalage + flottement ── */
 .hero-phone {
   position: relative; z-index: 1;
-  margin-top: -160px; /* décalage vers le haut sur desktop uniquement */
+  margin-top: -160px;
   will-change: transform;
   animation: floatPhone 5s ease-in-out infinite;
   filter: drop-shadow(0 40px 60px rgba(26,18,8,.3));
@@ -212,7 +205,7 @@
   50%       { transform: rotate(2deg)  translateY(-18px); }
 }
 
-/* ── Châssis iPhone ── */
+/* ── Châssis ── */
 .phone-frame {
   width: 272px; height: 590px; position: relative;
   background: linear-gradient(145deg, #3A3530 0%, #2A241E 20%, #1E1916 50%, #2A241E 80%, #3A3530 100%);
@@ -226,7 +219,7 @@
 .phone-frame::before {
   content: ''; position: absolute;
   top: 20px; bottom: 20px; left: 0; width: 3px; border-radius: 99px;
-  background: linear-gradient(180deg, transparent 0%, rgba(255,255,255,.15) 30%, rgba(255,255,255,.08) 60%, transparent 100%);
+  background: linear-gradient(180deg, transparent, rgba(255,255,255,.15) 30%, rgba(255,255,255,.08) 60%, transparent);
 }
 .phone-frame::after {
   content: ''; position: absolute;
@@ -242,17 +235,14 @@
   box-shadow: 0 48px 0 #3A3530, 0 49px 0 #2A241E, 0 85px 0 #3A3530;
 }
 
-/* ── Écran ── */
 .phone-screen {
-  background: var(--cream); border-radius: 38px;
-  overflow: hidden; height: 100%;
-  display: flex; flex-direction: column; position: relative;
+  background: var(--cream); border-radius: 38px; overflow: hidden;
+  height: 100%; display: flex; flex-direction: column; position: relative;
 }
 .phone-dynamic-island {
   width: 110px; height: 32px; background: #0a0a0a;
-  border-radius: 20px; margin: 12px auto 0;
-  flex-shrink: 0; position: relative; z-index: 10;
-  box-shadow: 0 0 0 1px rgba(0,0,0,.8);
+  border-radius: 20px; margin: 12px auto 0; flex-shrink: 0;
+  position: relative; z-index: 10; box-shadow: 0 0 0 1px rgba(0,0,0,.8);
   display: flex; align-items: center; justify-content: flex-end; padding-right: 10px;
 }
 .phone-dynamic-island::after {
@@ -277,7 +267,7 @@
 .phone-points-card::before { content: ''; position: absolute; width: 140px; height: 140px; background: rgba(255,255,255,.04); border-radius: 50%; top: -50px; right: -30px; }
 .phone-points-card::after  { content: ''; position: absolute; width: 70px;  height: 70px;  background: rgba(255,107,53,.12);   border-radius: 50%; bottom: -18px; left: 18px; }
 
-.ppc-label { font-size: .6rem; opacity: .5; margin-bottom: 3px; letter-spacing: 1.5px; text-transform: uppercase; position: relative; z-index: 1; }
+.ppc-label { font-size: .6rem;  opacity: .5; margin-bottom: 3px; letter-spacing: 1.5px; text-transform: uppercase; position: relative; z-index: 1; }
 .ppc-value { font-family: var(--font-display); font-size: 2.8rem; letter-spacing: 3px; line-height: 1; position: relative; z-index: 1; }
 .ppc-sub   { font-size: .65rem; opacity: .4; margin-top: 3px; position: relative; z-index: 1; }
 .ppc-bar   { height: 5px; background: rgba(255,255,255,.08); border-radius: 99px; margin-top: 14px; overflow: hidden; position: relative; z-index: 1; }
@@ -292,7 +282,6 @@
 
 .reward-item { display: flex; align-items: center; gap: 11px; background: var(--cream2); border-radius: 16px; padding: 10px 12px; border: 1px solid rgba(26,18,8,.05); transition: transform .15s ease, box-shadow .15s ease; }
 .reward-item:hover { transform: translateX(3px); box-shadow: 0 4px 14px rgba(26,18,8,.08); }
-
 .ri-icon { width: 36px; height: 36px; border-radius: 12px; background: var(--cream); display: flex; align-items: center; justify-content: center; font-size: 1.1rem; flex-shrink: 0; box-shadow: 0 2px 6px rgba(26,18,8,.07); }
 .ri-name { font-size: .78rem; font-weight: 700; color: var(--dark); }
 .ri-pts  { font-size: .68rem; color: var(--orange); font-weight: 700; margin-top: 1px; }
@@ -313,58 +302,51 @@
 @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
 
 /* ══════════════════════════════════════════
-   RESPONSIVE MOBILE & TABLETTE
-   Le téléphone est CACHÉ sur mobile/tablette
-   et remplacé par une version simplifiée
+   RESPONSIVE TABLETTE & MOBILE
    ══════════════════════════════════════════ */
 @media (max-width: 1024px) {
   .hero {
     grid-template-columns: 1fr;
     text-align: center;
     padding: 100px 6vw 60px;
-    gap: 0;
-    overflow: hidden;
+    gap: 48px;
   }
-
-  /* ── Cache le phone mockup complexe sur mobile ── */
-  .hero-phone-wrap {
-    display: none;
-  }
-
   .hero-content {
-    max-width: 100%;
-    display: flex; flex-direction: column; align-items: center;
+    max-width: 100%; display: flex; flex-direction: column; align-items: center;
+    order: 2; /* texte EN BAS */
   }
-  .hero-sub     { max-width: 520px; }
-  .hero-actions { justify-content: center; }
-  .hero-stats   { justify-content: center; max-width: 400px; width: 100%; }
-  .hero-stat    { text-align: center; }
+  .hero-phone-wrap {
+    order: 1; /* téléphone EN HAUT */
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 20px;
+  }
 
-  /* ── Ajoute une image téléphone simplifiée via pseudo-élément ── */
-  .hero-content::before {
-    content: '';
-    display: block;
-    width: 200px;
-    height: 380px;
-    background: linear-gradient(145deg, #3A3530 0%, #1E1916 50%, #3A3530 100%);
-    border-radius: 36px;
-    margin: 0 auto 40px;
-    box-shadow:
-      0 0 0 1px rgba(255,255,255,.1),
-      0 20px 40px rgba(26,18,8,.3),
-      inset 0 1px 0 rgba(255,255,255,.06);
-    position: relative;
-    /* Écran intérieur simulé */
-    background-image:
-      radial-gradient(ellipse 60% 40% at 50% 40%, rgba(255,250,245,.95) 0%, rgba(255,250,245,.9) 100%);
-    background-size: calc(100% - 20px) calc(100% - 20px);
-    background-position: center;
-    background-repeat: no-repeat;
+  /* ✅ CLÉ DU FIX : stoppe floatPhone et remet margin à 0 */
+  .hero-phone {
+    animation-name: none;        /* ← stoppe floatPhone */
+    margin-top: 0;               /* ← supprime le -160px */
+    transform: none;             /* ← remet en position normale */
+    filter: drop-shadow(0 20px 40px rgba(26,18,8,.25));
   }
+
+  .phone-frame { width: 230px; height: 500px; border-radius: 44px; }
+  .hero-phone-wrap::before { width: 260px; height: 260px; }
+
+  .hero-sub { max-width: 520px; }
+  .hero-actions { justify-content: center; }
+  .hero-stats { justify-content: center; max-width: 400px; width: 100%; }
+  .hero-stat  { text-align: center; }
 }
 
 @media (max-width: 640px) {
-  .hero { padding: 80px 5vw 50px; }
+  .hero { padding: 80px 5vw 50px; gap: 36px; }
+  .phone-frame { width: 200px; height: 440px; border-radius: 38px; }
+  .phone-dynamic-island { width: 90px; height: 26px; }
+  .ppc-value { font-size: 2.2rem; }
+  .scan-btn  { font-size: .78rem; padding: 11px; }
   .hero-badge { font-size: .75rem; }
   .hero-sub   { font-size: .95rem; }
   .hero-actions { flex-direction: column; align-items: center; }
@@ -373,16 +355,10 @@
   .blob { opacity: .18; }
   .blob-1 { width: 300px; height: 300px; }
   .blob-2 { display: none; }
-
-  .hero-content::before {
-    width: 160px;
-    height: 300px;
-    border-radius: 28px;
-    margin-bottom: 32px;
-  }
 }
 
 @media (max-width: 380px) {
+  .phone-frame { width: 175px; height: 390px; border-radius: 34px; }
+  .ppc-value   { font-size: 1.9rem; }
   .hero-stat:last-child { display: none; }
-  .hero-content::before { width: 140px; height: 260px; }
 }
