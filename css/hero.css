@@ -427,3 +427,37 @@
   .hero-stat:last-child { display: none; }
   .ppc-value { font-size: 1.8rem; }
 }
+
+/* ══ FIX MOBILE TÉLÉPHONE ══ */
+@media (max-width: 1024px) {
+  .hero {
+    display: flex;          /* ← remplace grid par flex */
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .hero-phone-wrap {
+    order: -1;              /* ← téléphone en premier */
+    width: 100%;
+  }
+
+  .hero-phone {
+    margin-top: 0 !important; /* ← supprime le -160px */
+  }
+
+  .phone-frame {
+    width: 220px !important;
+    height: 480px !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .hero-phone {
+    margin-top: 0 !important;
+  }
+
+  .phone-frame {
+    width: 200px !important;
+    height: 440px !important;
+  }
+}
