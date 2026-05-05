@@ -362,3 +362,63 @@
   .ppc-value   { font-size: 1.9rem; }
   .hero-stat:last-child { display: none; }
 }
+
+@media (max-width: 1024px) {
+  .hero-phone-wrap {
+    order: unset;
+    width: 100%;
+    margin: 32px auto;
+  }
+
+  .hero-phone {
+    animation-name: none;
+    margin-top: 0;
+    transform: none;
+  }
+
+  .phone-frame { 
+    width: 230px; 
+    height: 500px; 
+  }
+}
+/* ══════════════════════════════════════════
+   AJOUT À LA FIN DE hero.css
+   Copiez-collez ces lignes tout en bas
+   ══════════════════════════════════════════ */
+
+/* Desktop → téléphone desktop visible, mobile caché */
+.hero-phone-mobile  { display: none !important; }
+.hero-phone-desktop { display: flex; }
+
+/* Mobile/Tablette → téléphone mobile visible, desktop caché */
+@media (max-width: 1024px) {
+  .hero-phone-desktop { display: none !important; }
+  .hero-phone-mobile  {
+    display: flex !important;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    margin: 32px auto;
+  }
+
+  .hero-phone-mobile .hero-phone {
+    animation-name: none;
+    margin-top: 0;
+    transform: none;
+    filter: drop-shadow(0 20px 40px rgba(26,18,8,.25));
+  }
+
+  .hero-phone-mobile .phone-frame {
+    width: 210px;
+    height: 460px;
+    border-radius: 40px;
+  }
+}
+
+@media (max-width: 640px) {
+  .hero-phone-mobile .phone-frame {
+    width: 190px;
+    height: 420px;
+    border-radius: 36px;
+  }
+}
