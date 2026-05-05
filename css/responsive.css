@@ -1,5 +1,5 @@
 @media (max-width: 1000px) {
-  .hero-phone       { display: none; }
+  /* ← .hero-phone { display: none; } SUPPRIMÉ — le téléphone doit rester visible */
   .steps            { grid-template-columns: 1fr 1fr; }
   .rewards-grid     { grid-template-columns: 1fr 1fr; }
   .scanner-section  { grid-template-columns: 1fr; }
