@@ -36,7 +36,7 @@
       et profitez d'offres personnalisées — directement depuis votre téléphone.
     </p>
 
-    <!-- ══ TÉLÉPHONE MOBILE — visible uniquement sur mobile ══ -->
+    <!-- ══ TÉLÉPHONE MOBILE ══ -->
     <div class="hero-phone-wrap hero-phone-mobile">
       <div class="hero-phone">
         <div class="phone-frame">
@@ -44,35 +44,98 @@
           <div class="phone-screen">
             <div class="phone-dynamic-island"></div>
             <div class="phone-screen-content">
-              <div class="phone-header">
-                <span class="phone-logo">Fidelio</span>
-                <span class="phone-pts">🔥 Gold</span>
+
+              <!-- Header dégradé orange → violet -->
+              <div class="app-header">
+                <div class="app-greeting">Bonjour, Mohammed 👋</div>
+                <div class="app-points-row">
+                  <span class="app-points-num">600</span>
+                  <span class="app-points-label">points</span>
+                </div>
+                <div class="app-next-reward">Prochaine récompense dans</div>
+                <div class="app-progress-bar">
+                  <div class="app-progress-fill"></div>
+                </div>
+                <div class="app-progress-count">600 / 600</div>
               </div>
-              <div class="phone-points-card">
-                <div class="ppc-label">Mes Points</div>
-                <div class="ppc-value">2 480</div>
-                <div class="ppc-sub">620 pts avant le niveau Platinum</div>
-                <div class="ppc-bar"><div class="ppc-fill"></div></div>
+
+              <!-- Mes favoris -->
+              <div class="app-section">
+                <div class="app-section-header">
+                  <span>⭐ Mes favoris</span>
+                  <span class="app-voir-tous">Voir tous</span>
+                </div>
+                <div class="app-favoris-card">
+                  <div class="app-fav-icon">🎁</div>
+                  <div class="app-fav-info">
+                    <div class="app-fav-name">Pizza</div>
+                    <div class="app-fav-sub">Pizzeria · 600/200 pts</div>
+                    <div class="app-fav-bar"><div class="app-fav-fill"></div></div>
+                  </div>
+                  <button class="app-utiliser-btn">Utiliser</button>
+                </div>
               </div>
-              <div class="phone-section-title">Récompenses disponibles</div>
-              <div class="phone-rewards">
-                <div class="reward-item">
-                  <div class="ri-icon">☕</div>
-                  <div>
-                    <div class="ri-name">Café offert</div>
-                    <div class="ri-pts">200 pts</div>
+
+              <!-- Activité récente -->
+              <div class="app-section">
+                <div class="app-section-header">
+                  <span style="font-weight:700;font-size:.8rem;color:#1a1a1a">Activité récente</span>
+                  <span class="app-voir-tous">Voir tous</span>
+                </div>
+                <div class="app-activity-list">
+                  <div class="app-activity-item">
+                    <span class="app-dot" style="background:#4CAF50"></span>
+                    <div class="app-act-info">
+                      <div class="app-act-name">Zackster Shop</div>
+                      <div class="app-act-date">25/04 · 0 DH</div>
+                    </div>
+                    <span class="app-act-pts">+200</span>
+                  </div>
+                  <div class="app-activity-item">
+                    <span class="app-dot" style="background:#FF9800"></span>
+                    <div class="app-act-info">
+                      <div class="app-act-name">Zackster Shop</div>
+                      <div class="app-act-date">25/04 · 0 DH</div>
+                    </div>
+                    <span class="app-act-pts">+500</span>
+                  </div>
+                  <div class="app-activity-item">
+                    <span class="app-dot" style="background:#FF9800"></span>
+                    <div class="app-act-info">
+                      <div class="app-act-name">Pizzeria</div>
+                      <div class="app-act-date">25/04 · 0 DH</div>
+                    </div>
+                    <span class="app-act-pts">+200</span>
                   </div>
                 </div>
-                <div class="reward-item">
-                  <div class="ri-icon">🎁</div>
-                  <div>
-                    <div class="ri-name">Remise 10€</div>
-                    <div class="ri-pts">500 pts</div>
-                  </div>
-                </div>
               </div>
-              <button class="scan-btn">📱 Scanner &amp; Gagner</button>
+
             </div>
+
+            <!-- Barre de navigation -->
+            <div class="app-navbar">
+              <div class="app-nav-item app-nav-active">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+                <span>Accueil</span>
+              </div>
+              <div class="app-nav-item">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                <span>Commerçants</span>
+              </div>
+              <div class="app-nav-item">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M3 11h8V3H3v8zm2-6h4v4H5V5zM3 21h8v-8H3v8zm2-6h4v4H5v-4zM13 3v8h8V3h-8zm6 6h-4V5h4v4zM13 13h2v2h-2zm2 2h2v2h-2zm-2 2h2v2h-2zm4-4h2v2h-2zm0 4h2v2h-2z"/></svg>
+                <span>Mon QR</span>
+              </div>
+              <div class="app-nav-item">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M20 6h-2.18c.07-.44.18-.88.18-1.33C18 2.54 15.82.5 13.5.5c-1.64 0-2.83.83-3.5 2.07C9.33 1.33 8.14.5 6.5.5 4.18.5 2 2.54 2 4.67c0 .45.11.89.18 1.33H0v2h2v11h20V8h2V6h-4zm-7.5-3.5c1.07 0 2 .9 2 2S13.57 7 12.5 7H10.3c.28-.71 1.13-4.5 2.2-4.5zM4 4.67C4 3.6 5.07 2.5 6.5 2.5c1.07 0 1.92 3.79 2.2 4.5H6.5C5.07 7 4 5.74 4 4.67z"/></svg>
+                <span>Récompenses</span>
+              </div>
+              <div class="app-nav-item">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+                <span>Profil</span>
+              </div>
+            </div>
+
             <div class="phone-home-bar"></div>
           </div>
         </div>
@@ -101,9 +164,9 @@
       </div>
     </div>
 
-  </div><!-- fin hero-content -->
+  </div>
 
-  <!-- ══ TÉLÉPHONE DESKTOP — visible uniquement sur PC ══ -->
+  <!-- ══ TÉLÉPHONE DESKTOP ══ -->
   <div class="hero-phone-wrap hero-phone-desktop">
     <div class="hero-phone">
       <div class="phone-frame">
@@ -111,35 +174,94 @@
         <div class="phone-screen">
           <div class="phone-dynamic-island"></div>
           <div class="phone-screen-content">
-            <div class="phone-header">
-              <span class="phone-logo">Fidelio</span>
-              <span class="phone-pts">🔥 Gold</span>
+
+            <div class="app-header">
+              <div class="app-greeting">Bonjour, Mohammed 👋</div>
+              <div class="app-points-row">
+                <span class="app-points-num">600</span>
+                <span class="app-points-label">points</span>
+              </div>
+              <div class="app-next-reward">Prochaine récompense dans</div>
+              <div class="app-progress-bar">
+                <div class="app-progress-fill"></div>
+              </div>
+              <div class="app-progress-count">600 / 600</div>
             </div>
-            <div class="phone-points-card">
-              <div class="ppc-label">Mes Points</div>
-              <div class="ppc-value">2 480</div>
-              <div class="ppc-sub">620 pts avant le niveau Platinum</div>
-              <div class="ppc-bar"><div class="ppc-fill"></div></div>
+
+            <div class="app-section">
+              <div class="app-section-header">
+                <span>⭐ Mes favoris</span>
+                <span class="app-voir-tous">Voir tous</span>
+              </div>
+              <div class="app-favoris-card">
+                <div class="app-fav-icon">🎁</div>
+                <div class="app-fav-info">
+                  <div class="app-fav-name">Pizza</div>
+                  <div class="app-fav-sub">Pizzeria · 600/200 pts</div>
+                  <div class="app-fav-bar"><div class="app-fav-fill"></div></div>
+                </div>
+                <button class="app-utiliser-btn">Utiliser</button>
+              </div>
             </div>
-            <div class="phone-section-title">Récompenses disponibles</div>
-            <div class="phone-rewards">
-              <div class="reward-item">
-                <div class="ri-icon">☕</div>
-                <div>
-                  <div class="ri-name">Café offert</div>
-                  <div class="ri-pts">200 pts</div>
+
+            <div class="app-section">
+              <div class="app-section-header">
+                <span style="font-weight:700;font-size:.8rem;color:#1a1a1a">Activité récente</span>
+                <span class="app-voir-tous">Voir tous</span>
+              </div>
+              <div class="app-activity-list">
+                <div class="app-activity-item">
+                  <span class="app-dot" style="background:#4CAF50"></span>
+                  <div class="app-act-info">
+                    <div class="app-act-name">Zackster Shop</div>
+                    <div class="app-act-date">25/04 · 0 DH</div>
+                  </div>
+                  <span class="app-act-pts">+200</span>
+                </div>
+                <div class="app-activity-item">
+                  <span class="app-dot" style="background:#FF9800"></span>
+                  <div class="app-act-info">
+                    <div class="app-act-name">Zackster Shop</div>
+                    <div class="app-act-date">25/04 · 0 DH</div>
+                  </div>
+                  <span class="app-act-pts">+500</span>
+                </div>
+                <div class="app-activity-item">
+                  <span class="app-dot" style="background:#FF9800"></span>
+                  <div class="app-act-info">
+                    <div class="app-act-name">Pizzeria</div>
+                    <div class="app-act-date">25/04 · 0 DH</div>
+                  </div>
+                  <span class="app-act-pts">+200</span>
                 </div>
               </div>
-              <div class="reward-item">
-                <div class="ri-icon">🎁</div>
-                <div>
-                  <div class="ri-name">Remise 10€</div>
-                  <div class="ri-pts">500 pts</div>
-                </div>
-              </div>
             </div>
-            <button class="scan-btn">📱 Scanner &amp; Gagner</button>
+
           </div>
+
+          <div class="app-navbar">
+            <div class="app-nav-item app-nav-active">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+              <span>Accueil</span>
+            </div>
+            <div class="app-nav-item">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+              <span>Commerçants</span>
+            </div>
+            <div class="app-nav-item">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M3 11h8V3H3v8zm2-6h4v4H5V5zM3 21h8v-8H3v8zm2-6h4v4H5v-4zM13 3v8h8V3h-8zm6 6h-4V5h4v4zM13 13h2v2h-2zm2 2h2v2h-2zm-2 2h2v2h-2zm4-4h2v2h-2zm0 4h2v2h-2z"/></svg>
+              <span>Mon QR</span>
+            </div>
+            <div class="app-nav-item">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M20 6h-2.18c.07-.44.18-.88.18-1.33C18 2.54 15.82.5 13.5.5c-1.64 0-2.83.83-3.5 2.07C9.33 1.33 8.14.5 6.5.5 4.18.5 2 2.54 2 4.67c0 .45.11.89.18 1.33H0v2h2v11h20V8h2V6h-4z"/></svg>
+              <span>Récompenses</span>
+            </div>
+            <div class="app-nav-item">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+              <span>Profil</span>
+            </div>
+          </div>
+
           <div class="phone-home-bar"></div>
         </div>
       </div>
