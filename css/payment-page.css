@@ -195,8 +195,21 @@
   transition: transform .2s, box-shadow .2s;
 }
 .pay-dl-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,.25); }
-.dl-sub  { font-size: .55rem; opacity: .6; letter-spacing: .8px; text-transform: uppercase; display: block; }
-.dl-name { font-size: .88rem; font-weight: 700; display: block; }
+.pay-dl-badges .dl-sub,
+.download-badges .dl-sub {
+  font-size: .55rem;
+  opacity: .6;
+  letter-spacing: .8px;
+  text-transform: uppercase;
+  display: block;
+}
+
+.pay-dl-badges .dl-name,
+.download-badges .dl-name {
+  font-size: .88rem;
+  font-weight: 700;
+  display: block;
+}
 
 /* ── Champs formulaire ── */
 .pay-field {

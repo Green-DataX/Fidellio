@@ -72,7 +72,7 @@
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 24px;
-  align-items: start;
+  align-items: stretch;
   max-width: 1000px;
   margin: 0 auto;
 }
@@ -87,6 +87,10 @@
   text-align: left;
   position: relative;
   transition: transform .3s, box-shadow .3s;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 0;
 }
 
 .pricing-card:hover {
@@ -277,6 +281,8 @@
   cursor: pointer;
   font-family: 'Inter', sans-serif;
   transition: transform .2s, box-shadow .2s;
+  margin-top: auto;
+  flex-shrink: 0;
 }
 
 .pricing-btn:hover {
@@ -363,35 +369,58 @@
 .free-modal-badges { display: flex; flex-direction: column; gap: 10px; }
 
 .free-dl-btn {
-  display: flex; align-items: center; gap: 12px;
-  background: #000; color: #fff; border-radius: 14px;
-  padding: 12px 20px; text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: #000;
+  color: #fff;
+  border-radius: 14px;
+  padding: 12px 20px;
+  text-decoration: none;
   transition: transform .2s, box-shadow .2s;
 }
+
 .free-dl-btn:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(0,0,0,.25);
-}
-.free-dl-btn .dl-sub {
-  font-size: .55rem; opacity: .6;
-  text-transform: uppercase; letter-spacing: .8px;
-  display: block; color: #fff;
-}
-.free-dl-btn .dl-name {
-  font-size: .95rem; font-weight: 700;
-  display: block; color: #fff;
-}
-.free-dl-btn svg {
-  flex-shrink: 0;
-}
-.free-dl-btn div,
-.free-dl-btn span {
-  color: #fff !important;
-}
-.free-dl-btn {
-  color: #fff !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, .25);
 }
 
-.free-dl-btn * {
-  color: #fff !important;
+.free-dl-btn svg {
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  display: block;
+}
+
+/* Colonne libellés : éviter min-width:0 (réduit parfois la largeur du texte à 0px en flex row) */
+.free-dl-btn .free-dl-text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  flex: 1 1 auto;
+  min-width: min-content;
+  overflow: visible;
+  position: relative;
+  z-index: 2;
+  text-align: left;
+  color: #fff;
+}
+
+.free-dl-btn .dl-sub {
+  font-size: .55rem;
+  opacity: .75;
+  text-transform: uppercase;
+  letter-spacing: .8px;
+  display: block;
+  color: #fff;
+  -webkit-text-fill-color: #fff;
+}
+
+.free-dl-btn .dl-name {
+  font-size: .95rem;
+  font-weight: 700;
+  display: block;
+  color: #fff;
+  -webkit-text-fill-color: #fff;
 }
