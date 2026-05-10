@@ -93,6 +93,26 @@ async function handleLogin() {
   }
 }
 
+
+/* ── Connexion Google ── */
+async function handleGoogleLogin() {
+  const btn = document.getElementById('googleBtn');
+  if (btn) { btn.textContent = 'Connexion...'; btn.disabled = true; }
+
+  try {
+    const { error } = await db.auth.signInWithOAuth({
+      provider: 'google',
+      options: {
+        redirectTo: window.location.href, // Revient sur la même page après auth
+      }
+    });
+    if (error) throw error;
+  } catch (err) {
+    showError('Impossible de se connecter avec Google.');
+    if (btn) { btn.textContent = 'Continuer avec Google'; btn.disabled = false; }
+  }
+}
+
 /* ── Déconnexion ── */
 async function handleLogout() {
   await db.auth.signOut();
@@ -207,9 +227,20 @@ document.addEventListener('DOMContentLoaded', async () => {
   setText('summaryPeriod',  period);
   setText('summaryBilling', billing);
 
+  // ✅ Écouter les changements de session (inclut le retour OAuth Google)
+  db.auth.onAuthStateChange(async (_event, session) => {
+    if (!session) return;
+    await loadMerchantSession(session);
+  });
+
   const { data: { session } } = await db.auth.getSession();
   if (!session) return;
 
+  await loadMerchantSession(session);
+});
+
+/* ── Charger les données commerçant depuis une session ── */
+async function loadMerchantSession(session) {
   const userId = session.user.id;
 
   const { data: merchant } = await db
@@ -218,7 +249,13 @@ document.addEventListener('DOMContentLoaded', async () => {
     .eq('user_id', userId)
     .maybeSingle();
 
-  if (!merchant) return;
+  if (!merchant) {
+    showError(
+      "Compte commerçant introuvable. " +
+      "Vérifiez que vous avez un compte sur l'application Fideliio."
+    );
+    return;
+  }
 
   const { data: subscription } = await db
     .from('subscriptions')
@@ -237,7 +274,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     expiresAt  : subscription?.expires_at || null,
     history    : [],
   });
-});
+}
 
 /* ══════════════════════════════
    UTILITAIRES
