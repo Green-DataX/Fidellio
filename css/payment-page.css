@@ -50,19 +50,20 @@
   display: grid;
   grid-template-columns: 380px 1fr;
   gap: 32px;
-  align-items: start;
+  align-items: start; /* ← colonnes alignées en haut */
 }
 
 /* ── Résumé plan (colonne gauche) ── */
 .pay-summary {
   position: sticky;
   top: 10px;
+  align-items: start;
 }
 
 .pay-summary-inner {
   background: linear-gradient(160deg, var(--dark) 0%, var(--dark2) 100%);
   border-radius: 28px;
-  padding: 36px 28px;
+  padding: 10px 28px;
   color: #fff;
   box-shadow: 0 20px 60px rgba(26,18,8,.25);
   position: relative;
@@ -111,7 +112,7 @@
 
 .summary-billing {
   font-size: .75rem; color: rgba(255,255,255,.4);
-  margin-bottom: 24px;
+  margin-bottom: -10px;
   position: relative; z-index: 1;
 }
 
@@ -471,3 +472,9 @@
 .pay-divider::before, .pay-divider::after {
   content: ''; flex: 1; height: 1px; background: #eee;
 }
+.pay-summary {
+  position: sticky;
+  top: 80px;
+  align-self: start; /* ← ne s'étire pas */
+}
+
