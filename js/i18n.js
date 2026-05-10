@@ -58,12 +58,21 @@ function setLanguage(lang) {
   });
 
   // Mettre à jour le bouton langue affiché
-  const flags = { fr:'🇫🇷', en:'🇬🇧', ar:'🇸🇦' };
-  const labels = { fr:'FR', en:'EN', ar:'عربي' };
-  const flagEl = document.getElementById('currentFlag');
-  const labelEl = document.getElementById('currentLangLabel');
-  if (flagEl)  flagEl.textContent  = flags[lang];
-  if (labelEl) labelEl.textContent = labels[lang];
+const flagUrls = { 
+  fr: 'https://flagcdn.com/w20/fr.png', 
+  en: 'https://flagcdn.com/w20/gb.png', 
+  ar: 'https://flagcdn.com/w20/ma.png' 
+};
+const labels = { fr: 'FR', en: 'EN', ar: 'AR' };
+
+const flagEl  = document.getElementById('currentFlag');
+const labelEl = document.getElementById('currentLangLabel');
+
+if (flagEl) {
+  flagEl.src = flagUrls[lang];
+  flagEl.alt = labels[lang];
+}
+if (labelEl) labelEl.textContent = labels[lang];
 
   // Marquer l'option active
   document.querySelectorAll('.lang-option').forEach(btn => {
