@@ -8,6 +8,7 @@
   min-height: 100vh;
   background: var(--cream);
   overflow: hidden;
+  margin-top: 50px;
 }
 
 .pay-page-bg {

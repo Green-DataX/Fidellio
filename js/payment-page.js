@@ -7,7 +7,7 @@
 const SUPABASE_URL  = 'https://hdzhdwelgqmdvgwrlxud.supabase.co';
 const SUPABASE_ANON = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imhkemhkd2VsZ3FtZHZnd3JseHVkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzYzNTE4NDMsImV4cCI6MjA5MTkyNzg0M30.yR5dYEiSRg5lRzNvVD058SxGqFYvf2Ee64sGdobHbGw';
 
-const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON);
+const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON);
 
 /* ── Config paiement ── */
 const CONFIG = {

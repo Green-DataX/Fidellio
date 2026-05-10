@@ -5,10 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Passer au Plan Pro — Fideliio</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <!-- CSS du site -->
+  <link rel="stylesheet" href="../css/lang.css">
+  <link rel="stylesheet" href="../css/buttons.css">
   <link rel="stylesheet" href="../css/base.css">
   <link rel="stylesheet" href="../css/navbar.css">
   <link rel="stylesheet" href="../css/footer.css">
@@ -16,13 +17,30 @@
 </head>
 <body>
 
-  <!-- Navbar identique au site -->
-  <div data-include="components/navbar.html"></div>
+  <!-- Navbar -->
+  <nav>
+  <a class="logo" href="../index.html">
+    <div class="logo-icon">🍟</div>
+    Fidelio
+  </a>
+
+  <ul class="nav-links">
+    <li><a href="../index.html#Accueil">Accueil</a></li>
+    <li><a href="../index.html#comment">Comment ça marche</a></li>
+    <li><a href="../index.html#tarifs">Tarifs</a></li>
+    <li><a href="../index.html#marques">Marques</a></li>
+  </ul>
+
+  <div class="nav-right">
+    <button class="nav-cta" onclick="window.location.href='../index.html'">
+      Retour au site
+    </button>
+  </div>
+    </nav>
 
   <!-- ══ PAGE PAIEMENT ══ -->
   <main class="pay-page">
 
-    <!-- Fond décoratif -->
     <div class="pay-page-bg"></div>
     <div class="pay-page-blob blob-a"></div>
     <div class="pay-page-blob blob-b"></div>
@@ -31,7 +49,6 @@
     <section class="pay-section" id="sectionAuth">
       <div class="pay-container">
 
-        <!-- Breadcrumb -->
         <div class="pay-breadcrumb">
           <a href="../index.html">Accueil</a>
           <span>›</span>
@@ -59,30 +76,12 @@
               <div class="summary-divider"></div>
 
               <div class="summary-features">
-                <div class="summary-feature">
-                  <span class="sf-check">✓</span>
-                  <span>Scans illimités</span>
-                </div>
-                <div class="summary-feature">
-                  <span class="sf-check">✓</span>
-                  <span>Toutes les récompenses</span>
-                </div>
-                <div class="summary-feature">
-                  <span class="sf-check">✓</span>
-                  <span>Historique complet</span>
-                </div>
-                <div class="summary-feature">
-                  <span class="sf-check">✓</span>
-                  <span>Double points weekend</span>
-                </div>
-                <div class="summary-feature">
-                  <span class="sf-check">✓</span>
-                  <span>Offres exclusives</span>
-                </div>
-                <div class="summary-feature">
-                  <span class="sf-check">✓</span>
-                  <span>Support prioritaire</span>
-                </div>
+                <div class="summary-feature"><span class="sf-check">✓</span><span>Scans illimités</span></div>
+                <div class="summary-feature"><span class="sf-check">✓</span><span>Toutes les récompenses</span></div>
+                <div class="summary-feature"><span class="sf-check">✓</span><span>Historique complet</span></div>
+                <div class="summary-feature"><span class="sf-check">✓</span><span>Double points weekend</span></div>
+                <div class="summary-feature"><span class="sf-check">✓</span><span>Offres exclusives</span></div>
+                <div class="summary-feature"><span class="sf-check">✓</span><span>Support prioritaire</span></div>
               </div>
 
               <div class="summary-divider"></div>
@@ -97,7 +96,7 @@
           <!-- Colonne droite : Formulaire -->
           <div class="pay-form-col">
 
-            <!-- ── Pas encore de compte ── -->
+            <!-- Pas encore de compte -->
             <div class="pay-card" id="cardNoAccount">
               <div class="pay-card-header">
                 <span class="pay-card-num">1</span>
@@ -134,7 +133,7 @@
               </div>
             </div>
 
-            <!-- ── Connexion ── -->
+            <!-- Connexion -->
             <div class="pay-card" id="cardLogin">
               <div class="pay-card-header">
                 <span class="pay-card-num">2</span>
@@ -174,7 +173,7 @@
       </div>
     </section>
 
-    <!-- ══ ÉTAPE 2 : Dashboard personnalisé ══ -->
+    <!-- ══ ÉTAPE 2 : Dashboard ══ -->
     <section class="pay-section" id="sectionDashboard" style="display:none">
       <div class="pay-container">
 
@@ -184,12 +183,11 @@
           <span>Mon espace Pro</span>
         </div>
 
-        <!-- Header compte -->
         <div class="dash-page-header">
           <div class="dash-page-avatar" id="dashAvatar">M</div>
           <div class="dash-page-info">
-            <div class="dash-page-name" id="dashName">Mohammed Alami</div>
-            <div class="dash-page-email" id="dashEmail">mohammed@restaurant.ma</div>
+            <div class="dash-page-name" id="dashName"></div>
+            <div class="dash-page-email" id="dashEmail"></div>
           </div>
           <div class="dash-page-plan" id="dashCurrentPlan">Gratuit</div>
           <button class="dash-logout-btn" onclick="handleLogout()">Déconnexion</button>
@@ -197,10 +195,8 @@
 
         <div class="dash-page-grid">
 
-          <!-- Colonne gauche -->
           <div class="dash-left">
 
-            <!-- Plan activé -->
             <div class="dash-widget dash-widget-plan">
               <div class="dw-label">PLAN SÉLECTIONNÉ</div>
               <div class="dw-plan-row">
@@ -220,7 +216,6 @@
               </div>
             </div>
 
-            <!-- Virement bancaire -->
             <div class="dash-widget">
               <div class="dw-label">💳 INFORMATIONS DE VIREMENT</div>
               <div class="dw-bank-rows">
@@ -254,15 +249,13 @@
 
           </div>
 
-          <!-- Colonne droite -->
           <div class="dash-right">
 
-            <!-- Statut & Renouvellement -->
             <div class="dash-widget">
               <div class="dw-label">📅 STATUT & RENOUVELLEMENT</div>
               <div class="dw-status-row">
                 <span class="dw-status-label">Statut actuel</span>
-                <span class="dw-status-badge" id="dashStatus">⏳ En attente</span>
+                <span class="dw-status-badge pending" id="dashStatus">⏳ En attente</span>
               </div>
               <div class="dw-status-row">
                 <span class="dw-status-label">Prochain paiement</span>
@@ -274,7 +267,6 @@
               </div>
             </div>
 
-            <!-- Historique paiements -->
             <div class="dash-widget">
               <div class="dw-label">🧾 HISTORIQUE DES PAIEMENTS</div>
               <div class="dw-history" id="dashHistory">
@@ -282,16 +274,14 @@
               </div>
             </div>
 
-            <!-- Envoyer preuve -->
             <div class="dash-widget dash-widget-send">
               <div class="dw-label">📤 ENVOYER LA PREUVE DE PAIEMENT</div>
               <p class="dw-send-text">
-                Après avoir effectué le virement, envoyez-nous la preuve de paiement. Votre compte sera activé sous 24h.
+                Après avoir effectué le virement, envoyez-nous la preuve. Votre compte sera activé sous 24h.
               </p>
               <div class="dw-send-btns">
                 <a id="waLink" href="#" target="_blank" class="dw-send-btn whatsapp">
-                  <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-                  Envoyer sur WhatsApp
+                  📱 Envoyer sur WhatsApp
                 </a>
                 <a id="mailLink" href="#" class="dw-send-btn email">
                   ✉️ Envoyer par Email
@@ -306,10 +296,14 @@
 
   </main>
 
-  <!-- Footer identique au site -->
-  <div data-include="components/footer.html"></div>
+  <!-- Footer -->
+  <div data-include="../components/footer.html"></div>
+
+  <!-- ✅ Scripts dans le bon ordre -->
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="../js/i18n.js"></script>
   <script src="../js/loader.js"></script>
   <script src="../js/payment-page.js"></script>
+
 </body>
 </html>
