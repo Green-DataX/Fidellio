@@ -186,7 +186,7 @@
 
 .hero-phone {
   position: relative; z-index: 1;
-  margin-top: -160px;
+  margin-top: -60px;
   will-change: transform;
   animation: floatPhone 5s ease-in-out infinite;
   filter: drop-shadow(0 40px 60px rgba(26,18,8,.3));
@@ -236,155 +236,22 @@
 }
 
 /* ══════════════════════════════════════════
-   VRAIE APP — CONTENU ÉCRAN
+   ÉCRAN — IMAGE
    ══════════════════════════════════════════ */
 .phone-screen-content {
   flex: 1;
-  display: flex;
-  flex-direction: column;
-  margin: 10px;
-  border-radius: 20px;
   overflow: hidden;
-  background: #f5f5f5; /* ou blanc */
+  margin: 6px 6px 6px 6px;
+  border-radius: 16px;
 }
-
-/* ── Header dégradé orange → violet ── */
-.app-header {
-  background: linear-gradient(160deg, #FF8C00 0%, #FF6B35 30%, #8B2FC9 70%, #6A1FA8 100%);
-  padding: 14px 16px 18px;
-  flex-shrink: 0;
-  position: relative;
-  overflow: hidden;
+.phone-screen-content img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+  display: block;
+  border-radius: 16px;
 }
-
-/* Motif losanges subtil */
-.app-header::before {
-  content: '';
-  position: absolute; inset: 0;
-  background-image: repeating-linear-gradient(
-    45deg,
-    rgba(255,255,255,.04) 0px, rgba(255,255,255,.04) 1px,
-    transparent 1px, transparent 12px
-  );
-}
-
-.app-greeting {
-  font-size: .7rem; color: rgba(255,255,255,.85);
-  font-family: var(--font-body); margin-bottom: 4px;
-  position: relative; z-index: 1;
-}
-.app-points-row {
-  display: flex; align-items: baseline; gap: 6px; margin-bottom: 6px;
-  position: relative; z-index: 1;
-}
-.app-points-num {
-  font-family: var(--font-display); font-size: 2.6rem;
-  color: #FFD166; letter-spacing: 2px; line-height: 1;
-}
-.app-points-label {
-  font-size: .75rem; color: rgba(255,255,255,.8);
-  font-family: var(--font-body);
-}
-.app-next-reward {
-  font-size: .62rem; color: rgba(255,255,255,.7);
-  font-family: var(--font-body); margin-bottom: 6px;
-  position: relative; z-index: 1;
-}
-.app-progress-bar {
-  height: 6px; background: rgba(255,255,255,.2);
-  border-radius: 99px; overflow: hidden; margin-bottom: 3px;
-  position: relative; z-index: 1;
-}
-.app-progress-fill {
-  height: 100%; width: 100%;
-  background: linear-gradient(90deg, #FFD166, #FF8C00);
-  border-radius: 99px;
-  animation: fillBar 1.5s 1s ease both;
-}
-@keyframes fillBar { from { width: 0; } to { width: 100%; } }
-
-.app-progress-count {
-  font-size: .6rem; color: rgba(255,255,255,.6);
-  text-align: right; font-family: var(--font-body);
-  position: relative; z-index: 1;
-}
-
-/* ── Sections ── */
-.app-section {
-  padding: 10px 14px 0;
-  flex-shrink: 0;
-}
-.app-section-header {
-  display: flex; justify-content: space-between; align-items: center;
-  margin-bottom: 8px; font-size: .75rem;
-  font-family: var(--font-body); color: #1a1a1a; font-weight: 600;
-}
-.app-voir-tous {
-  font-size: .65rem; color: #2196F3; font-weight: 500; cursor: pointer;
-}
-
-/* ── Favoris card ── */
-.app-favoris-card {
-  background: #fff; border-radius: 14px; padding: 10px 12px;
-  display: flex; align-items: center; gap: 10px;
-  box-shadow: 0 2px 10px rgba(0,0,0,.06);
-  border: 1px solid rgba(0,0,0,.05);
-}
-.app-fav-icon {
-  width: 36px; height: 36px; border-radius: 10px;
-  background: #FFF3E0; display: flex; align-items: center;
-  justify-content: center; font-size: 1.1rem; flex-shrink: 0;
-}
-.app-fav-info { flex: 1; }
-.app-fav-name { font-size: .75rem; font-weight: 700; color: #1a1a1a; font-family: var(--font-body); }
-.app-fav-sub  { font-size: .6rem; color: #888; font-family: var(--font-body); margin-bottom: 4px; }
-.app-fav-bar  { height: 3px; background: #eee; border-radius: 99px; overflow: hidden; }
-.app-fav-fill { height: 100%; width: 100%; background: linear-gradient(90deg, #FF8C00, #FFD166); border-radius: 99px; }
-
-.app-utiliser-btn {
-  background: #2196F3; color: #fff; border: none;
-  border-radius: 20px; padding: 5px 10px;
-  font-size: .62rem; font-weight: 700; cursor: pointer;
-  font-family: var(--font-body); flex-shrink: 0;
-}
-
-/* ── Activité récente ── */
-.app-activity-list {
-  background: #fff; border-radius: 14px;
-  box-shadow: 0 2px 10px rgba(0,0,0,.06);
-  border: 1px solid rgba(0,0,0,.05);
-  overflow: hidden;
-}
-.app-activity-item {
-  display: flex; align-items: center; gap: 10px;
-  padding: 8px 12px;
-  border-bottom: 1px solid rgba(0,0,0,.05);
-}
-.app-activity-item:last-child { border-bottom: none; }
-
-.app-dot {
-  width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0;
-}
-.app-act-info { flex: 1; }
-.app-act-name { font-size: .72rem; font-weight: 600; color: #1a1a1a; font-family: var(--font-body); }
-.app-act-date { font-size: .6rem; color: #aaa; font-family: var(--font-body); }
-.app-act-pts  { font-size: .75rem; font-weight: 700; color: #FF8C00; font-family: var(--font-body); }
-
-/* ── Barre de navigation ── */
-.app-navbar {
-  display: flex; align-items: center; justify-content: space-around;
-  background: #fff; border-top: 1px solid #eee;
-  padding: 6px 0 4px; flex-shrink: 0;
-  box-shadow: 0 -2px 10px rgba(0,0,0,.05);
-}
-.app-nav-item {
-  display: flex; flex-direction: column; align-items: center; gap: 2px;
-  color: #aaa; font-size: .5rem; font-family: var(--font-body);
-  cursor: pointer; padding: 2px 6px;
-}
-.app-nav-item svg { opacity: .4; }
-.app-nav-active { color: #2196F3; }
-.app-nav-active svg { opacity: 1; }
 
 .phone-home-bar {
   width: 100px; height: 3px; background: rgba(0,0,0,.15);
@@ -444,115 +311,4 @@
 @media (max-width: 380px) {
   .hero-phone-mobile .phone-frame { width: 170px; height: 380px; border-radius: 34px; }
   .hero-stat:last-child { display: none; }
-}
-/* ══ FIX ÉCRAN TÉLÉPHONE — MOBILE ══ */
-@media (max-width: 1024px) {
-
-  .hero-phone-mobile .phone-screen-content {
-    margin: 4px;
-    border-radius: 14px;
-    overflow-y: auto;
-    overflow-x: hidden;
-  }
-
-  /* Header */
-  .hero-phone-mobile .app-header {
-    padding: 8px 12px 12px;
-  }
-  .hero-phone-mobile .app-greeting {
-    font-size: .6rem;
-    margin-bottom: 2px;
-  }
-  .hero-phone-mobile .app-points-num {
-    font-size: 1.8rem;
-  }
-  .hero-phone-mobile .app-points-label {
-    font-size: .6rem;
-  }
-  .hero-phone-mobile .app-next-reward {
-    font-size: .55rem;
-    margin-bottom: 4px;
-  }
-  .hero-phone-mobile .app-progress-bar {
-    height: 5px;
-    margin-bottom: 2px;
-  }
-  .hero-phone-mobile .app-progress-count {
-    font-size: .52rem;
-  }
-
-  /* Sections */
-  .hero-phone-mobile .app-section {
-    padding: 6px 10px 0;
-  }
-  .hero-phone-mobile .app-section-header {
-    font-size: .65rem;
-    margin-bottom: 5px;
-  }
-
-  /* Favoris */
-  .hero-phone-mobile .app-favoris-card {
-    padding: 7px 8px;
-    gap: 7px;
-    border-radius: 10px;
-  }
-  .hero-phone-mobile .app-fav-icon {
-    width: 28px;
-    height: 28px;
-    font-size: .85rem;
-    border-radius: 8px;
-  }
-  .hero-phone-mobile .app-fav-name   { font-size: .65rem; }
-  .hero-phone-mobile .app-fav-sub    { font-size: .55rem; }
-  .hero-phone-mobile .app-utiliser-btn {
-    font-size: .55rem;
-    padding: 4px 7px;
-    border-radius: 14px;
-  }
-
-  /* Activité */
-  .hero-phone-mobile .app-activity-item {
-    padding: 5px 8px;
-    gap: 7px;
-  }
-  .hero-phone-mobile .app-act-name { font-size: .63rem; }
-  .hero-phone-mobile .app-act-date { font-size: .52rem; }
-  .hero-phone-mobile .app-act-pts  { font-size: .65rem; }
-  .hero-phone-mobile .app-dot      { width: 6px; height: 6px; }
-
-  /* Navbar */
-  .hero-phone-mobile .app-navbar {
-    padding: 4px 0 2px;
-  }
-  .hero-phone-mobile .app-nav-item {
-    font-size: .4rem;
-    gap: 1px;
-    padding: 1px 3px;
-  }
-  .hero-phone-mobile .app-nav-item svg {
-    width: 14px;
-    height: 14px;
-  }
-
-  .hero-phone-mobile .phone-home-bar {
-    width: 70px;
-    height: 2px;
-    margin: 2px auto 4px;
-  }
-}
-
-/* ══ TRÈS PETIT (380px) ══ */
-@media (max-width: 380px) {
-  .hero-phone-mobile .app-points-num  { font-size: 1.4rem; }
-  .hero-phone-mobile .app-header      { padding: 6px 10px 10px; }
-  .hero-phone-mobile .app-section     { padding: 5px 8px 0; }
-  .hero-phone-mobile .app-favoris-card { padding: 5px 7px; }
-}
-.hero-phone {
-  margin-top: 60px;
-}
-.hero-phone {
-  margin-top: -60px;
-  transform: scale(0.6); /* ← réduit de 40% */
-  transform-origin: center top;
 }
