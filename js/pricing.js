@@ -49,13 +49,16 @@ function initPricingToggle() {
 
   if (!toggle) return;
 
+  const t =
+    typeof window.FideliioT === "function" ? window.FideliioT : () => "";
+
   /* Libellés initiaux depuis le catalogue traduit */
-  if (monthlyLabel) monthlyLabel.textContent = window.FideliioT("pricing.toggle_monthly");
+  if (monthlyLabel) monthlyLabel.textContent = t("pricing.toggle_monthly");
   if (yearlyLabel) {
     const yTxt = yearlyLabel.querySelector(".toggle-yearly-text");
     const yPct = yearlyLabel.querySelector(".toggle-yearly-pct");
-    if (yTxt) yTxt.textContent = window.FideliioT("pricing.toggle_yearly");
-    if (yPct) yPct.textContent = window.FideliioT("pricing.discount_pct");
+    if (yTxt) yTxt.textContent = t("pricing.toggle_yearly");
+    if (yPct) yPct.textContent = t("pricing.discount_pct");
   }
 
   let yearly = false;
