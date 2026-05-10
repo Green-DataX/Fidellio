@@ -125,6 +125,10 @@ body.rtl .app-badge {
   justify-content: flex-start;
 }
 
+body.rtl .cta-store-btn {
+  flex-direction: row-reverse;
+}
+
 body.rtl .app-badges {
   align-items: flex-end;
 }

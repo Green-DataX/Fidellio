@@ -30,6 +30,22 @@ footer {
   max-width: 240px;
 }
 
+.footer-developed {
+  margin-top: 12px;
+  font-size: 0.82rem;
+  line-height: 1.45;
+  color: rgba(255, 255, 255, 0.42);
+  max-width: 240px;
+}
+
+.footer-developed a {
+  color: rgba(255, 255, 255, 0.55);
+  text-decoration: none;
+}
+.footer-developed a:hover {
+  color: var(--orange);
+}
+
 /* ── Colonnes liens ── */
 .footer-col h5 {
   color: #fff;

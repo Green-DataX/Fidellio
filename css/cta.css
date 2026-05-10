@@ -37,3 +37,13 @@
   flex-wrap: wrap;
   position: relative;
 }
+
+.cta-store-btn {
+  gap: 10px;
+  padding-inline: 22px 28px;
+}
+
+.cta-store-svg {
+  flex-shrink: 0;
+  display: block;
+}

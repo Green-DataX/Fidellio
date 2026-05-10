@@ -208,7 +208,8 @@ window.FIDELIIO_I18N_EXTRA = {
     "pay.err_merchant":
       "Compte commerçant introuvable. Vérifiez que vous avez un compte sur l'application Fideliio.",
     "footer.badge_ios": "App Store",
-    "footer.badge_android": "Play Store"
+    "footer.badge_android": "Play Store",
+    "footer.developed_by": "Site et application développés par HiomAI."
   },
   en: {
     "page.title": "Fideliio — Scan. Earn. Enjoy.",
@@ -415,7 +416,8 @@ window.FIDELIIO_I18N_EXTRA = {
     "pay.err_merchant":
       "Merchant profile not found. Join Fideliio on the merchant app first.",
     "footer.badge_ios": "App Store",
-    "footer.badge_android": "Play Store"
+    "footer.badge_android": "Play Store",
+    "footer.developed_by": "Website and app developed by HiomAI."
   },
   ar: {
     "page.title": "فيدلييو — امسح. اربح. استمتع.",
@@ -621,6 +623,7 @@ window.FIDELIIO_I18N_EXTRA = {
     "pay.bank_label": "البنك",
     "pay.err_merchant": "حساب التاجر غير موجود. أنشِئ حساباً من تطبيق فيدلييو أولاً.",
     "footer.badge_ios": "متجر التطبيقات",
-    "footer.badge_android": "متجر Play"
+    "footer.badge_android": "متجر Play",
+    "footer.developed_by": "تم تطوير الموقع والتطبيق بواسطة HiomAI."
   }
 };
