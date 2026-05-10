@@ -1,0 +1,48 @@
+<nav>
+  <a class="logo" href="#">
+    <div class="logo-icon">🍟</div>
+    Fidelio
+  </a>
+
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#Accueil"  data-i18n="nav.home">Accueil</a></li>
+    <li><a href="#comment"  data-i18n="nav.how">Comment ça marche</a></li>
+    <li><a href="#tarifs"   data-i18n="nav.pricing">Tarifs</a></li>
+    <li><a href="#marques"  data-i18n="nav.brands">Marques</a></li>
+  </ul>
+
+  <div class="nav-right">
+    <!-- Dropdown langue -->
+    <div class="lang-dropdown" id="langDropdown">
+  <button class="lang-selected" onclick="toggleLangMenu()">
+    <img id="currentFlag" src="https://flagcdn.com/w20/fr.png" width="20" alt="FR">
+    <span id="currentLangLabel">FR</span>
+    <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
+      <path d="M2 3.5L5 6.5L8 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+    </svg>
+  </button>
+  <div class="lang-menu" id="langMenu">
+    <button class="lang-option" onclick="setLanguage('fr')" data-lang="fr">
+      <img src="https://flagcdn.com/w20/fr.png" width="20" alt="FR">
+      <span>Français</span>
+    </button>
+    <button class="lang-option" onclick="setLanguage('en')" data-lang="en">
+      <img src="https://flagcdn.com/w20/gb.png" width="20" alt="GB">
+      <span>English</span>
+    </button>
+    <button class="lang-option" onclick="setLanguage('ar')" data-lang="ar">
+      <img src="https://flagcdn.com/w20/ma.png" width="20" alt="MA">
+      <span>عربي</span>
+    </button>
+  </div>
+</div>
+    <button class="nav-cta" data-i18n="nav.cta">Télécharger l'app</button>
+
+    <!-- ── Bouton Hamburger ── -->
+    <button class="nav-hamburger" id="navHamburger" onclick="toggleNavMenu()" aria-label="Menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+</nav>

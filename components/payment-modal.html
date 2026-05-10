@@ -1,0 +1,228 @@
+<!-- ══════════════════════════════════════════
+     MODAL PAIEMENT — Flux professionnel
+     ══════════════════════════════════════════ -->
+<div class="pay-overlay" id="payModal">
+  <div class="pay-box" id="payBox">
+
+    <!-- ══ ÉTAPE 1 : Choix connexion ou inscription ══ -->
+    <div class="pay-step" id="stepChoice">
+      <button class="pay-close" onclick="closePayModal()">✕</button>
+
+      <div class="pay-logo">
+        <div class="pay-logo-icon">🍟</div>
+        <span>Fideliio</span>
+      </div>
+
+      <h3 class="pay-title">Passer au Plan Pro</h3>
+      <p class="pay-sub">Connectez-vous avec votre compte commerçant Fideliio pour continuer.</p>
+
+      <div class="pay-plan-badge" id="planBadgeChoice">
+        <span id="badgePriceChoice">99 DH/mois</span>
+        <span class="pay-plan-name">Plan Pro</span>
+      </div>
+
+      <div class="pay-choice-btns">
+        <button class="pay-choice-btn primary" onclick="showStep('stepLogin')">
+          <span class="choice-icon">👤</span>
+          <div>
+            <div class="choice-title">J'ai déjà un compte</div>
+            <div class="choice-sub">Se connecter à mon compte commerçant</div>
+          </div>
+          <span class="choice-arrow">→</span>
+        </button>
+
+        <div class="pay-divider"><span>ou</span></div>
+
+        <button class="pay-choice-btn outline" onclick="openAppDownload()">
+          <span class="choice-icon">📱</span>
+          <div>
+            <div class="choice-title">Créer un compte</div>
+            <div class="choice-sub">Télécharger l'application Fideliio</div>
+          </div>
+          <span class="choice-arrow">→</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- ══ ÉTAPE 1b : Téléchargement app ══ -->
+    <div class="pay-step" id="stepDownload" style="display:none">
+      <button class="pay-close" onclick="closePayModal()">✕</button>
+      <button class="pay-back" onclick="showStep('stepChoice')">← Retour</button>
+
+      <div class="pay-logo">
+        <div class="pay-logo-icon">🍟</div>
+        <span>Fideliio</span>
+      </div>
+
+      <h3 class="pay-title">Téléchargez l'application</h3>
+      <p class="pay-sub">Créez votre compte commerçant sur l'application, puis revenez ici pour activer le Plan Pro.</p>
+
+      <div class="download-badges">
+        <a href="https://apps.apple.com/app/fideliio" target="_blank" class="dl-badge">
+          <svg viewBox="0 0 24 24" width="26" height="26" fill="#fff"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+          <div>
+            <div class="dl-sub">Télécharger sur</div>
+            <div class="dl-name">App Store</div>
+          </div>
+        </a>
+        <a href="https://play.google.com/store/apps/fideliio" target="_blank" class="dl-badge">
+          <svg viewBox="0 0 24 24" width="26" height="26" xmlns="http://www.w3.org/2000/svg">
+            <path d="M3.18 23.76c.3.17.64.22.99.16l13.1-7.38-2.83-2.83-11.26 10.05z" fill="#EA4335"/>
+            <path d="M20.49 10.7l-2.78-1.57-3.18 3.18 3.18 3.18 2.81-1.58c.8-.45.8-1.18-.03-1.21z" fill="#FBBC04"/>
+            <path d="M3.18.24C2.83.06 2.43.02 2.07.13L13.27 11.3l3.02-3.02L3.18.24z" fill="#4285F4"/>
+            <path d="M.43 1.6C.17 1.94.01 2.4.01 2.96v18.08c0 .56.16 1.02.43 1.36l.07.07 10.13-10.13v-.24L.5 1.53l-.07.07z" fill="#34A853"/>
+          </svg>
+          <div>
+            <div class="dl-sub">Disponible sur</div>
+            <div class="dl-name">Google Play</div>
+          </div>
+        </a>
+      </div>
+
+      <div class="dl-steps">
+        <div class="dl-step"><span class="step-num">1</span> Téléchargez l'app</div>
+        <div class="dl-step"><span class="step-num">2</span> Créez votre compte commerçant</div>
+        <div class="dl-step"><span class="step-num">3</span> Revenez ici pour activer le Pro</div>
+      </div>
+
+      <button class="pay-btn-main" onclick="showStep('stepLogin')">
+        J'ai déjà créé mon compte →
+      </button>
+    </div>
+
+    <!-- ══ ÉTAPE 2 : Connexion ══ -->
+    <div class="pay-step" id="stepLogin" style="display:none">
+      <button class="pay-close" onclick="closePayModal()">✕</button>
+      <button class="pay-back" onclick="showStep('stepChoice')">← Retour</button>
+
+      <div class="pay-logo">
+        <div class="pay-logo-icon">🍟</div>
+        <span>Fideliio</span>
+      </div>
+
+      <h3 class="pay-title">Connexion</h3>
+      <p class="pay-sub">Connectez-vous avec votre compte commerçant.</p>
+
+      <div class="pay-form">
+        <div class="pay-field">
+          <label>Email ou téléphone</label>
+          <input type="text" id="loginEmail" placeholder="exemple@email.com" autocomplete="email">
+        </div>
+        <div class="pay-field">
+          <label>Mot de passe</label>
+          <div class="pay-input-wrap">
+            <input type="password" id="loginPassword" placeholder="••••••••" autocomplete="current-password">
+            <button class="toggle-pass" onclick="togglePassword()">👁</button>
+          </div>
+        </div>
+
+        <div class="pay-error" id="loginError" style="display:none">
+          ❌ Email ou mot de passe incorrect.
+        </div>
+
+        <button class="pay-btn-main" id="loginBtn" onclick="handleLogin()">
+          Se connecter
+        </button>
+
+        <p class="pay-forgot">
+          <a href="#" onclick="alert('Réinitialisez votre mot de passe depuis l\'application Fideliio.')">
+            Mot de passe oublié ?
+          </a>
+        </p>
+      </div>
+    </div>
+
+    <!-- ══ ÉTAPE 3 : Page personnalisée ══ -->
+    <div class="pay-step" id="stepDashboard" style="display:none">
+      <button class="pay-close" onclick="closePayModal()">✕</button>
+
+      <!-- Header compte -->
+      <div class="dash-header">
+        <div class="dash-avatar" id="dashAvatar">M</div>
+        <div>
+          <div class="dash-name" id="dashName">Mohammed Alami</div>
+          <div class="dash-email" id="dashEmail">mohammed@restaurant.ma</div>
+        </div>
+        <div class="dash-plan-tag" id="dashPlanTag">Gratuit</div>
+      </div>
+
+      <!-- Plan sélectionné -->
+      <div class="dash-plan-box">
+        <div class="dash-plan-left">
+          <div class="dash-plan-title">Plan Pro</div>
+          <div class="dash-plan-price" id="dashPlanPrice">99 DH<span>/mois</span></div>
+          <div class="dash-plan-billing" id="dashBilling">Facturation mensuelle</div>
+        </div>
+        <div class="dash-plan-right">
+          <div class="dash-plan-feature">✓ Scans illimités</div>
+          <div class="dash-plan-feature">✓ Double points</div>
+          <div class="dash-plan-feature">✓ Support prioritaire</div>
+        </div>
+      </div>
+
+      <!-- Virement bancaire -->
+      <div class="dash-section">
+        <div class="dash-section-title">💳 Informations de virement</div>
+        <div class="dash-bank-card">
+          <div class="bank-row">
+            <span class="bank-label">Banque</span>
+            <span class="bank-value">Attijariwafa Bank</span>
+          </div>
+          <div class="bank-row">
+            <span class="bank-label">Titulaire</span>
+            <span class="bank-value">Fideliio SARL</span>
+          </div>
+          <div class="bank-row">
+            <span class="bank-label">RIB</span>
+            <span class="bank-value rib-val" id="ribVal">007 123 4567 8901 2345 6789 01</span>
+            <button class="copy-rib-btn" onclick="copyRIB()">📋</button>
+          </div>
+          <div class="bank-row">
+            <span class="bank-label">Montant</span>
+            <span class="bank-value orange" id="ribAmount">99 DH</span>
+          </div>
+          <div class="bank-row">
+            <span class="bank-label">Référence</span>
+            <span class="bank-value orange" id="ribRef">PRO-2026-XXXX</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Prochain renouvellement -->
+      <div class="dash-section">
+        <div class="dash-section-title">📅 Renouvellement</div>
+        <div class="dash-renew-box">
+          <div class="renew-row">
+            <span>Prochain paiement</span>
+            <span class="renew-date" id="renewDate">—</span>
+          </div>
+          <div class="renew-row">
+            <span>Statut</span>
+            <span class="renew-status" id="renewStatus">En attente de paiement</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Historique -->
+      <div class="dash-section">
+        <div class="dash-section-title">🧾 Historique des paiements</div>
+        <div class="dash-history" id="dashHistory">
+          <div class="history-empty">Aucun paiement enregistré pour le moment.</div>
+        </div>
+      </div>
+
+      <!-- Envoyer preuve -->
+      <div class="dash-actions">
+        <a id="waLink" href="#" target="_blank" class="dash-btn whatsapp">
+          📱 Envoyer la preuve par WhatsApp
+        </a>
+        <a id="mailLink" href="#" class="dash-btn email">
+          ✉️ Envoyer par Email
+        </a>
+      </div>
+
+      <button class="pay-logout" onclick="handleLogout()">Se déconnecter</button>
+    </div>
+
+  </div>
+</div>

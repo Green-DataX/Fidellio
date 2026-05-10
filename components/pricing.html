@@ -1,0 +1,103 @@
+<section class="pricing-section" id="tarifs">
+  <h2 data-i18n="pricing.title">Choisissez votre plan</h2>
+  <p class="section-sub" data-i18n="pricing.sub">
+    Commencez gratuitement, passez au niveau supérieur quand vous êtes prêt.
+  </p>
+
+  <!-- Toggle Mensuel / Annuel -->
+  <div class="pricing-toggle">
+    <span class="toggle-label active" id="monthlyLabel">Mensuel</span>
+
+    <button class="toggle-switch" id="pricingToggle">
+      <span class="toggle-circle"></span>
+    </button>
+
+    <span class="toggle-label" id="yearlyLabel">
+      Annuel
+      <small>-20%</small>
+    </span>
+  </div>
+
+  <div class="pricing-grid">
+
+    <!-- GRATUIT -->
+    <div class="pricing-card">
+      <div class="pricing-badge free">Gratuit</div>
+
+      <div class="pricing-price">
+        <span class="price-amount"
+              data-monthly="0"
+              data-yearly="0">0</span>
+
+        <span class="price-currency">DH</span>
+      </div>
+
+      <div class="pricing-name">Starter</div>
+
+      <p class="pricing-desc">
+        Parfait pour débuter et découvrir Fidelio.
+      </p>
+
+      <ul class="pricing-features">
+        <li><span class="feat-check">✓</span>50 clients</li>
+        <li><span class="feat-check">✓</span>Récompenses de base</li>
+        <li><span class="feat-check">✓</span>Historique 30 jours</li>
+
+        <li class="disabled">
+          <span class="feat-x">✗</span>Double points
+        </li>
+
+        <li class="disabled">
+          <span class="feat-x">✗</span>Récompenses VIP
+        </li>
+
+        <li class="disabled">
+          <span class="feat-x">✗</span>Support prioritaire
+        </li>
+      </ul>
+
+      <button class="pricing-btn outline">
+        Commencer gratuitement
+      </button>
+    </div>
+
+    <!-- PRO -->
+    <div class="pricing-card popular">
+
+      <div class="pricing-popular-tag">
+        ⭐ Le plus populaire
+      </div>
+
+      <div class="pricing-badge pro">Pro</div>
+      <div class="pricing-price">
+        <span class="price-old" id="priceOld"></span>
+        <span class="price-amount" data-monthly="99" data-yearly="82">99</span>
+        <span class="price-currency">DH</span>
+        <span class="price-period">/mois</span>
+      </div>
+      <div class="price-saving" id="priceSaving" style="display:none">
+      Vous économisez 204 DH/an 🎉
+        </div>
+
+      <div class="pricing-name">Pro</div>
+
+      <p class="pricing-desc">
+        Pour les vrais fans de snacks qui veulent plus.
+      </p>
+
+      <ul class="pricing-features">
+        <li><span class="feat-check">✓</span>clients illimités</li>
+        <li><span class="feat-check">✓</span>Toutes les récompenses</li>
+        <li><span class="feat-check">✓</span>Historique complet</li>
+        <li><span class="feat-check">✓</span>Double points weekend</li>
+        <li><span class="feat-check">✓</span>Offres exclusives</li>
+        <li><span class="feat-check">✓</span>Support prioritaire</li>
+
+     <!-- Mensuel -->
+      <button class="pricing-btn primary" id="proBtnMain">
+      Passer au Pro
+      </button>
+    </div>
+
+  </div>
+</section>

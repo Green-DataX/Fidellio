@@ -1,0 +1,333 @@
+/* ══════════════════════════════════════════
+   SECTION "Comment ça marche — Clients"
+   Palette alignée avec le hero (fond crème)
+   ══════════════════════════════════════════ */
+
+/* ── Accessibilité mouvement ── */
+@media (prefers-reduced-motion: reduce) {
+  .step_clients-card,
+  .steps_clients-eyebrow,
+  .steps_clients-title,
+  .steps_clients-sub { animation: none !important; opacity: 1 !important; transform: none !important; }
+  .step_clients-icon-wrap { animation: none !important; }
+  .step_clients-card::before { animation: none !important; }
+}
+
+/* ══════════════════════
+   SECTION WRAPPER
+══════════════════════ */
+
+.steps_clients-section {
+  position: relative;
+  padding: 20px 6vw 60px;
+  background: var(--cream2);           /* ← fond crème comme le hero */
+  overflow: hidden;
+  text-align: center;
+}
+
+/* Grain texture subtile (même que hero) */
+.steps_clients-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.035'/%3E%3C/svg%3E");
+  background-size: 200px 200px;
+  pointer-events: none;
+  opacity: .6;
+  z-index: 0;
+}
+
+/* Halo orange discret (cohérent avec blobs hero) */
+.steps_clients-section::after {
+  content: '';
+  position: absolute;
+  width: 500px; height: 500px;
+  background: radial-gradient(circle, rgba(255, 107, 53, .08) 0%, transparent 65%);
+  top: -100px; right: -100px;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ══════════════════════
+   EN-TÊTE
+══════════════════════ */
+.steps_clients-eyebrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  margin-bottom: 28px;
+  position: relative;
+  z-index: 1;
+  animation: fadeUp_clients .6s ease both;
+}
+
+.steps_clients-eyebrow .eyebrow-line {
+  flex: 0 0 40px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255, 107, 53, .5));
+}
+.steps_clients-eyebrow .eyebrow-line:last-child {
+  background: linear-gradient(90deg, rgba(255, 107, 53, .5), transparent);
+}
+
+.steps_clients-eyebrow .eyebrow-text {
+  font-family: var(--font-body);
+  font-size: .92rem;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--orange);
+}
+
+/* Titre h2 */
+.steps_clients-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.4rem, 5.5vw, 4.2rem);
+  line-height: .95;
+  font-weight: 400;
+  letter-spacing: 2px;
+  color: var(--dark);                  /* ← texte sombre sur fond clair */
+  margin-bottom: 16px;
+  position: relative;
+  z-index: 1;
+  animation: fadeUp_clients .6s .1s ease both;
+}
+
+/* Accent shimmer — identique au hero */
+.steps_clients-title-accent {
+  display: block;
+  margin-top: 6px;
+  background: linear-gradient(120deg, var(--orange) 0%, var(--yellow) 50%, var(--orange) 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: shimmer_clients 3s 1s linear infinite;
+  filter: drop-shadow(0 2px 16px rgba(255, 107, 53, .3));
+}
+
+.steps_clients-title-accent em { font-style: normal; }
+
+/* Sous-titre */
+.steps_clients-sub {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  color: var(--text-muted);            /* ← #7A6652 comme hero-sub */
+  margin-bottom: 80px;
+  letter-spacing: .3px;
+  position: relative;
+  z-index: 1;
+  animation: fadeUp_clients .6s .2s ease both;
+}
+
+/* ══════════════════════
+   GRILLE DES ÉTAPES
+══════════════════════ */
+.steps_clients {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 0;
+  position: relative;
+  z-index: 1;
+  align-items: start;
+}
+
+/* Ligne de connexion — orange sur fond clair */
+.steps_clients::before {
+  content: '';
+  position: absolute;
+  top: 68px;
+  left: calc(10% + 28px);
+  right: calc(10% + 28px);
+  height: 1px;
+  background: linear-gradient(90deg,
+    transparent,
+    rgba(255, 107, 53, .25) 10%,
+    rgba(255, 209, 102, .5) 50%,
+    rgba(255, 107, 53, .25) 90%,
+    transparent
+  );
+  z-index: 0;
+}
+
+/* ══════════════════════
+   CARD
+══════════════════════ */
+.step_clients-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px 32px;
+  position: relative;
+  z-index: 1;
+  opacity: 0;
+  transform: translateY(32px);
+  animation: fadeUp_clients .6s calc(.35s + var(--i) * .12s) cubic-bezier(0.22, 1, 0.36, 1) both;
+  cursor: default;
+}
+
+/* Glow hover — orange doux sur fond clair */
+.step_clients-card::before {
+  content: '';
+  position: absolute;
+  inset: -10px;
+  border-radius: 24px;
+  background: radial-gradient(ellipse at 50% 30%, rgba(255, 107, 53, .07) 0%, transparent 70%);
+  opacity: 0;
+  transition: opacity .4s ease;
+  pointer-events: none;
+}
+.step_clients-card:hover::before { opacity: 1; }
+
+/* Numéro */
+.step_clients-num {
+  font-family: var(--font-display);
+  font-size: .75rem;
+  letter-spacing: 3px;
+  color: var(--orange);                /* ← plus visible sur fond clair */
+  opacity: .55;
+  margin-bottom: 16px;
+  position: relative;
+  z-index: 1;
+}
+
+/* Icône — style cohérent hero (fond crème2 + bordure sable) */
+.step_clients-icon-wrap {
+  width: 64px; height: 64px;
+  border-radius: 20px;
+  background: var(--cream2);           /* ← #F5EDE0 comme reward-item du hero */
+  border: 1px solid rgba(26, 18, 8, .1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.6rem;
+  margin-bottom: 24px;
+  position: relative;
+  z-index: 2;
+  box-shadow: 0 4px 16px rgba(26, 18, 8, .06);
+  transition: transform .3s cubic-bezier(0.34, 1.56, 0.64, 1), border-color .3s, background .3s, box-shadow .3s;
+}
+
+.step_clients-card:hover .step_clients-icon-wrap {
+  transform: translateY(-6px) scale(1.08);
+  background: rgba(255, 107, 53, .1);
+  border-color: rgba(255, 107, 53, .4);
+  box-shadow: 0 12px 32px rgba(255, 107, 53, .2), 0 0 0 6px rgba(255, 107, 53, .06);
+}
+
+/* Flottement doux */
+.step_clients-card:nth-child(1) .step_clients-icon-wrap { animation: iconFloat_clients 4s 2.0s ease-in-out infinite; }
+.step_clients-card:nth-child(2) .step_clients-icon-wrap { animation: iconFloat_clients 4s 2.3s ease-in-out infinite; }
+.step_clients-card:nth-child(3) .step_clients-icon-wrap { animation: iconFloat_clients 4s 2.6s ease-in-out infinite; }
+.step_clients-card:nth-child(4) .step_clients-icon-wrap { animation: iconFloat_clients 4s 2.9s ease-in-out infinite; }
+.step_clients-card:nth-child(5) .step_clients-icon-wrap { animation: iconFloat_clients 4s 3.2s ease-in-out infinite; }
+
+/* Titre de l'étape */
+.step_clients-title {
+  font-family: var(--font-body);
+  font-size: .9rem;
+  font-weight: 700;
+  color: var(--dark);                  /* ← sombre sur fond clair */
+  line-height: 1.35;
+  margin-bottom: 12px;
+  letter-spacing: .1px;
+}
+
+/* Description */
+.step_clients-desc {
+  font-family: var(--font-body);
+  font-size: .8rem;
+  color: var(--text-muted);            /* ← #7A6652 */
+  line-height: 1.7;
+  font-weight: 400;
+  transition: color .3s ease;
+}
+.step_clients-card:hover .step_clients-desc {
+  color: var(--dark2);
+}
+
+/* ══════════════════════
+   KEYFRAMES (préfixés)
+══════════════════════ */
+@keyframes fadeUp_clients {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes shimmer_clients {
+  0%   { background-position: 0% center; }
+  100% { background-position: 200% center; }
+}
+
+@keyframes iconFloat_clients {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-5px); }
+}
+
+/* ══════════════════════
+   RESPONSIVE — TABLETTE
+══════════════════════ */
+@media (max-width: 1100px) {
+  .steps_clients {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px 0;
+  }
+  .steps_clients::before { display: none; }
+  .step_clients-card:nth-child(3) { grid-column: 2; }
+  .step_clients-card:nth-child(4) { grid-column: 1; }
+  .step_clients-card:nth-child(5) { grid-column: 3; }
+}
+
+/* ══════════════════════
+   RESPONSIVE — MOBILE
+══════════════════════ */
+@media (max-width: 680px) {
+  .steps_clients-section { padding: 80px 5vw 80px; }
+
+  .steps_clients {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+  .step_clients-card:nth-child(3),
+  .step_clients-card:nth-child(4),
+  .step_clients-card:nth-child(5) { grid-column: 1; }
+
+  .steps_clients::before { display: none; }
+
+  .step_clients-card {
+    flex-direction: row;
+    align-items: flex-start;
+    text-align: left;
+    padding: 24px 0;
+    gap: 20px;
+    border-bottom: 1px solid rgba(26, 18, 8, .08); /* ← sable sur fond clair */
+  }
+  .step_clients-card--last { border-bottom: none; }
+
+  .step_clients-num { display: none; }
+
+  .step_clients-icon-wrap {
+    flex-shrink: 0;
+    width: 52px; height: 52px;
+    border-radius: 16px;
+    font-size: 1.3rem;
+    margin-bottom: 0;
+    animation: none !important;
+  }
+}
+
+/* ══════════════════════
+   TRÈS PETIT ÉCRAN
+══════════════════════ */
+@media (max-width: 380px) {
+  .steps_clients-section { padding: 60px 4vw 60px; }
+  .step_clients-card { gap: 14px; }
+  .step_clients-icon-wrap { width: 44px; height: 44px; font-size: 1.1rem; }
+}
+
+.steps_clients-section {
+  background: var(--cream2); /* ← remplace var(--cream2) */
+  padding-top: 60px;        /* ← réduit l'espace en haut */
+}

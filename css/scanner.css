@@ -1,0 +1,164 @@
+.scanner-section {
+  padding: 100px 6vw;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+
+/* ── Démo visuelle (côté gauche) ── */
+.scanner-demo {
+  background: var(--dark);
+  border-radius: 32px;
+  padding: 48px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.scanner-demo::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at center, rgba(255, 107, 43, .15) 0%, transparent 70%);
+}
+
+/* Cadre de scan */
+.scan-frame {
+  position: relative;
+  z-index: 1;
+  width: 200px;
+  height: 200px;
+  margin: 0 auto 24px;
+  border-radius: 24px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, .04);
+  border: 2px solid rgba(255, 107, 43, .3);
+}
+
+.scan-corners {
+  position: absolute;
+  inset: 0;
+}
+
+.scan-corner {
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  border-color: var(--orange);
+  border-style: solid;
+}
+.sc-tl { top: 10px;    left: 10px;   border-width: 3px 0 0 3px; border-radius: 4px 0 0 0; }
+.sc-tr { top: 10px;    right: 10px;  border-width: 3px 3px 0 0; border-radius: 0 4px 0 0; }
+.sc-bl { bottom: 10px; left: 10px;   border-width: 0 0 3px 3px; border-radius: 0 0 0 4px; }
+.sc-br { bottom: 10px; right: 10px;  border-width: 0 3px 3px 0; border-radius: 0 0 4px 0; }
+
+/* Ligne de scan animée */
+.scan-line {
+  position: absolute;
+  left: 14px;
+  right: 14px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--orange), transparent);
+  animation: scanMove 2s ease-in-out infinite;
+}
+@keyframes scanMove {
+  0%   { top: 14px; }
+  50%  { top: calc(100% - 16px); }
+  100% { top: 14px; }
+}
+
+/* Code-barres stylisé */
+.barcode-img {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 3px;
+  height: 80px;
+  padding: 0 20px;
+  padding-top: 40px;
+}
+
+.bar {
+  background: rgba(255, 255, 255, .5);
+  border-radius: 2px;
+  width: 4px;
+}
+
+/* Résultat du scan */
+.scan-result {
+  margin-top: 20px;
+  position: relative;
+  z-index: 1;
+}
+.scan-result .points-earned {
+  font-family: 'Bebas Neue', 'Impact', sans-serif;
+  font-weight: 400;
+  font-size: 3rem;
+  color: var(--orange);
+  letter-spacing: 2px;
+}
+.scan-result p {
+  color: rgba(255, 255, 255, .5);
+  font-size: .85rem;
+  margin-top: 4px;
+}
+
+/* Anneau de progression */
+.progress-ring {
+  position: relative;
+  z-index: 1;
+  margin: 24px auto 0;
+  width: 120px;
+}
+.ring-text { text-align: center; margin-top: 12px; }
+.ring-val  {
+  font-family: 'Bebas Neue', 'Impact', sans-serif;
+  font-weight: 400;
+  font-size: 1.3rem;
+  color: #fff;
+  letter-spacing: 1px;
+}
+.ring-sub  { font-size: .75rem; color: rgba(255, 255, 255, .4); }
+
+/* ── Texte informatif (côté droit) ── */
+.scanner-info h2 { margin-bottom: 16px; }
+.scanner-info p  { color: var(--text-muted); line-height: 1.7; margin-bottom: 32px; }
+
+.feature-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-bottom: 36px;
+}
+
+.feat {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px 20px;
+  background: #fff;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 107, 43, .08);
+}
+
+.feat-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: var(--cream2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  flex-shrink: 0;
+}
+
+.feat-text strong {
+  font-weight: 600;
+  font-size: .95rem;
+  display: block;
+}
+.feat-text span {
+  font-size: .82rem;
+  color: var(--text-muted);
+}
