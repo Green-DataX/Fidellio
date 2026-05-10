@@ -56,7 +56,7 @@
 /* ── Résumé plan (colonne gauche) ── */
 .pay-summary {
   position: sticky;
-  top: 100px;
+  top: 10px;
 }
 
 .pay-summary-inner {

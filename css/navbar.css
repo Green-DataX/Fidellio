@@ -68,3 +68,89 @@ nav {
   background: var(--orange-light);
   transform: translateY(-1px);
 }
+/* ══════════════════════════════════════════
+   NAVBAR — Hamburger & Responsive
+   Ajoutez à la fin de navbar.css
+   ══════════════════════════════════════════ */
+
+/* ── Hamburger bouton — caché sur desktop ── */
+.nav-hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 6px;
+  border-radius: 8px;
+  transition: background .2s;
+}
+.nav-hamburger:hover { background: rgba(0,0,0,.05); }
+
+.nav-hamburger span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: var(--dark);
+  border-radius: 99px;
+  transition: transform .3s ease, opacity .3s ease;
+}
+
+/* Animation hamburger → X */
+.nav-hamburger.open span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+.nav-hamburger.open span:nth-child(2) {
+  opacity: 0;
+  transform: translateX(-8px);
+}
+.nav-hamburger.open span:nth-child(3) {
+  transform: rotate(-45deg) translate(5px, -5px);
+}
+
+/* ══════════════════════════════
+   RESPONSIVE MOBILE
+══════════════════════════════ */
+@media (max-width: 768px) {
+
+  /* Cache les liens et affiche le hamburger */
+  .nav-links {
+    display: none;
+    position: fixed;
+    top: 64px;
+    left: 0; right: 0;
+    background: #fff;
+    flex-direction: column;
+    padding: 12px 6vw 20px;
+    gap: 0;
+    box-shadow: 0 8px 30px rgba(0,0,0,.1);
+    z-index: 9998;
+    border-top: 1px solid rgba(0,0,0,.06);
+  }
+
+  /* Menu ouvert */
+  .nav-links.open {
+    display: flex;
+  }
+
+  .nav-links li a {
+    display: block;
+    padding: 14px 0;
+    font-size: .95rem;
+    font-weight: 600;
+    color: var(--dark);
+    border-bottom: 1px solid rgba(0,0,0,.06);
+    text-decoration: none;
+    transition: color .2s;
+  }
+  .nav-links li:last-child a { border-bottom: none; }
+  .nav-links li a:hover { color: var(--orange); }
+
+  /* Affiche le hamburger */
+  .nav-hamburger { display: flex; }
+
+  /* Cache le bouton CTA et la langue sur mobile */
+  .nav-cta        { display: none; }
+  .lang-dropdown  { display: none; }
+}

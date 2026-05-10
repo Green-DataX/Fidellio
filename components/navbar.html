@@ -4,12 +4,11 @@
     Fidelio
   </a>
 
-  <ul class="nav-links">
-    <li><a href="#Accueil"     data-i18n="nav.home">Accueil</a></li>
-    <li><a href="#comment"     data-i18n="nav.how">Comment ça marche</a></li>
-    <li><a href="#tarifs"      data-i18n="nav.pricing">Tarifs</a></li>
-    <li><a href="#marques"     data-i18n="nav.brands">Marques</a></li>
-    <!-- <li><a href="#faq"         data-i18n="nav.faq">FAQ</a></li> -->
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#Accueil"  data-i18n="nav.home">Accueil</a></li>
+    <li><a href="#comment"  data-i18n="nav.how">Comment ça marche</a></li>
+    <li><a href="#tarifs"   data-i18n="nav.pricing">Tarifs</a></li>
+    <li><a href="#marques"  data-i18n="nav.brands">Marques</a></li>
   </ul>
 
   <div class="nav-right">
@@ -36,5 +35,12 @@
     </div>
 
     <button class="nav-cta" data-i18n="nav.cta">Télécharger l'app</button>
+
+    <!-- ── Bouton Hamburger ── -->
+    <button class="nav-hamburger" id="navHamburger" onclick="toggleNavMenu()" aria-label="Menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
   </div>
 </nav>
