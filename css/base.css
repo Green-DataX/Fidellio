@@ -9,6 +9,7 @@
 :root {
   --orange: #FF6B2B;
   --orange-light: #FF8C55;
+  --orange-glow: rgba(255, 107, 43, 0.15); /* ← AJOUTEZ CETTE LIGNE */
   --yellow: #FFD43B;
   --dark: #111111;
   --dark2: #1E1E1E;
@@ -22,6 +23,7 @@
   --font-display: 'Bebas Neue', 'Impact', sans-serif;
   --font-body:    'Inter', 'DM Sans', sans-serif;
 }
+
 
 html {
   scroll-behavior: smooth;

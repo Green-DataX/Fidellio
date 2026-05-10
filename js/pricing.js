@@ -77,3 +77,13 @@ function initPricingToggle() {
 }
 
 setTimeout(initPricingToggle, 300);
+
+setTimeout(() => {
+  const proBtn = document.getElementById("proBtnMain");
+  if (proBtn) {
+    proBtn.onclick = () => {
+      const yearly = document.getElementById("pricingToggle")?.classList.contains("active");
+      window.location.href = `components/paiement.html?plan=${yearly ? "yearly" : "monthly"}`;
+    };
+  }
+}, 400);
