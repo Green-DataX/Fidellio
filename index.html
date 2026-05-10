@@ -3,8 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Fidelio — Scanne. Gagne. Régale-toi.</title>
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <meta name="description" content="Fideliio — programme de fidélité : cumulez des points sur vos snacks, débloquez des récompenses. Application simple pour clients et commerçants." />
+  <title>Fideliio — Scanne. Gagne. Régale-toi.</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&family=Noto+Sans+Arabic:wght@400;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/base.css" />
   <link rel="stylesheet" href="css/buttons.css" />
   <link rel="stylesheet" href="css/sections.css" />
@@ -28,6 +29,7 @@
 <body>
 
   <div data-include="components/navbar.html"></div>
+  <main id="main">
   <div data-include="components/hero.html"></div>
   <div data-include="components/steps_clients.html"></div>
   <div data-include="components/steps_commercants.html"></div>
@@ -38,10 +40,12 @@
   <div data-include="components/testimonials.html"></div>
   <div data-include="components/faq.html"></div>
   <div data-include="components/cta.html"></div>
+  </main>
   <div data-include="components/footer.html"></div>
   <div data-include="components/payment-modal.html"></div>
   <div data-include="components/free-modal.html"></div>
 
+  <script src="js/i18n-locale-extra.js"></script>
   <script src="js/i18n.js"></script>
   <script src="js/payment.js"></script>
   <script src="js/loader.js"></script>

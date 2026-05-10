@@ -4,46 +4,77 @@
    ══════════════════════════════════════════ */
 
 /* ── Config Supabase ── */
-const SUPABASE_URL  = 'https://hdzhdwelgqmdvgwrlxud.supabase.co';
-const SUPABASE_ANON = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imhkemhkd2VsZ3FtZHZnd3JseHVkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzYzNTE4NDMsImV4cCI6MjA5MTkyNzg0M30.yR5dYEiSRg5lRzNvVD058SxGqFYvf2Ee64sGdobHbGw';
+const SUPABASE_URL =
+  'https://hdzhdwelgqmdvgwrlxud.supabase.co';
+const SUPABASE_ANON =
+  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imhkemhkd2VsZ3FtZHZnd3JseHVkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzYzNTE4NDMsImV4cCI6MjA5MTkyNzg0M30.yR5dYEiSRg5lRzNvVD058SxGqFYvf2Ee64sGdobHbGw';
 
 const db = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON);
 
 /* ── Config paiement ── */
 const CONFIG = {
-  WHATSAPP_NUM : '212600000000',       // ← Remplace par ton vrai numéro
-  EMAIL        : 'contact@fideliio.com',
-  PRIX_MENSUEL : 99,
-  PRIX_ANNUEL  : 82,
+  WHATSAPP_NUM: '212600000000', // ← Remplace par ton vrai numéro
+  EMAIL: 'contact@fideliio.com',
+  PRIX_MENSUEL: 99,
+  PRIX_ANNUEL: 82,
 };
 
 /* ── Plan depuis URL ── */
-const params   = new URLSearchParams(window.location.search);
+const params = new URLSearchParams(window.location.search);
 const isYearly = params.get('plan') === 'yearly';
-const price    = isYearly ? CONFIG.PRIX_ANNUEL  : CONFIG.PRIX_MENSUEL;
-const period   = isYearly ? '/mois · annuel'    : '/mois';
-const billing  = isYearly ? 'Facturation annuelle (×12)' : 'Facturation mensuelle';
 
-const amountEl = document.querySelector('.summary-amount');
-if (amountEl) amountEl.textContent = price;
+function TT(key) {
+  return typeof window.FideliioT === 'function' ? window.FideliioT(key) : '';
+}
+
+function planPrice() {
+  return isYearly ? CONFIG.PRIX_ANNUEL : CONFIG.PRIX_MENSUEL;
+}
+
+function periodSummaryTxt() {
+  return isYearly ? TT('pricing.period_yearly_bundle') : TT('pricing.period');
+}
+
+function billingLbl() {
+  return isYearly ? TT('pay.summary_billing_yearly') : TT('pay.summary_billing_monthly');
+}
+
+function currencyLbl() {
+  return TT('pricing.currency') || 'DH';
+}
+
+function refreshPaymentPageTexts() {
+  const p = planPrice();
+  const amountEl = document.querySelector('.summary-amount');
+  if (amountEl) amountEl.textContent = String(p);
+  setText('summaryPeriod', periodSummaryTxt());
+  setText('summaryBilling', billingLbl());
+  const ttl = TT('pay.page_title');
+  if (ttl) document.title = ttl;
+}
+
+document.addEventListener('fideliio:lang', refreshPaymentPageTexts);
+document.addEventListener('fideliio:components-loaded', refreshPaymentPageTexts);
 
 /* ══════════════════════════════
    CONNEXION
    ══════════════════════════════ */
 async function handleLogin() {
-  const email    = document.getElementById('loginEmail')?.value.trim();
+  const email = document.getElementById('loginEmail')?.value.trim();
   const password = document.getElementById('loginPassword')?.value;
-  const btn      = document.getElementById('loginBtn');
-  const errorEl  = document.getElementById('loginError');
+  const btn = document.getElementById('loginBtn');
+  const errorEl = document.getElementById('loginError');
 
-  if (!email || !password) { showError('Veuillez remplir tous les champs.'); return; }
+  if (!email || !password) {
+    showError(TT('pay.err_fill'));
+    return;
+  }
 
-  btn.textContent = 'Connexion en cours...';
-  btn.disabled    = true;
+  btn.textContent = TT('pay.logging_in');
+  btn.disabled = true;
   if (errorEl) errorEl.style.display = 'none';
 
   try {
-    /* 1. Authentification Supabase */
     const { data: authData, error: authError } =
       await db.auth.signInWithPassword({ email, password });
 
@@ -51,20 +82,14 @@ async function handleLogin() {
 
     const userId = authData.user.id;
 
-    /* 2. Profil commerçant */
     const { data: merchant, error: merchantError } = await db
       .from('merchants')
       .select('id, business_name, email, subscription_started')
       .eq('user_id', userId)
       .maybeSingle();
 
-    if (merchantError || !merchant) {
-      throw new Error(
-        "Compte commerçant introuvable. Vérifiez que vous avez un compte sur l'application Fideliio."
-      );
-    }
+    if (merchantError || !merchant) throw new Error(TT('pay.err_merchant'));
 
-    /* 3. Abonnement */
     const { data: subscription } = await db
       .from('subscriptions')
       .select('plan, status, started_at, expires_at')
@@ -74,49 +99,53 @@ async function handleLogin() {
       .maybeSingle();
 
     showDashboard({
-      name       : merchant.business_name || email.split('@')[0],
-      email      : merchant.email || email,
-      merchantId : merchant.id,
-      plan       : subscription?.plan   || 'trial',
-      status     : subscription?.status || 'inactive',
-      expiresAt  : subscription?.expires_at || null,
-      history    : [],
+      name: merchant.business_name || email.split('@')[0],
+      email: merchant.email || email,
+      merchantId: merchant.id,
+      plan: subscription?.plan || 'trial',
+      status: subscription?.status || 'inactive',
+      expiresAt: subscription?.expires_at || null,
+      history: [],
     });
-
   } catch (err) {
-    let msg = 'Email ou mot de passe incorrect.';
-    if (err.message.includes('Invalid login credentials')) msg = 'Email ou mot de passe incorrect.';
-    if (err.message.includes('Email not confirmed'))       msg = 'Veuillez confirmer votre email.';
-    if (err.message.includes('Too many requests'))         msg = 'Trop de tentatives. Réessayez plus tard.';
-    if (err.message.includes('introuvable'))               msg = err.message;
+    let msg = TT('pay.err_credentials');
+    if (String(err.message).includes('Invalid login credentials')) msg = TT('pay.err_credentials');
+    if (String(err.message).includes('Email not confirmed')) msg = TT('pay.err_email_confirm');
+    if (String(err.message).includes('Too many requests')) msg = TT('pay.err_rate');
+    if (String(err.message).includes('introuvable')) msg = err.message;
     showError(msg);
   } finally {
-    btn.textContent = 'Se connecter et continuer →';
-    btn.disabled    = false;
+    btn.textContent = TT('pay.login_btn_continue');
+    btn.disabled = false;
   }
 }
 
-
-/* ── Connexion Google ── */
 async function handleGoogleLogin() {
-  const btn = document.getElementById('googleBtn');
-  if (btn) { btn.textContent = 'Connexion...'; btn.disabled = true; }
+  const btn =
+    document.getElementById('googleBtn') ??
+    document.getElementById('googleBtnModal');
+  const label = btn?.querySelector('.pay-google-label');
+  const setLab = text => {
+    if (label) label.textContent = text;
+    else if (btn) btn.textContent = text;
+  };
+  const prev = label ? label.textContent : btn?.textContent;
+  if (btn) btn.disabled = true;
+  setLab(TT('pay.google_pending'));
 
   try {
     const { error } = await db.auth.signInWithOAuth({
       provider: 'google',
-      options: {
-        redirectTo: window.location.href, // Revient sur la même page après auth
-      }
+      options: { redirectTo: window.location.href },
     });
     if (error) throw error;
-  } catch (err) {
-    showError('Impossible de se connecter avec Google.');
-    if (btn) { btn.textContent = 'Continuer avec Google'; btn.disabled = false; }
+  } catch (_err) {
+    showError(TT('pay.google_fail'));
+    setLab(prev || TT('paym.google'));
+    if (btn) btn.disabled = false;
   }
 }
 
-/* ── Déconnexion ── */
 async function handleLogout() {
   await db.auth.signOut();
   document.getElementById('sectionAuth')?.style.removeProperty('display');
@@ -132,34 +161,42 @@ function showDashboard(user) {
   document.getElementById('sectionDashboard')?.style.setProperty('display', 'block');
 
   const isActive = user.status === 'active';
-  const isPro    = user.plan === 'pro';
+  const isPro = user.plan === 'pro';
   const isStarter = user.plan === 'starter';
 
-  /* Infos utilisateur */
-  setText('dashAvatar',  user.name?.charAt(0).toUpperCase() || '?');
-  setText('dashName',    user.name);
-  setText('dashEmail',   user.email);
+  const pr = planPrice();
+  const cur = currencyLbl();
 
-  /* Badge plan */
+  setText('dashAvatar', user.name?.charAt(0).toUpperCase() || '?');
+  setText('dashName', user.name);
+  setText('dashEmail', user.email);
+
   const planTag = document.getElementById('dashCurrentPlan');
   if (planTag) {
-    planTag.textContent = isPro ? 'Pro ✓' : isStarter ? 'Starter ✓' : 'Gratuit';
-    planTag.className   = 'dash-plan-badge ' + (isPro || isStarter ? 'active' : '');
+    planTag.textContent = isPro
+      ? TT('pay.dash_plan_pro')
+      : isStarter
+        ? TT('pay.dash_plan_starter')
+        : TT('pay.dash_plan_free');
+    planTag.className = 'dash-page-plan ' + (isPro || isStarter ? 'pro' : '');
   }
 
-  /* Prix */
-  setText('dashPrice',   price);
-  setText('dashPeriod',  period);
-  setText('dashBilling', billing);
-  setText('ribAmount',   `${price} DH`);
-  setText('dashPlanCurrent', isPro ? 'Pro' : isStarter ? 'Starter' : 'Gratuit');
+  setText('dashPrice', String(pr));
+  setText('dashPeriod', periodSummaryTxt());
+  setText('dashBilling', billingLbl());
+  setText('ribAmount', `${pr} ${cur}`);
+  setText(
+    'dashPlanCurrent',
+    isPro ? TT('pricing.pro.name') : isStarter ? TT('pricing.free.name') : TT('pay.dash_plan_free')
+  );
 
-  /* Référence unique paiement */
-  const ref = 'FID-' + new Date().getFullYear() + '-' +
+  const ref =
+    'FID-' +
+    new Date().getFullYear() +
+    '-' +
     Math.random().toString(36).substr(2, 6).toUpperCase();
   setText('ribRef', ref);
 
-  /* Date renouvellement */
   const renewDate = user.expiresAt
     ? new Date(user.expiresAt)
     : (() => {
@@ -167,82 +204,85 @@ function showDashboard(user) {
         d.setMonth(d.getMonth() + (isYearly ? 12 : 1));
         return d;
       })();
-  setText('dashRenewDate', renewDate.toLocaleDateString('fr-FR', {
-    day: 'numeric', month: 'long', year: 'numeric'
-  }));
+  const lng = document.documentElement.getAttribute('lang') || 'fr';
+  setText(
+    'dashRenewDate',
+    renewDate.toLocaleDateString(
+      lng === 'ar' ? 'ar-MA' : lng === 'en' ? 'en-GB' : 'fr-FR',
+      { day: 'numeric', month: 'long', year: 'numeric' }
+    )
+  );
 
-  /* Statut */
   const statusEl = document.getElementById('dashStatus');
   if (statusEl) {
-    statusEl.textContent = isActive
-      ? '✅ Actif'
-      : '⏳ En attente de paiement';
+    statusEl.textContent = isActive ? TT('pay.active_badge') : TT('pay.pending_pay');
     statusEl.className = 'dw-status-badge ' + (isActive ? 'active' : 'pending');
   }
 
-  /* Historique */
   const hist = document.getElementById('dashHistory');
   if (hist) {
     hist.innerHTML = user.history?.length
-      ? user.history.map(h => `
+      ? user.history
+          .map(
+            h => `
           <div class="dw-history-row">
             <span class="dw-h-date">${h.date}</span>
             <span class="dw-h-plan">${h.plan}</span>
-            <span class="dw-h-amount">${h.amount} DH</span>
-            <span class="dw-h-status ${h.status}">${h.status === 'paid' ? '✅ Payé' : '⏳ En attente'}</span>
-          </div>`).join('')
-      : '<div class="dw-history-empty">Aucun paiement enregistré.</div>';
+            <span class="dw-h-amount">${h.amount} ${cur}</span>
+            <span class="dw-h-status ${h.status}">${h.status === 'paid' ? TT('pay.hist_paid') : TT('pay.hist_pending')}</span>
+          </div>`
+          )
+          .join('')
+      : `<div class="dw-history-empty">${TT('pay.hist_empty')}</div>`;
   }
 
-  /* Liens WhatsApp & Email */
   const waMsg = encodeURIComponent(
     `Bonjour Fideliio 👋\n\n` +
-    `Virement effectué pour le plan ${isPro ? 'Pro' : 'Starter'}.\n\n` +
-    `Commerçant : ${user.name}\n` +
-    `Email       : ${user.email}\n` +
-    `ID          : ${user.merchantId}\n` +
-    `Référence   : ${ref}\n` +
-    `Montant     : ${price} DH\n\n` +
-    `Merci d'activer mon compte.`
+      `Virement effectué pour le plan ${isPro ? 'Pro' : 'Starter'}.\n\n` +
+      `Commerçant : ${user.name}\n` +
+      `Email       : ${user.email}\n` +
+      `ID          : ${user.merchantId}\n` +
+      `Référence   : ${ref}\n` +
+      `Montant     : ${pr} ${cur}\n\n` +
+      `Merci d'activer mon compte.`
   );
-  const mailSubj = encodeURIComponent(`Preuve paiement Plan ${isPro ? 'Pro' : 'Starter'} — ${ref}`);
+  const mailSubj = encodeURIComponent(
+    `Preuve paiement Plan ${isPro ? 'Pro' : 'Starter'} — ${ref}`
+  );
   const mailBody = encodeURIComponent(
     `Bonjour,\n\nVirement effectué.\n\n` +
-    `Commerçant : ${user.name}\n` +
-    `Email       : ${user.email}\n` +
-    `ID          : ${user.merchantId}\n` +
-    `Référence   : ${ref}\n` +
-    `Montant     : ${price} DH\n\nCordialement.`
+      `Commerçant : ${user.name}\n` +
+      `Email       : ${user.email}\n` +
+      `ID          : ${user.merchantId}\n` +
+      `Référence   : ${ref}\n` +
+      `Montant     : ${pr} ${cur}\n\nCordialement.`
   );
 
-  const waLink   = document.getElementById('waLink');
+  const waLink = document.getElementById('waLink');
   const mailLink = document.getElementById('mailLink');
-  if (waLink)   waLink.href   = `https://wa.me/${CONFIG.WHATSAPP_NUM}?text=${waMsg}`;
-  if (mailLink) mailLink.href = `mailto:${CONFIG.EMAIL}?subject=${mailSubj}&body=${mailBody}`;
+  if (waLink) waLink.href = `https://wa.me/${CONFIG.WHATSAPP_NUM}?text=${waMsg}`;
+  if (mailLink)
+    mailLink.href = `mailto:${CONFIG.EMAIL}?subject=${mailSubj}&body=${mailBody}`;
 
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
-/* ══════════════════════════════
-   INIT — Session existante
-   ══════════════════════════════ */
 document.addEventListener('DOMContentLoaded', async () => {
-  setText('summaryPeriod',  period);
-  setText('summaryBilling', billing);
+  refreshPaymentPageTexts();
 
-  // ✅ Écouter les changements de session (inclut le retour OAuth Google)
   db.auth.onAuthStateChange(async (_event, session) => {
     if (!session) return;
     await loadMerchantSession(session);
   });
 
-  const { data: { session } } = await db.auth.getSession();
+  const {
+    data: { session },
+  } = await db.auth.getSession();
   if (!session) return;
 
   await loadMerchantSession(session);
 });
 
-/* ── Charger les données commerçant depuis une session ── */
 async function loadMerchantSession(session) {
   const userId = session.user.id;
 
@@ -253,10 +293,7 @@ async function loadMerchantSession(session) {
     .maybeSingle();
 
   if (!merchant) {
-    showError(
-      "Compte commerçant introuvable. " +
-      "Vérifiez que vous avez un compte sur l'application Fideliio."
-    );
+    showError(TT('pay.err_merchant'));
     return;
   }
 
@@ -269,19 +306,16 @@ async function loadMerchantSession(session) {
     .maybeSingle();
 
   showDashboard({
-    name       : merchant.business_name || session.user.email.split('@')[0],
-    email      : merchant.email || session.user.email,
-    merchantId : merchant.id,
-    plan       : subscription?.plan      || 'trial',
-    status     : subscription?.status    || 'inactive',
-    expiresAt  : subscription?.expires_at || null,
-    history    : [],
+    name: merchant.business_name || session.user.email.split('@')[0],
+    email: merchant.email || session.user.email,
+    merchantId: merchant.id,
+    plan: subscription?.plan || 'trial',
+    status: subscription?.status || 'inactive',
+    expiresAt: subscription?.expires_at || null,
+    history: [],
   });
 }
 
-/* ══════════════════════════════
-   UTILITAIRES
-   ══════════════════════════════ */
 function setText(id, val) {
   const el = document.getElementById(id);
   if (el) el.textContent = val;
@@ -289,7 +323,10 @@ function setText(id, val) {
 
 function showError(msg) {
   const el = document.getElementById('loginError');
-  if (el) { el.textContent = '❌ ' + msg; el.style.display = 'block'; }
+  if (!el) return;
+  const clean = String(msg).replace(/^❌\s*/, '');
+  el.textContent = clean.startsWith('❌') ? clean : `❌ ${clean}`;
+  el.style.display = 'block';
 }
 
 function togglePassword() {
@@ -302,7 +339,11 @@ function copyRIB() {
   if (!rib) return;
   navigator.clipboard.writeText(rib);
   const btn = document.querySelectorAll('.dw-copy-btn')[0];
-  if (btn) { btn.textContent = '✅ Copié !'; setTimeout(() => btn.textContent = '📋 Copier', 2000); }
+  const done = TT('pay.copied_btn').trim() || '✅';
+  if (btn) {
+    btn.textContent = done;
+    setTimeout(() => (btn.textContent = TT('pay.copy_btn')), 2000);
+  }
 }
 
 function copyRef() {
@@ -310,5 +351,9 @@ function copyRef() {
   if (!ref) return;
   navigator.clipboard.writeText(ref);
   const btn = document.querySelectorAll('.dw-copy-btn')[1];
-  if (btn) { btn.textContent = '✅ Copié !'; setTimeout(() => btn.textContent = '📋 Copier', 2000); }
+  const done = TT('pay.copied_btn').trim() || '✅';
+  if (btn) {
+    btn.textContent = done;
+    setTimeout(() => (btn.textContent = TT('pay.copy_btn')), 2000);
+  }
 }

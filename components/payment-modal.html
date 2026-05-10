@@ -4,76 +4,74 @@
 <div class="pay-overlay" id="payModal">
   <div class="pay-box" id="payBox">
 
-    <!-- ══ ÉTAPE 1 : Choix connexion ou inscription ══ -->
     <div class="pay-step" id="stepChoice">
-      <button class="pay-close" onclick="closePayModal()">✕</button>
+      <button type="button" class="pay-close" onclick="closePayModal()">✕</button>
 
       <div class="pay-logo">
         <div class="pay-logo-icon">🍟</div>
         <span>Fideliio</span>
       </div>
 
-      <h3 class="pay-title">Passer au Plan Proooo</h3>
-      <p class="pay-sub">Connectez-vous avec votre compte commerçant Fideliio pour continuer.</p>
+      <h3 class="pay-title" data-i18n="paym.title_upgrade">Passer au plan Pro</h3>
+      <p class="pay-sub" data-i18n="paym.sub_upgrade">Connectez-vous avec votre compte commerçant Fideliio pour continuer.</p>
 
       <div class="pay-plan-badge" id="planBadgeChoice">
         <span id="badgePriceChoice">990 DH/mois</span>
-        <span class="pay-plan-name">Plan Pro</span>
+        <span class="pay-plan-name" data-i18n="pay.summary_plan_title">Plan Pro</span>
       </div>
 
       <div class="pay-choice-btns">
-        <button class="pay-choice-btn primary" onclick="showStep('stepLogin')">
+        <button type="button" class="pay-choice-btn primary" onclick="showStep('stepLogin')">
           <span class="choice-icon">👤</span>
           <div>
-            <div class="choice-title">J'ai déjà un compte</div>
-            <div class="choice-sub">Se connecter à mon compte commerçant</div>
+            <div class="choice-title" data-i18n="paym.choice_have">J'ai déjà un compte</div>
+            <div class="choice-sub" data-i18n="paym.choice_have_sub">Se connecter à mon compte commerçant</div>
           </div>
           <span class="choice-arrow">→</span>
         </button>
 
-        <div class="pay-divider"><span>ou</span></div>
-        <button class="pay-btn-google" id="googleBtn" onclick="handleGoogleLogin()">
-        <svg viewBox="0 0 24 24" width="20" height="20">
+        <div class="pay-divider"><span data-i18n="paym.divider_or">ou</span></div>
+        <button type="button" class="pay-btn-google" id="googleBtnModal" onclick="handleGoogleLogin()">
+        <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
         <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
         <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
         <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z"/>
         <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
         </svg>
-          Continuer avec Google
+          <span class="pay-google-label" data-i18n="paym.google">Continuer avec Google</span>
         </button>
-        <button class="pay-choice-btn outline" onclick="openAppDownload()">
+        <button type="button" class="pay-choice-btn outline" onclick="openAppDownload()">
           <span class="choice-icon">📱</span>
           <div>
-            <div class="choice-title">Créer un compte</div>
-            <div class="choice-sub">Télécharger l'application Fideliio</div>
+            <div class="choice-title" data-i18n="paym.create">Créer un compte</div>
+            <div class="choice-sub" data-i18n="paym.create_sub">Télécharger l'application Fideliio</div>
           </div>
           <span class="choice-arrow">→</span>
         </button>
       </div>
     </div>
 
-    <!-- ══ ÉTAPE 1b : Téléchargement app ══ -->
     <div class="pay-step" id="stepDownload" style="display:none">
-      <button class="pay-close" onclick="closePayModal()">✕</button>
-      <button class="pay-back" onclick="showStep('stepChoice')">← Retour</button>
+      <button type="button" class="pay-close" onclick="closePayModal()">✕</button>
+      <button type="button" class="pay-back" onclick="showStep('stepChoice')" data-i18n="paym.back">← Retour</button>
 
       <div class="pay-logo">
         <div class="pay-logo-icon">🍟</div>
         <span>Fideliio</span>
       </div>
 
-      <h3 class="pay-title">Téléchargez l'application</h3>
-      <p class="pay-sub">Créez votre compte commerçant sur l'application, puis revenez ici pour activer le Plan Pro.</p>
+      <h3 class="pay-title" data-i18n="paym.download_title">Téléchargez l'application</h3>
+      <p class="pay-sub" data-i18n="paym.download_sub">Créez votre compte commerçant sur l'application, puis revenez ici pour activer le Plan Pro.</p>
 
       <div class="download-badges">
-        <a href="https://apps.apple.com/app/fideliio" target="_blank" class="dl-badge">
+        <a href="https://apps.apple.com/app/fideliio" target="_blank" class="dl-badge" rel="noopener">
           <svg viewBox="0 0 24 24" width="26" height="26" fill="#fff"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
           <div>
-            <div class="dl-sub">Télécharger sur</div>
+            <div class="dl-sub" data-i18n="paym.dl_ios">Télécharger sur</div>
             <div class="dl-name">App Store</div>
           </div>
         </a>
-        <a href="https://play.google.com/store/apps/fideliio" target="_blank" class="dl-badge">
+        <a href="https://play.google.com/store/apps/fideliio" target="_blank" class="dl-badge" rel="noopener">
           <svg viewBox="0 0 24 24" width="26" height="26" xmlns="http://www.w3.org/2000/svg">
             <path d="M3.18 23.76c.3.17.64.22.99.16l13.1-7.38-2.83-2.83-11.26 10.05z" fill="#EA4335"/>
             <path d="M20.49 10.7l-2.78-1.57-3.18 3.18 3.18 3.18 2.81-1.58c.8-.45.8-1.18-.03-1.21z" fill="#FBBC04"/>
@@ -81,70 +79,65 @@
             <path d="M.43 1.6C.17 1.94.01 2.4.01 2.96v18.08c0 .56.16 1.02.43 1.36l.07.07 10.13-10.13v-.24L.5 1.53l-.07.07z" fill="#34A853"/>
           </svg>
           <div>
-            <div class="dl-sub">Disponible sur</div>
+            <div class="dl-sub" data-i18n="paym.dl_android">Disponible sur</div>
             <div class="dl-name">Google Play</div>
           </div>
         </a>
       </div>
 
       <div class="dl-steps">
-        <div class="dl-step"><span class="step-num">1</span> Téléchargez l'app</div>
-        <div class="dl-step"><span class="step-num">2</span> Créez votre compte commerçant</div>
-        <div class="dl-step"><span class="step-num">3</span> Revenez ici pour activer le Pro</div>
+        <div class="dl-step"><span class="step-num">1</span> <span data-i18n="paym.step1">Téléchargez l'app</span></div>
+        <div class="dl-step"><span class="step-num">2</span> <span data-i18n="paym.step2">Créez votre compte commerçant</span></div>
+        <div class="dl-step"><span class="step-num">3</span> <span data-i18n="paym.step3">Revenez ici pour activer le Pro</span></div>
       </div>
 
-      <button class="pay-btn-main" onclick="showStep('stepLogin')">
+      <button type="button" class="pay-btn-main" onclick="showStep('stepLogin')" data-i18n="paym.account_ready">
         J'ai déjà créé mon compte →
       </button>
     </div>
 
-    <!-- ══ ÉTAPE 2 : Connexion ══ -->
     <div class="pay-step" id="stepLogin" style="display:none">
-      <button class="pay-close" onclick="closePayModal()">✕</button>
-      <button class="pay-back" onclick="showStep('stepChoice')">← Retour</button>
+      <button type="button" class="pay-close" onclick="closePayModal()">✕</button>
+      <button type="button" class="pay-back" onclick="showStep('stepChoice')" data-i18n="paym.back">← Retour</button>
 
       <div class="pay-logo">
         <div class="pay-logo-icon">🍟</div>
         <span>Fideliio</span>
       </div>
 
-      <h3 class="pay-title">Connexion</h3>
-      <p class="pay-sub">Connectez-vous avec votre compte commerçant.</p>
+      <h3 class="pay-title" data-i18n="paym.login_title">Connexion</h3>
+      <p class="pay-sub" data-i18n="paym.login_sub">Connectez-vous avec votre compte commerçant.</p>
 
       <div class="pay-form">
         <div class="pay-field">
-          <label>Email ou téléphone</label>
-          <input type="text" id="loginEmail" placeholder="exemple@email.com" autocomplete="email">
+          <label data-i18n="paym.label_email">Email ou téléphone</label>
+          <input type="text" id="loginEmail" data-i18n-placeholder="paym.placeholder_email" placeholder="exemple@email.com" autocomplete="email">
         </div>
         <div class="pay-field">
-          <label>Mot de passe</label>
+          <label data-i18n="paym.label_pass">Mot de passe</label>
           <div class="pay-input-wrap">
-            <input type="password" id="loginPassword" placeholder="••••••••" autocomplete="current-password">
-            <button class="toggle-pass" onclick="togglePassword()">👁</button>
+            <input type="password" id="loginPassword" data-i18n-placeholder="paym.placeholder_pass" placeholder="••••••••" autocomplete="current-password">
+            <button type="button" class="toggle-pass" onclick="togglePassword()">👁</button>
           </div>
         </div>
 
-        <div class="pay-error" id="loginError" style="display:none">
+        <div class="pay-error" id="loginError" style="display:none" data-i18n="paym.error_login">
           ❌ Email ou mot de passe incorrect.
         </div>
 
-        <button class="pay-btn-main" id="loginBtn" onclick="handleLogin()">
+        <button type="button" class="pay-btn-main" id="loginBtn" onclick="handleLogin()" data-i18n="paym.login_btn">
           Se connecter
         </button>
 
         <p class="pay-forgot">
-          <a href="#" onclick="alert('Réinitialisez votre mot de passe depuis l\'application Fideliio.')">
-            Mot de passe oublié ?
-          </a>
+          <a href="#" onclick="alert(typeof window.FideliioT==='function'?window.FideliioT('paym.reset_hint'):''); return false;" data-i18n="paym.forgot">Mot de passe oublié ?</a>
         </p>
       </div>
     </div>
 
-    <!-- ══ ÉTAPE 3 : Page personnalisée ══ -->
     <div class="pay-step" id="stepDashboard" style="display:none">
-      <button class="pay-close" onclick="closePayModal()">✕</button>
+      <button type="button" class="pay-close" onclick="closePayModal()">✕</button>
 
-      <!-- Header compte -->
       <div class="dash-header">
         <div class="dash-avatar" id="dashAvatar">M</div>
         <div>
@@ -154,82 +147,77 @@
         <div class="dash-plan-tag" id="dashPlanTag">Gratuit</div>
       </div>
 
-      <!-- Plan sélectionné -->
       <div class="dash-plan-box">
         <div class="dash-plan-left">
-          <div class="dash-plan-title">Plan Pro</div>
+          <div class="dash-plan-title" data-i18n="pay.summary_plan_title">Plan Pro</div>
           <div class="dash-plan-price" id="dashPlanPrice">99 DH<span>/mois</span></div>
           <div class="dash-plan-billing" id="dashBilling">Facturation mensuelle</div>
         </div>
         <div class="dash-plan-right">
-          <div class="dash-plan-feature">✓ Scans illimités</div>
-          <div class="dash-plan-feature">✓ Double points</div>
-          <div class="dash-plan-feature">✓ Support prioritaire</div>
+          <div class="dash-plan-feature" data-i18n="pay.sum_feat_1">✓ Scans illimités</div>
+          <div class="dash-plan-feature" data-i18n="pay.sum_feat_4">✓ Double points weekend</div>
+          <div class="dash-plan-feature" data-i18n="pay.sum_feat_6">✓ Support prioritaire</div>
         </div>
       </div>
 
-      <!-- Virement bancaire -->
       <div class="dash-section">
-        <div class="dash-section-title">💳 Informations de virement</div>
+        <div class="dash-section-title" data-i18n="paym.wire_section">💳 Informations de virement</div>
         <div class="dash-bank-card">
           <div class="bank-row">
-            <span class="bank-label">Banque</span>
+            <span class="bank-label" data-i18n="pay.bank_label">Banque</span>
             <span class="bank-value">Attijariwafa Bank</span>
           </div>
           <div class="bank-row">
-            <span class="bank-label">Titulaire</span>
+            <span class="bank-label" data-i18n="pay.bank_holder">Titulaire</span>
             <span class="bank-value">Fideliio SARL</span>
           </div>
           <div class="bank-row">
-            <span class="bank-label">RIB</span>
+            <span class="bank-label" data-i18n="pay.bank_rib_label">RIB</span>
             <span class="bank-value rib-val" id="ribVal">007 123 4567 8901 2345 6789 01</span>
-            <button class="copy-rib-btn" onclick="copyRIB()">📋</button>
+            <button type="button" class="copy-rib-btn" onclick="copyRIB()" aria-label="Copy">📋</button>
           </div>
           <div class="bank-row">
-            <span class="bank-label">Montant</span>
+            <span class="bank-label" data-i18n="pay.bank_amount">Montant</span>
             <span class="bank-value orange" id="ribAmount">99 DH</span>
           </div>
           <div class="bank-row">
-            <span class="bank-label">Référence</span>
+            <span class="bank-label" data-i18n="pay.bank_ref">Référence</span>
             <span class="bank-value orange" id="ribRef">PRO-2026-XXXX</span>
           </div>
         </div>
       </div>
 
-      <!-- Prochain renouvellement -->
       <div class="dash-section">
-        <div class="dash-section-title">📅 Renouvellement</div>
+        <div class="dash-section-title" data-i18n="paym.renew_section">📅 Renouvellement</div>
         <div class="dash-renew-box">
           <div class="renew-row">
-            <span>Prochain paiement</span>
+            <span data-i18n="pay.status_next">Prochain paiement</span>
             <span class="renew-date" id="renewDate">—</span>
           </div>
           <div class="renew-row">
-            <span>Statut</span>
+            <span data-i18n="pay.status_current">Statut</span>
             <span class="renew-status" id="renewStatus">En attente de paiement</span>
           </div>
         </div>
       </div>
 
-      <!-- Historique -->
       <div class="dash-section">
-        <div class="dash-section-title">🧾 Historique des paiements</div>
+        <div class="dash-section-title" data-i18n="paym.history_section">🧾 Historique des paiements</div>
         <div class="dash-history" id="dashHistory">
-          <div class="history-empty">Aucun paiement enregistré pour le moment.</div>
+          <div class="history-empty" data-i18n="pay.hist_empty_modal">Aucun paiement enregistré pour le moment.</div>
         </div>
       </div>
 
-      <!-- Envoyer preuve -->
       <div class="dash-actions">
-        <a id="waLink" href="#" target="_blank" class="dash-btn whatsapp">
+        <a id="waLink" href="#" target="_blank" class="dash-btn whatsapp" rel="noopener" data-i18n="paym.wa_proof">
           📱 Envoyer la preuve par WhatsApp
         </a>
-        <a id="mailLink" href="#" class="dash-btn email">
+        <a id="mailLink" href="#" class="dash-btn email" data-i18n="paym.mail_proof">
           ✉️ Envoyer par Email
         </a>
       </div>
 
-      <button class="pay-logout" onclick="handleLogout()">Se déconnecter</button>
+      <button type="button" class="pay-logout" onclick="handleLogout()" data-i18n="paym.logout">Se déconnecter</button>
     </div>
 
   </div>

@@ -1,5 +1,7 @@
 /* LOADER.JS — Charge les composants HTML */
 
+document.addEventListener('DOMContentLoaded', loadComponents);
+
 async function loadComponents() {
   const placeholders = document.querySelectorAll('[data-include]');
 
@@ -15,10 +17,11 @@ async function loadComponents() {
     }
   }
 
-  // Initialise les traductions après chargement des composants
   initI18n();
+  document.dispatchEvent(new CustomEvent('fideliio:components-loaded'));
   initFaq();
   initScrollReveal();
+  initPricing();
 }
 
 /* ── FAQ toggle ── */
@@ -50,26 +53,4 @@ function initScrollReveal() {
     el.style.transition = 'opacity .5s ease, transform .5s ease';
     observer.observe(el);
   });
-}
-
-document.addEventListener('DOMContentLoaded', loadComponents);
-async function loadComponents() {
-  const placeholders = document.querySelectorAll('[data-include]');
-
-  for (const el of placeholders) {
-    const file = el.getAttribute('data-include');
-    try {
-      const response = await fetch(file);
-      if (!response.ok) throw new Error(`Impossible de charger : ${file}`);
-      const html = await response.text();
-      el.outerHTML = html;
-    } catch (err) {
-      console.error(err);
-    }
-  }
-
-  initI18n();
-  initFaq();
-  initScrollReveal();
-  initPricing(); // ← ajoutez cette ligne
 }

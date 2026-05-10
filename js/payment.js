@@ -20,17 +20,22 @@ let isYearly    = false;
 /* ══════════════════════════════
    OUVRIR / FERMER
 ══════════════════════════════ */
+function TT(key) {
+  return typeof window.FideliioT === "function" ? window.FideliioT(key) : "";
+}
+
 function openPaymentModal() {
   /* Récupère si toggle annuel actif */
   const toggle = document.getElementById("pricingToggle");
   isYearly = toggle ? toggle.classList.contains("active") : false;
 
   const price  = isYearly ? CONFIG.PRICE_YEARLY  : CONFIG.PRICE_MONTHLY;
-  const period = isYearly ? "/mois · annuel"      : "/mois";
+  const curr   = TT("pricing.currency") || "DH";
+  const period = isYearly ? TT("pricing.period_badge_yearly") || "/mois · annuel" : TT("pricing.period") || "/mois";
 
   /* Met à jour le badge prix */
   const badge = document.getElementById("badgePriceChoice");
-  if (badge) badge.textContent = `${price} DH${period}`;
+  if (badge) badge.textContent = `${price} ${curr}${period}`;
 
   /* Vérifie si déjà connecté */
   const saved = localStorage.getItem("fideliio_user");
@@ -95,12 +100,12 @@ async function handleLogin() {
   const error    = document.getElementById("loginError");
 
   if (!email || !password) {
-    showLoginError("Veuillez remplir tous les champs.");
+    showLoginError(TT("pay.err_fill"));
     return;
   }
 
   /* État chargement */
-  btn.textContent = "Connexion en cours...";
+  btn.textContent = TT("pay.logging_in");
   btn.disabled = true;
   error.style.display = "none";
 
@@ -133,7 +138,7 @@ async function handleLogin() {
         history: []
       };
     } else {
-      throw new Error("Identifiants incorrects");
+      throw new Error(TT("pay.err_credentials"));
     }
     /* FIN SIMULATION */
 
@@ -141,16 +146,17 @@ async function handleLogin() {
     showDashboard();
 
   } catch (err) {
-    showLoginError(err.message || "Email ou mot de passe incorrect.");
+    showLoginError(err.message || TT("pay.err_credentials"));
   } finally {
-    btn.textContent = "Se connecter";
+    btn.textContent = TT("paym.login_btn");
     btn.disabled = false;
   }
 }
 
 function showLoginError(msg) {
   const error = document.getElementById("loginError");
-  error.textContent = "❌ " + msg;
+  const clean = msg.replace(/^❌\s*/, "");
+  error.textContent = clean.startsWith("❌") ? clean : `❌ ${clean}`;
   error.style.display = "block";
 }
 
@@ -170,8 +176,9 @@ function showDashboard() {
   if (!currentUser) return;
 
   const price    = isYearly ? CONFIG.PRICE_YEARLY  : CONFIG.PRICE_MONTHLY;
-  const billing  = isYearly ? "Facturation annuelle" : "Facturation mensuelle";
-  const period   = isYearly ? "/mois · annuel"       : "/mois";
+  const curr     = TT("pricing.currency") || "DH";
+  const billing  = isYearly ? TT("pay.summary_billing_yearly") : TT("pay.summary_billing_monthly");
+  const periodTxt = isYearly ? TT("pricing.period_yearly_bundle") || TT("pricing.period_badge_yearly") : TT("pricing.period");
 
   /* Infos compte */
   const avatar = document.getElementById("dashAvatar");
@@ -183,28 +190,41 @@ function showDashboard() {
   /* Plan actuel */
   const planTag = document.getElementById("dashPlanTag");
   if (planTag) {
-    planTag.textContent  = currentUser.plan === "pro" ? "Pro ✓" : "Gratuit";
+    planTag.textContent =
+      currentUser.plan === "pro" ? TT("pay.dash_plan_pro") : TT("pay.dash_plan_free");
     planTag.className    = "dash-plan-tag " + (currentUser.plan === "pro" ? "pro" : "free");
   }
 
   /* Prix plan */
-  setText("dashPlanPrice", `${price} DH`);
-  setText("dashBilling",   billing);
+  const priceEl = document.getElementById("dashPlanPrice");
+  if (priceEl)
+    priceEl.innerHTML =
+      `${price} ${curr}<span>${periodTxt || ""}</span>`;
+  setText("dashBilling", billing);
 
   /* Référence unique */
   const ref = "PRO-2026-" + Math.random().toString(36).substr(2,4).toUpperCase();
   setText("ribRef",    ref);
-  setText("ribAmount", `${price} DH`);
+  setText("ribAmount", `${price} ${curr}`);
 
   /* Date renouvellement */
   const nextDate = new Date();
   nextDate.setMonth(nextDate.getMonth() + (isYearly ? 12 : 1));
-  setText("renewDate", nextDate.toLocaleDateString("fr-FR", { day:"numeric", month:"long", year:"numeric" }));
+  const loc = document.documentElement.getAttribute("lang") || "fr";
+  setText(
+    "renewDate",
+    nextDate.toLocaleDateString(loc === "ar" ? "ar-MA" : loc === "en" ? "en-GB" : "fr-FR", {
+      day: "numeric",
+      month: "long",
+      year: "numeric",
+    })
+  );
 
   /* Statut */
   const statusEl = document.getElementById("renewStatus");
   if (statusEl) {
-    statusEl.textContent  = currentUser.plan === "pro" ? "✅ Actif" : "⏳ En attente de paiement";
+    statusEl.textContent =
+      currentUser.plan === "pro" ? TT("pay.active_badge") : TT("pay.pending_pay");
     statusEl.className    = "renew-status " + (currentUser.plan === "pro" ? "active" : "pending");
   }
 
@@ -216,22 +236,22 @@ function showDashboard() {
         <div class="history-row">
           <span class="history-date">${h.date}</span>
           <span class="history-plan">${h.plan}</span>
-          <span class="history-amount">${h.amount} DH</span>
-          <span class="history-status ${h.status}">${h.status === "paid" ? "✅ Payé" : "⏳ En attente"}</span>
+          <span class="history-amount">${h.amount} ${curr}</span>
+          <span class="history-status ${h.status}">${h.status === "paid" ? TT("pay.hist_paid") : TT("pay.hist_pending")}</span>
         </div>
       `).join("");
     } else {
-      history.innerHTML = '<div class="history-empty">Aucun paiement enregistré.</div>';
+      history.innerHTML = `<div class="history-empty">${TT("pay.hist_empty_modal")}</div>`;
     }
   }
 
   /* Liens WhatsApp & Email */
   const waMsg = encodeURIComponent(
-    `Bonjour Fideliio 👋\nJe viens d'effectuer le virement pour le Plan Pro.\n\nNom: ${currentUser.name}\nEmail: ${currentUser.email}\nRéférence: ${ref}\nMontant: ${price} DH\n\nMerci de bien vouloir activer mon compte.`
+    `Bonjour Fideliio 👋\nJe viens d'effectuer le virement pour le Plan Pro.\n\nNom: ${currentUser.name}\nEmail: ${currentUser.email}\nRéférence: ${ref}\nMontant: ${price} ${curr}\n\nMerci de bien vouloir activer mon compte.`
   );
   const mailSubject = encodeURIComponent(`Preuve de paiement Plan Pro — ${ref}`);
   const mailBody    = encodeURIComponent(
-    `Bonjour,\n\nJe viens d'effectuer le virement pour le Plan Pro.\n\nNom: ${currentUser.name}\nEmail: ${currentUser.email}\nRéférence: ${ref}\nMontant: ${price} DH\n\nCordialement.`
+    `Bonjour,\n\nJe viens d'effectuer le virement pour le Plan Pro.\n\nNom: ${currentUser.name}\nEmail: ${currentUser.email}\nRéférence: ${ref}\nMontant: ${price} ${curr}\n\nCordialement.`
   );
 
   const waLink   = document.getElementById("waLink");
@@ -262,7 +282,7 @@ function copyRIB() {
   const btn = document.querySelector(".copy-rib-btn");
   if (btn) {
     btn.textContent = "✅";
-    setTimeout(() => btn.textContent = "📋", 2000);
+    setTimeout(() => (btn.textContent = "📋"), 2000);
   }
 }
 
@@ -282,3 +302,10 @@ setTimeout(() => {
   const proBtn = document.querySelector(".pricing-btn.primary");
   if (proBtn) proBtn.onclick = openPaymentModal;
 }, 400);
+
+document.addEventListener("fideliio:lang", () => {
+  const modal = document.getElementById("payModal");
+  if (!modal || !modal.classList.contains("active")) return;
+  if (typeof currentUser !== "undefined" && currentUser != null) showDashboard();
+  else openPaymentModal();
+});

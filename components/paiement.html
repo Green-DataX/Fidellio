@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" dir="ltr">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Passer au Plan Pro — Fideliio</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;600;700&family=Inter:wght@400;600;700&family=Noto+Sans+Arabic:wght@400;600;700&display=swap" rel="stylesheet">
 
   <!-- CSS du site -->
   <link rel="stylesheet" href="../css/base.css">
@@ -72,18 +72,36 @@
   <nav>
     <a class="logo" href="../index.html">
       <div class="logo-icon">🍟</div>
-      Fidelio
+      Fideliio
     </a>
 
     <ul class="nav-links" id="navLinks">
-      <li><a href="../index.html#Accueil">Accueil</a></li>
-      <li><a href="../index.html#comment">Comment ça marche</a></li>
-      <li><a href="../index.html#tarifs">Tarifs</a></li>
-      <li><a href="../index.html#marques">Marques</a></li>
+      <li><a href="../index.html#Accueil" data-i18n="nav.home">Accueil</a></li>
+      <li><a href="../index.html#comment" data-i18n="nav.how">Comment ça marche</a></li>
+      <li><a href="../index.html#tarifs" data-i18n="nav.pricing">Tarifs</a></li>
+      <li><a href="../index.html#marques" data-i18n="nav.brands">Marques</a></li>
     </ul>
 
     <div class="nav-right">
-      <button class="nav-cta" onclick="window.location.href='../index.html'">
+      <div class="lang-dropdown" id="langDropdown">
+        <button type="button" class="lang-selected" onclick="toggleLangMenu()">
+          <img id="currentFlag" src="https://flagcdn.com/w20/fr.png" width="20" alt="FR">
+          <span id="currentLangLabel">FR</span>
+          <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 3.5L5 6.5L8 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </button>
+        <div class="lang-menu" id="langMenu">
+          <button type="button" class="lang-option" onclick="setLanguage('fr')" data-lang="fr">
+            <img src="https://flagcdn.com/w20/fr.png" width="20" alt="FR"><span>Français</span>
+          </button>
+          <button type="button" class="lang-option" onclick="setLanguage('en')" data-lang="en">
+            <img src="https://flagcdn.com/w20/gb.png" width="20" alt="GB"><span>English</span>
+          </button>
+          <button type="button" class="lang-option" onclick="setLanguage('ar')" data-lang="ar">
+            <img src="https://flagcdn.com/w20/ma.png" width="20" alt="MA"><span>عربي</span>
+          </button>
+        </div>
+      </div>
+      <button type="button" class="nav-cta" onclick="window.location.href='../index.html'" data-i18n="pay.pay_back_site">
         Retour au site
       </button>
       <button class="nav-hamburger" id="navHamburger" onclick="toggleNavMenu()">
@@ -104,11 +122,11 @@
       <div class="pay-container">
 
         <div class="pay-breadcrumb">
-          <a href="../index.html">Accueil</a>
+          <a href="../index.html" data-i18n="pay.pay_breadcrumb_home">Accueil</a>
           <span>›</span>
-          <a href="../index.html#tarifs">Tarifs</a>
+          <a href="../index.html#tarifs" data-i18n="pay.pay_breadcrumb_pricing">Tarifs</a>
           <span>›</span>
-          <span>Plan Pro</span>
+          <span data-i18n="pay.pay_breadcrumb_plan">Plan Pro</span>
         </div>
 
         <div class="pay-grid">
@@ -116,12 +134,12 @@
           <!-- Colonne gauche : Résumé du plan -->
           <div class="pay-summary">
             <div class="pay-summary-inner">
-              <div class="summary-badge">⭐ Le plus populaire</div>
-              <h2 class="summary-title">Plan Pro</h2>
+              <div class="summary-badge" data-i18n="pay.summary_popular_badge">⭐ Le plus populaire</div>
+              <h2 class="summary-title" data-i18n="pay.summary_plan_title">Plan Pro</h2>
               <div class="summary-price" id="summaryPrice">
                 <span class="summary-amount">99</span>
                 <div class="summary-price-right">
-                  <span class="summary-currency">DH</span>
+                  <span class="summary-currency" data-i18n="pricing.currency">DH</span>
                   <span class="summary-period" id="summaryPeriod">/mois</span>
                 </div>
               </div>
@@ -130,19 +148,19 @@
               <div class="summary-divider"></div>
 
               <div class="summary-features">
-                <div class="summary-feature"><span class="sf-check">✓</span><span>Scans illimités</span></div>
-                <div class="summary-feature"><span class="sf-check">✓</span><span>Toutes les récompenses</span></div>
-                <div class="summary-feature"><span class="sf-check">✓</span><span>Historique complet</span></div>
-                <div class="summary-feature"><span class="sf-check">✓</span><span>Double points weekend</span></div>
-                <div class="summary-feature"><span class="sf-check">✓</span><span>Offres exclusives</span></div>
-                <div class="summary-feature"><span class="sf-check">✓</span><span>Support prioritaire</span></div>
+                <div class="summary-feature"><span class="sf-check">✓</span><span data-i18n="pay.sum_feat_1">Scans illimités</span></div>
+                <div class="summary-feature"><span class="sf-check">✓</span><span data-i18n="pay.sum_feat_2">Toutes les récompenses</span></div>
+                <div class="summary-feature"><span class="sf-check">✓</span><span data-i18n="pay.sum_feat_3">Historique complet</span></div>
+                <div class="summary-feature"><span class="sf-check">✓</span><span data-i18n="pay.sum_feat_4">Double points weekend</span></div>
+                <div class="summary-feature"><span class="sf-check">✓</span><span data-i18n="pay.sum_feat_5">Offres exclusives</span></div>
+                <div class="summary-feature"><span class="sf-check">✓</span><span data-i18n="pay.sum_feat_6">Support prioritaire</span></div>
               </div>
 
               <div class="summary-divider"></div>
 
               <div class="summary-secure">
                 <span>🔒</span>
-                <span>Paiement sécurisé par virement bancaire</span>
+                <span data-i18n="pay.summary_secure">Paiement sécurisé par virement bancaire</span>
               </div>
             </div>
           </div>
@@ -154,42 +172,40 @@
               <div class="pay-card-header">
                 <span class="pay-card-num">1</span>
                 <div>
-                  <div class="pay-card-title">Connectez-vous à votre compte</div>
-                  <div class="pay-card-sub">Utilisez vos identifiants de l'application Fideliio</div>
+                  <div class="pay-card-title" data-i18n="pay.card_login_title">Connectez-vous à votre compte</div>
+                  <div class="pay-card-sub" data-i18n="pay.card_login_sub">Utilisez vos identifiants de l'application Fideliio</div>
                 </div>
               </div>
               <div class="pay-card-body">
                 <div class="pay-field">
-                  <label>Email ou téléphone</label>
-                  <input type="text" id="loginEmail" placeholder="exemple@email.com" autocomplete="email">
+                  <label data-i18n="paym.label_email">Email ou téléphone</label>
+                  <input type="text" id="loginEmail" data-i18n-placeholder="paym.placeholder_email" placeholder="exemple@email.com" autocomplete="email">
                 </div>
                 <div class="pay-field">
-                  <label>Mot de passe</label>
+                  <label data-i18n="paym.label_pass">Mot de passe</label>
                   <div class="pay-input-wrap">
-                    <input type="password" id="loginPassword" placeholder="••••••••">
-                    <button class="toggle-pass" onclick="togglePassword()">👁</button>
+                    <input type="password" id="loginPassword" data-i18n-placeholder="paym.placeholder_pass" placeholder="••••••••">
+                    <button type="button" class="toggle-pass" onclick="togglePassword()">👁</button>
                   </div>
                 </div>
-                <div class="pay-error" id="loginError" style="display:none">
-                  ❌ Email ou mot de passe incorrect.
-                </div>
-                <button class="pay-btn-primary" id="loginBtn" onclick="handleLogin()">
+                <div class="pay-error" id="loginError" style="display:none"></div>
+                <button type="button" class="pay-btn-primary" id="loginBtn" onclick="handleLogin()" data-i18n="pay.login_btn_continue">
                   Se connecter et continuer →
                 </button>
-                <div class="pay-divider"><span>ou</span></div>
-                <button class="pay-btn-google" id="googleBtn" onclick="handleGoogleLogin()">
+                <div class="pay-divider"><span data-i18n="pay.divider_or">ou</span></div>
+                <button type="button" class="pay-btn-google" id="googleBtn" onclick="handleGoogleLogin()">
                   <svg viewBox="0 0 24 24" width="20" height="20">
                     <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
                     <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
                     <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z"/>
                     <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
                   </svg>
-                  Continuer avec Google
+                  <span class="pay-google-label" data-i18n="paym.google">Continuer avec Google</span>
                 </button>
                 <p class="pay-forgot">
-                  <a href="#">Mot de passe oublié ?</a>
+                  <a href="#" onclick="alert(typeof FideliioT==='function'?FideliioT('paym.reset_hint'):'');return false;" data-i18n="paym.forgot">Mot de passe oublié ?</a>
                   &nbsp;·&nbsp;
-                  <a href="#cardNoAccount">Pas encore de compte ?</a>
+                  <a href="#cardNoAccount" data-i18n="pay.no_account">Pas encore de compte ?</a>
                 </p>
               </div>
             </div>
@@ -198,23 +214,23 @@
               <div class="pay-card-header">
                 <span class="pay-card-num">2</span>
                 <div>
-                  <div class="pay-card-title">Nouveau sur Fideliio ?</div>
-                  <div class="pay-card-sub">Créez votre compte commerçant sur l'application</div>
+                  <div class="pay-card-title" data-i18n="pay.card_new_title">Nouveau sur Fideliio ?</div>
+                  <div class="pay-card-sub" data-i18n="pay.card_new_sub">Créez votre compte commerçant sur l'application</div>
                 </div>
               </div>
               <div class="pay-card-body">
-                <p class="pay-info-text">
+                <p class="pay-info-text" data-i18n="pay.info_download_app">
                   Pour activer le Plan Pro, vous avez besoin d'un compte commerçant Fideliio. Téléchargez l'application gratuitement et créez votre compte en 2 minutes.
                 </p>
                 <div class="pay-dl-badges">
-                  <a href="https://apps.apple.com" target="_blank" class="pay-dl-btn">
+                  <a href="https://apps.apple.com/app/fideliio" target="_blank" rel="noopener noreferrer" class="pay-dl-btn">
                     <svg viewBox="0 0 24 24" width="22" height="22" fill="#fff"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
                     <div>
-                      <div class="dl-sub">Télécharger sur</div>
-                      <div class="dl-name">App Store</div>
+                      <div class="dl-sub" data-i18n="pay.dwl_ios">Télécharger sur</div>
+                      <div class="dl-name" data-i18n="footer.badge_ios">App Store</div>
                     </div>
                   </a>
-                  <a href="https://play.google.com" target="_blank" class="pay-dl-btn">
+                  <a href="https://play.google.com/store/apps/fideliio" target="_blank" rel="noopener noreferrer" class="pay-dl-btn">
                     <svg viewBox="0 0 24 24" width="22" height="22" xmlns="http://www.w3.org/2000/svg">
                       <path d="M3.18 23.76c.3.17.64.22.99.16l13.1-7.38-2.83-2.83-11.26 10.05z" fill="#EA4335"/>
                       <path d="M20.49 10.7l-2.78-1.57-3.18 3.18 3.18 3.18 2.81-1.58c.8-.45.8-1.18-.03-1.21z" fill="#FBBC04"/>
@@ -222,8 +238,8 @@
                       <path d="M.43 1.6C.17 1.94.01 2.4.01 2.96v18.08c0 .56.16 1.02.43 1.36l.07.07 10.13-10.13v-.24L.5 1.53l-.07.07z" fill="#34A853"/>
                     </svg>
                     <div>
-                      <div class="dl-sub">Disponible sur</div>
-                      <div class="dl-name">Google Play</div>
+                      <div class="dl-sub" data-i18n="pay.dwl_gp">Disponible sur</div>
+                      <div class="dl-name" data-i18n="footer.badge_android">Play Store</div>
                     </div>
                   </a>
                 </div>
@@ -240,9 +256,9 @@
       <div class="pay-container">
 
         <div class="pay-breadcrumb">
-          <a href="../index.html">Accueil</a>
+          <a href="../index.html" data-i18n="pay.pay_breadcrumb_home">Accueil</a>
           <span>›</span>
-          <span>Mon espace Pro</span>
+          <span data-i18n="pay.breadcrumb_dashboard">Mon espace Pro</span>
         </div>
 
         <div class="dash-page-header">
@@ -252,7 +268,7 @@
             <div class="dash-page-email" id="dashEmail"></div>
           </div>
           <div class="dash-page-plan" id="dashCurrentPlan">Gratuit</div>
-          <button class="dash-logout-btn" onclick="handleLogout()">Déconnexion</button>
+          <button type="button" class="dash-logout-btn" onclick="handleLogout()" data-i18n="pay.dash_logout">Déconnexion</button>
         </div>
 
         <div class="dash-page-grid">
@@ -260,51 +276,51 @@
           <div class="dash-left">
 
             <div class="dash-widget dash-widget-plan">
-              <div class="dw-label">PLAN SÉLECTIONNÉ</div>
+              <div class="dw-label" data-i18n="pay.dash_plan_label">PLAN SÉLECTIONNÉ</div>
               <div class="dw-plan-row">
                 <div>
-                  <div class="dw-plan-name">Plan Pro</div>
+                  <div class="dw-plan-name" data-i18n="pay.summary_plan_title">Plan Pro</div>
                   <div class="dw-plan-billing" id="dashBilling">Facturation mensuelle</div>
                 </div>
                 <div class="dw-plan-price">
                   <span id="dashPrice">99</span>
-                  <span class="dw-plan-dh">DH<span id="dashPeriod">/mois</span></span>
+                  <span class="dw-plan-dh"><span data-i18n="pricing.currency" class="dash-curr-sp">DH</span><span id="dashPeriod">/mois</span></span>
                 </div>
               </div>
               <div class="dw-features">
-                <span>✓ Scans illimités</span>
-                <span>✓ Double points</span>
-                <span>✓ Support prioritaire</span>
+                <span data-i18n="pay.dash_feat_ul">✓ Scans illimités</span>
+                <span data-i18n="pay.dash_feat_dp">✓ Double points</span>
+                <span data-i18n="pay.dash_feat_sup">✓ Support prioritaire</span>
               </div>
             </div>
 
             <div class="dash-widget">
-              <div class="dw-label">💳 INFORMATIONS DE VIREMENT</div>
+              <div class="dw-label" data-i18n="pay.bank_block_title">💳 INFORMATIONS DE VIREMENT</div>
               <div class="dw-bank-rows">
                 <div class="dw-bank-row">
-                  <span class="dw-bl">Banque</span>
+                  <span class="dw-bl" data-i18n="pay.bank_label">Banque</span>
                   <span class="dw-bv">Attijariwafa Bank</span>
                 </div>
                 <div class="dw-bank-row">
-                  <span class="dw-bl">Titulaire</span>
+                  <span class="dw-bl" data-i18n="pay.bank_holder">Titulaire</span>
                   <span class="dw-bv">Fideliio SARL</span>
                 </div>
                 <div class="dw-bank-row">
-                  <span class="dw-bl">RIB</span>
+                  <span class="dw-bl" data-i18n="pay.bank_rib_label">RIB</span>
                   <span class="dw-bv rib" id="ribVal">007 123 4567 8901 2345 6789 01</span>
-                  <button class="dw-copy-btn" onclick="copyRIB()">📋 Copier</button>
+                  <button type="button" class="dw-copy-btn" data-i18n="pay.copy_btn" onclick="copyRIB()">📋 Copier</button>
                 </div>
                 <div class="dw-bank-row">
-                  <span class="dw-bl">Montant</span>
+                  <span class="dw-bl" data-i18n="pay.bank_amount">Montant</span>
                   <span class="dw-bv orange" id="ribAmount">99 DH</span>
                 </div>
                 <div class="dw-bank-row">
-                  <span class="dw-bl">Référence</span>
+                  <span class="dw-bl" data-i18n="pay.bank_ref">Référence</span>
                   <span class="dw-bv orange" id="ribRef">PRO-2026-XXXX</span>
-                  <button class="dw-copy-btn" onclick="copyRef()">📋 Copier</button>
+                  <button type="button" class="dw-copy-btn" data-i18n="pay.copy_btn" onclick="copyRef()">📋 Copier</button>
                 </div>
               </div>
-              <div class="dw-bank-note">
+              <div class="dw-bank-note" data-i18n="pay.bank_note">
                 ⚠️ Mentionnez obligatoirement la référence dans le motif du virement.
               </div>
             </div>
@@ -314,38 +330,36 @@
           <div class="dash-right">
 
             <div class="dash-widget">
-              <div class="dw-label">📅 STATUT & RENOUVELLEMENT</div>
+              <div class="dw-label" data-i18n="pay.status_section">📅 STATUT & RENOUVELLEMENT</div>
               <div class="dw-status-row">
-                <span class="dw-status-label">Statut actuel</span>
+                <span class="dw-status-label" data-i18n="pay.status_current">Statut actuel</span>
                 <span class="dw-status-badge pending" id="dashStatus">⏳ En attente</span>
               </div>
               <div class="dw-status-row">
-                <span class="dw-status-label">Prochain paiement</span>
+                <span class="dw-status-label" data-i18n="pay.status_next">Prochain paiement</span>
                 <span class="dw-status-date" id="dashRenewDate">—</span>
               </div>
               <div class="dw-status-row">
-                <span class="dw-status-label">Plan actuel</span>
+                <span class="dw-status-label" data-i18n="pay.status_plan_curr">Plan actuel</span>
                 <span class="dw-status-date" id="dashPlanCurrent">Gratuit</span>
               </div>
             </div>
 
             <div class="dash-widget">
-              <div class="dw-label">🧾 HISTORIQUE DES PAIEMENTS</div>
+              <div class="dw-label" data-i18n="pay.hist_section">🧾 HISTORIQUE DES PAIEMENTS</div>
               <div class="dw-history" id="dashHistory">
-                <div class="dw-history-empty">Aucun paiement enregistré.</div>
+                <div class="dw-history-empty" data-i18n="pay.hist_empty">Aucun paiement enregistré.</div>
               </div>
             </div>
 
             <div class="dash-widget dash-widget-send">
-              <div class="dw-label">📤 ENVOYER LA PREUVE DE PAIEMENT</div>
-              <p class="dw-send-text">
-                Après avoir effectué le virement, envoyez-nous la preuve. Votre compte sera activé sous 24h.
-              </p>
+              <div class="dw-label" data-i18n="pay.send_proof_title">📤 ENVOYER LA PREUVE DE PAIEMENT</div>
+              <p class="dw-send-text" data-i18n="pay.send_proof_text"></p>
               <div class="dw-send-btns">
-                <a id="waLink" href="#" target="_blank" class="dw-send-btn whatsapp">
+                <a id="waLink" href="#" target="_blank" class="dw-send-btn whatsapp" rel="noopener" data-i18n="pay.send_whatsapp">
                   📱 Envoyer sur WhatsApp
                 </a>
-                <a id="mailLink" href="#" class="dw-send-btn email">
+                <a id="mailLink" href="#" class="dw-send-btn email" data-i18n="pay.send_mail">
                   ✉️ Envoyer par Email
                 </a>
               </div>
@@ -363,8 +377,10 @@
 
   <!-- Scripts -->
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="../js/i18n-locale-extra.js"></script>
   <script src="../js/i18n.js"></script>
   <script src="../js/loader.js"></script>
+  <script src="../js/navbar.js"></script>
   <script src="../js/payment-page.js"></script>
 
   <!-- Hamburger -->

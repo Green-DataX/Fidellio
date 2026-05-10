@@ -69,3 +69,14 @@
 .btn-ghost:hover {
   border-color: #fff;
 }
+
+/* Liens utilisés comme boutons (ex. bloc CTA) */
+a.btn-primary,
+a.btn-outline,
+a.btn-white,
+a.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+}

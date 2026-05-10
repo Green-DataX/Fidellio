@@ -108,3 +108,36 @@ body.rtl .feat,
 body.rtl .testi-author { flex-direction: row-reverse; }
 body.rtl .pricing-features li { flex-direction: row-reverse; }
 body.rtl .footer-top { direction: rtl; }
+body.rtl .scanner-section,
+body.rtl .pricing-section,
+body.rtl .brands-section,
+body.rtl .testi-section,
+body.rtl .rewards-section .section-sub { text-align: right; }
+body.rtl .feature-list .feat { flex-direction: row-reverse; direction: rtl; }
+body.rtl .ring-text { direction: rtl; }
+body.rtl .steps_clients-title,
+body.rtl .steps_commercants-title { direction: rtl; }
+body.rtl .pay-page,
+body.rtl .pay-overlay .pay-box { direction: rtl; text-align: right; }
+
+body.rtl .app-badge {
+  flex-direction: row-reverse;
+  justify-content: flex-start;
+}
+
+body.rtl .app-badges {
+  align-items: flex-end;
+}
+
+@media (max-width: 900px) {
+  body.rtl .app-badges {
+    flex-direction: row-reverse;
+  }
+}
+
+@media (max-width: 560px) {
+  body.rtl .app-badges {
+    flex-direction: column;
+    align-items: flex-end;
+  }
+}

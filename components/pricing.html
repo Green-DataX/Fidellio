@@ -4,98 +4,95 @@
     Commencez gratuitement, passez au niveau supérieur quand vous êtes prêt.
   </p>
 
-  <!-- Toggle Mensuel / Annuel -->
   <div class="pricing-toggle">
     <span class="toggle-label active" id="monthlyLabel">Mensuel</span>
 
-    <button class="toggle-switch" id="pricingToggle">
+    <button type="button" class="toggle-switch" id="pricingToggle" aria-pressed="false">
       <span class="toggle-circle"></span>
     </button>
 
     <span class="toggle-label" id="yearlyLabel">
-      Annuel
-      <small>-20%</small>
+      <span class="toggle-yearly-text">Annuel</span>
+      <small class="toggle-yearly-pct">-20%</small>
     </span>
   </div>
 
   <div class="pricing-grid">
 
-    <!-- GRATUIT -->
     <div class="pricing-card">
-      <div class="pricing-badge free">Gratuit</div>
+      <div class="pricing-badge free" data-i18n="pricing.free.badge">Gratuit</div>
 
       <div class="pricing-price">
         <span class="price-amount"
               data-monthly="0"
               data-yearly="0">0</span>
 
-        <span class="price-currency">DH</span>
+        <span class="price-currency" data-i18n="pricing.currency">DH</span>
       </div>
 
-      <div class="pricing-name">Starter</div>
+      <div class="pricing-name" data-i18n="pricing.free.name">Starter</div>
 
-      <p class="pricing-desc">
-        Parfait pour débuter et découvrir Fidelio.
+      <p class="pricing-desc" data-i18n="pricing.free.desc">
+        Parfait pour débuter et découvrir Fideliio.
       </p>
 
       <ul class="pricing-features">
-        <li><span class="feat-check">✓</span>50 clients</li>
-        <li><span class="feat-check">✓</span>Récompenses de base</li>
-        <li><span class="feat-check">✓</span>Historique 30 jours</li>
+        <li><span class="feat-check">✓</span><span data-i18n="pricing.card_free_li1">50 clients</span></li>
+        <li><span class="feat-check">✓</span><span data-i18n="pricing.card_free_li2">Récompenses de base</span></li>
+        <li><span class="feat-check">✓</span><span data-i18n="pricing.card_free_li3">Historique 30 jours</span></li>
 
         <li class="disabled">
-          <span class="feat-x">✗</span>Double points
+          <span class="feat-x">✗</span><span data-i18n="pricing.card_free_li4">Double points</span>
         </li>
 
         <li class="disabled">
-          <span class="feat-x">✗</span>Récompenses VIP
+          <span class="feat-x">✗</span><span data-i18n="pricing.card_free_li5">Récompenses VIP</span>
         </li>
 
         <li class="disabled">
-          <span class="feat-x">✗</span>Support prioritaire
+          <span class="feat-x">✗</span><span data-i18n="pricing.card_free_li6">Support prioritaire</span>
         </li>
       </ul>
 
-      <button class="pricing-btn outline" onclick="openFreeModal()">
-  Commencer gratuitement
-</button>
+      <button type="button" class="pricing-btn outline" data-i18n="pricing.free.cta" onclick="openFreeModal()">
+        Commencer gratuitement
+      </button>
     </div>
 
-    <!-- PRO -->
     <div class="pricing-card popular">
 
-      <div class="pricing-popular-tag">
+      <div class="pricing-popular-tag" data-i18n="pricing.popular">
         ⭐ Le plus populaire
       </div>
 
-      <div class="pricing-badge pro">Pro</div>
+      <div class="pricing-badge pro" data-i18n="pricing.pro.badge">Pro</div>
       <div class="pricing-price">
         <span class="price-old" id="priceOld"></span>
         <span class="price-amount" data-monthly="99" data-yearly="82">99</span>
-        <span class="price-currency">DH</span>
+        <span class="price-currency" data-i18n="pricing.currency">DH</span>
         <span class="price-period">/mois</span>
       </div>
-      <div class="price-saving" id="priceSaving" style="display:none">
-      Vous économisez 204 DH/an 🎉
-        </div>
+      <div class="price-saving" id="priceSaving" style="display:none" data-i18n="pricing.saving_banner">
+        Vous économisez 204 DH/an 🎉
+      </div>
 
-      <div class="pricing-name">Pro</div>
+      <div class="pricing-name" data-i18n="pricing.pro.name">Pro</div>
 
-      <p class="pricing-desc">
+      <p class="pricing-desc" data-i18n="pricing.pro.desc">
         Pour les vrais fans de snacks qui veulent plus.
       </p>
 
       <ul class="pricing-features">
-        <li><span class="feat-check">✓</span>clients illimités</li>
-        <li><span class="feat-check">✓</span>Toutes les récompenses</li>
-        <li><span class="feat-check">✓</span>Historique complet</li>
-        <li><span class="feat-check">✓</span>Double points weekend</li>
-        <li><span class="feat-check">✓</span>Offres exclusives</li>
-        <li><span class="feat-check">✓</span>Support prioritaire</li>
+        <li><span class="feat-check">✓</span><span data-i18n="pricing.card_pro_li1">clients illimités</span></li>
+        <li><span class="feat-check">✓</span><span data-i18n="pricing.card_pro_li2">Toutes les récompenses</span></li>
+        <li><span class="feat-check">✓</span><span data-i18n="pricing.card_pro_li3">Historique complet</span></li>
+        <li><span class="feat-check">✓</span><span data-i18n="pricing.card_pro_li4">Double points weekend</span></li>
+        <li><span class="feat-check">✓</span><span data-i18n="pricing.card_pro_li5">Offres exclusives</span></li>
+        <li><span class="feat-check">✓</span><span data-i18n="pricing.card_pro_li6">Support prioritaire</span></li>
       </ul>
 
-      <button class="pricing-btn primary" id="proBtnMain">
-      Passer au Pro
+      <button type="button" class="pricing-btn primary" id="proBtnMain" data-i18n="pricing.pro.cta">
+        Passer au Pro
       </button>
     </div>
 

@@ -1,6 +1,6 @@
 @echo off
 chcp 65001 >nul
-title Fidelio Server
+title Fideliio Server
 
 cls
 echo.

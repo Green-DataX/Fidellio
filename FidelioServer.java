@@ -161,7 +161,7 @@ public class FidelioServer {
         // ── Erreur 404 ──────────────────────────
         private void sendNotFound(HttpExchange exchange, String uri) throws IOException {
             String html = "<!DOCTYPE html><html><head><meta charset='UTF-8'>"
-                + "<title>404 — Fidelio</title>"
+                + "<title>404 — Fideliio</title>"
                 + "<style>body{font-family:sans-serif;display:flex;flex-direction:column;"
                 + "align-items:center;justify-content:center;height:100vh;margin:0;"
                 + "background:#FFF8EF;color:#1A1208;}"
