@@ -178,6 +178,26 @@
   margin-bottom: 8px;
 }
 
+.price-old {
+  font-size: 1.4rem;
+  color: #bbb;
+  text-decoration: line-through;
+  margin-right: 4px;
+  display: none;
+}
+
+.price-saving {
+  font-size: .8rem;
+  color: #2E7D32;
+  background: #E8F5E9;
+  border-radius: 8px;
+  padding: 5px 12px;
+  margin-top: -8px;
+  margin-bottom: 16px;
+  font-weight: 600;
+  display: none;
+}
+
 /* ───────── Name ───────── */
 
 .pricing-name {
@@ -287,7 +307,6 @@
 /* ───────── Responsive ───────── */
 
 @media (max-width: 860px) {
-
   .pricing-grid {
     grid-template-columns: 1fr;
     max-width: 420px;
@@ -301,22 +320,78 @@
     transform: translateY(-6px);
   }
 }
-.price-old {
-  font-size: 1.4rem;
-  color: #bbb;
-  text-decoration: line-through;
-  margin-right: 4px;
-  display: none; /* caché par défaut */
+
+/* ───────── Modal Gratuit ───────── */
+
+.free-modal-overlay {
+  position: fixed; inset: 0; z-index: 9999;
+  background: rgba(0,0,0,.5); backdrop-filter: blur(4px);
+  display: none;
+  align-items: center; justify-content: center;
+  padding: 20px;
 }
 
-.price-saving {
-  font-size: .8rem;
-  color: #2E7D32;
-  background: #E8F5E9;
-  border-radius: 8px;
-  padding: 5px 12px;
-  margin-top: -8px;
-  margin-bottom: 16px;
-  font-weight: 600;
-  display: none; /* caché par défaut */
+.free-modal-box {
+  background: #fff; border-radius: 24px;
+  padding: 36px 32px;
+  max-width: 420px;
+  width: calc(100% - 40px);
+  text-align: center; position: relative;
+}
+
+.free-modal-close {
+  position: absolute; top: 16px; right: 16px;
+  background: #f5f5f5; border: none; border-radius: 50%;
+  width: 32px; height: 32px; cursor: pointer; font-size: .85rem;
+  display: flex; align-items: center; justify-content: center;
+}
+.free-modal-close:hover { background: #eee; }
+
+.free-modal-icon  { font-size: 2.5rem; margin-bottom: 12px; }
+
+.free-modal-title {
+  font-family: var(--font-display);
+  font-size: 1.8rem; letter-spacing: 2px;
+  color: var(--dark); margin-bottom: 8px;
+}
+
+.free-modal-sub {
+  font-size: .88rem; color: var(--text-muted);
+  line-height: 1.6; margin-bottom: 24px;
+}
+
+.free-modal-badges { display: flex; flex-direction: column; gap: 10px; }
+
+.free-dl-btn {
+  display: flex; align-items: center; gap: 12px;
+  background: #000; color: #fff; border-radius: 14px;
+  padding: 12px 20px; text-decoration: none;
+  transition: transform .2s, box-shadow .2s;
+}
+.free-dl-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0,0,0,.25);
+}
+.free-dl-btn .dl-sub {
+  font-size: .55rem; opacity: .6;
+  text-transform: uppercase; letter-spacing: .8px;
+  display: block; color: #fff;
+}
+.free-dl-btn .dl-name {
+  font-size: .95rem; font-weight: 700;
+  display: block; color: #fff;
+}
+.free-dl-btn svg {
+  flex-shrink: 0;
+}
+.free-dl-btn div,
+.free-dl-btn span {
+  color: #fff !important;
+}
+.free-dl-btn {
+  color: #fff !important;
+}
+
+.free-dl-btn * {
+  color: #fff !important;
 }

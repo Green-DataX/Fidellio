@@ -19,10 +19,13 @@ const CONFIG = {
 
 /* ── Plan depuis URL ── */
 const params   = new URLSearchParams(window.location.search);
-const isYearly = params.get('plan') === 'annuel';
+const isYearly = params.get('plan') === 'yearly';
 const price    = isYearly ? CONFIG.PRIX_ANNUEL  : CONFIG.PRIX_MENSUEL;
 const period   = isYearly ? '/mois · annuel'    : '/mois';
 const billing  = isYearly ? 'Facturation annuelle (×12)' : 'Facturation mensuelle';
+
+const amountEl = document.querySelector('.summary-amount');
+if (amountEl) amountEl.textContent = price;
 
 /* ══════════════════════════════
    CONNEXION

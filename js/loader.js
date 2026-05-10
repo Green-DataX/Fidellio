@@ -53,3 +53,23 @@ function initScrollReveal() {
 }
 
 document.addEventListener('DOMContentLoaded', loadComponents);
+async function loadComponents() {
+  const placeholders = document.querySelectorAll('[data-include]');
+
+  for (const el of placeholders) {
+    const file = el.getAttribute('data-include');
+    try {
+      const response = await fetch(file);
+      if (!response.ok) throw new Error(`Impossible de charger : ${file}`);
+      const html = await response.text();
+      el.outerHTML = html;
+    } catch (err) {
+      console.error(err);
+    }
+  }
+
+  initI18n();
+  initFaq();
+  initScrollReveal();
+  initPricing(); // ← ajoutez cette ligne
+}
