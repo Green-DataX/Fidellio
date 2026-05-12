@@ -2,6 +2,13 @@
 <html lang="fr" dir="ltr">
 <head>
   <meta charset="UTF-8" />
+  <script>
+    try {
+      var __th = localStorage.getItem("fideliio-theme");
+      if (__th === "dark") document.documentElement.setAttribute("data-theme", "dark");
+      else document.documentElement.removeAttribute("data-theme");
+    } catch (e) {}
+  </script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Fideliio — programme de fidélité : cumulez des points sur vos snacks, débloquez des récompenses. Application simple pour clients et commerçants." />
   <title>Fideliio — Scanne. Gagne. Régale-toi.</title>
@@ -25,6 +32,7 @@
   <link rel="stylesheet" href="css/footer.css" />
   <link rel="stylesheet" href="css/responsive.css" />
   <link rel="stylesheet" href="css/payment-page.css" />
+  <link rel="stylesheet" href="css/theme.css" />
 </head>
 <body>
 
@@ -47,6 +55,7 @@
 
   <script src="js/i18n-locale-extra.js"></script>
   <script src="js/i18n.js"></script>
+  <script src="js/theme-toggle.js"></script>
   <script src="js/payment.js"></script>
   <script src="js/loader.js"></script>
   <script src="js/pricing.js"></script>

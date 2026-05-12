@@ -7,17 +7,23 @@
 }
 
 :root {
+  /* Palette unique (chaud crème + orange marque) */
   --orange: #FF6B2B;
   --orange-light: #FF8C55;
-  --orange-glow: rgba(255, 107, 43, 0.15); /* ← AJOUTEZ CETTE LIGNE */
-  --yellow: #FFD43B;
-  --dark: #111111;
-  --dark2: #1E1E1E;
-  --cream: #FFF9F5;
-  --cream2: #FFF0E6;
-  --green: #2ECC71;
-  --text-muted: #888888;
+  --orange-glow: rgba(255, 107, 43, 0.15);
+  --yellow: #FFD166;
+  --dark: #1a1208;
+  --dark2: #2c1f10;
+  --dark3: #3d2c18;
+  --cream: #fffaf5;
+  /* Même teinte que le corps de page (fonds de sections homogènes) */
+  --cream2: var(--cream);
+  --green: #06d6a0;
+  --text-muted: #6b5d4f;
+  --line-subtle: rgba(26, 18, 8, 0.12);
+  --border-soft: rgba(26, 18, 8, 0.2);
   --radius: 20px;
+  --transition: cubic-bezier(0.34, 1.56, 0.64, 1);
 
   /* Typographie */
   --font-display: 'Bebas Neue', 'Impact', sans-serif;

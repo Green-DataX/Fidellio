@@ -353,7 +353,14 @@
 }
 .free-modal-close:hover { background: #eee; }
 
-.free-modal-icon  { font-size: 2.5rem; margin-bottom: 12px; }
+.free-modal-box .logo-mark--modal {
+  display: block;
+  margin: 0 auto 12px;
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  object-fit: cover;
+}
 
 .free-modal-title {
   font-family: var(--font-display);

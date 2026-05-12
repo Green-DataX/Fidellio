@@ -1,5 +1,20 @@
 /* LOADER.JS — Charge les composants HTML */
 
+/** Sur pages sous components/ (ex. paiement), les img relatives pointent vers la racine du site. */
+function fixLogoMarkPaths(root) {
+  const raw = (location.pathname || '').replace(/\\/g, '/');
+  const parts = raw.split('/').filter(Boolean);
+  const idx = parts.indexOf('components');
+  if (idx === -1) return;
+  const prefix = '../'.repeat(parts.length - idx - 1);
+  root.querySelectorAll('img.logo-mark[src]').forEach((img) => {
+    const src = (img.getAttribute('src') || '').trim();
+    if (!src || src.startsWith('data:') || /^https?:/i.test(src) || src.startsWith('/')) return;
+    if (src.startsWith('../')) return;
+    img.setAttribute('src', prefix + src.replace(/^\.\//, ''));
+  });
+}
+
 document.addEventListener('DOMContentLoaded', loadComponents);
 
 async function loadComponents() {
@@ -16,6 +31,8 @@ async function loadComponents() {
       console.error(err);
     }
   }
+
+  fixLogoMarkPaths(document);
 
   initI18n();
   document.dispatchEvent(new CustomEvent('fideliio:components-loaded'));
@@ -47,7 +64,7 @@ function initScrollReveal() {
     });
   }, { threshold: 0.1 });
 
-  document.querySelectorAll('.step-card, .reward-card, .testi-card, .brand-pill, .pricing-card').forEach(el => {
+  document.querySelectorAll('.step-card, .reward-card, .testi-card, .brand-card, .pricing-card').forEach(el => {
     el.style.opacity = '0';
     el.style.transform = 'translateY(20px)';
     el.style.transition = 'opacity .5s ease, transform .5s ease';

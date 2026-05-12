@@ -1,12 +1,12 @@
 body.page-contact-body {
-  background: #ececf0;
+  background: var(--cream);
 }
 
 .page-contact-main {
   padding-top: 84px;
   padding-bottom: 56px;
   min-height: calc(100vh - 100px);
-  background: #ececf0;
+  background: var(--cream);
 }
 
 .contact-page {
@@ -154,7 +154,7 @@ body.page-contact-body {
   font-family: inherit;
   border: 1px solid rgba(17, 17, 17, 0.12);
   border-radius: 12px;
-  background: #fafafa;
+  background: var(--cream);
   color: var(--dark);
   transition: border-color 0.2s, box-shadow 0.2s;
 }

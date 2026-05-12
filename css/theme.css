@@ -1,0 +1,268 @@
+/* ═══ Thème sombre — variables + surfaces (charger ce fichier en dernier) ═══ */
+
+html[data-theme="dark"] {
+  color-scheme: dark;
+  --orange: #ff7a4a;
+  --orange-light: #ff9a6a;
+  --orange-glow: rgba(255, 122, 74, 0.28);
+  --yellow: #d4a825;
+  --dark: #f2efe9;
+  --dark2: #d4cfc6;
+  --cream: #0e1117;
+  --cream2: var(--cream);
+  --green: #3dd9a8;
+  --text-muted: #8b8680;
+  --line-subtle: rgba(255, 255, 255, 0.12);
+  --border-soft: rgba(255, 255, 255, 0.18);
+  --card-bg: #1a1f28;
+  --card-bg-soft: #222830;
+  --line-soft: rgba(255, 255, 255, 0.1);
+}
+
+html[data-theme="dark"] body {
+  background: var(--cream);
+  color: var(--dark);
+}
+
+html[data-theme="dark"] nav {
+  background: rgba(14, 17, 23, 0.92);
+  border-bottom-color: rgba(255, 122, 74, 0.22);
+}
+
+html[data-theme="dark"] .nav-hamburger:hover {
+  background: rgba(255, 255, 255, 0.06);
+}
+
+html[data-theme="dark"] .nav-hamburger span {
+  background: var(--dark);
+}
+
+@media (max-width: 768px) {
+  html[data-theme="dark"] .nav-links {
+    background: var(--cream2);
+    border-top-color: var(--line-soft);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.45);
+  }
+  html[data-theme="dark"] .nav-links li a {
+    border-bottom-color: var(--line-soft);
+    color: var(--dark);
+  }
+}
+
+html[data-theme="dark"] .lang-selected {
+  background: var(--card-bg);
+  border-color: var(--line-soft);
+  color: var(--dark);
+}
+
+html[data-theme="dark"] .lang-menu {
+  background: var(--card-bg);
+  border: 1px solid var(--line-soft);
+}
+
+html[data-theme="dark"] .lang-option:hover {
+  background: rgba(255, 255, 255, 0.06);
+}
+
+html[data-theme="dark"] .hero-bg {
+  background: var(--cream);
+}
+
+html[data-theme="dark"] .hero-badge {
+  background: #2a3038;
+  color: #f4f1ed;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
+}
+
+html[data-theme="dark"] .hero-phone .phone-frame {
+  background: #f5f5f5;
+}
+
+html[data-theme="dark"] .brand-card .brand-card-body {
+  background: var(--card-bg-soft) !important;
+  border-top-color: var(--line-soft) !important;
+}
+
+html[data-theme="dark"] .brand-card,
+html[data-theme="dark"] .testi-card,
+html[data-theme="dark"] .pricing-card,
+html[data-theme="dark"] .free-modal-box,
+html[data-theme="dark"] .pay-box,
+html[data-theme="dark"] .contact-panel,
+html[data-theme="dark"] .contact-mini-card {
+  background: var(--card-bg) !important;
+  border-color: var(--line-soft) !important;
+  color: var(--dark);
+}
+
+html[data-theme="dark"] .pricing-card.popular {
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.45);
+}
+
+html[data-theme="dark"] .toggle-switch,
+html[data-theme="dark"] .faq-icon {
+  background: var(--card-bg-soft) !important;
+}
+
+html[data-theme="dark"] .faq-item {
+  border-bottom-color: var(--line-soft);
+}
+
+html[data-theme="dark"] .faq-a {
+  color: var(--text-muted);
+}
+
+html[data-theme="dark"] .feat {
+  background: var(--card-bg) !important;
+  border-color: var(--line-soft) !important;
+  color: var(--dark);
+}
+
+html[data-theme="dark"] .feat-icon {
+  background: var(--card-bg-soft) !important;
+}
+
+html[data-theme="dark"] .step_clients-card,
+html[data-theme="dark"] .step_commercants-card {
+  background: var(--card-bg) !important;
+  border-color: var(--line-soft) !important;
+}
+
+html[data-theme="dark"] .contact-field input,
+html[data-theme="dark"] .contact-field select,
+html[data-theme="dark"] .contact-field textarea {
+  background: var(--card-bg-soft) !important;
+  border-color: var(--line-soft) !important;
+  color: var(--dark);
+}
+
+html[data-theme="dark"] .contact-hint {
+  background: rgba(255, 122, 74, 0.1);
+  color: var(--text-muted);
+}
+
+html[data-theme="dark"] body.page-contact-body,
+html[data-theme="dark"] .page-contact-main {
+  background: #0a0c10 !important;
+}
+
+html[data-theme="dark"] .contact-hero-sub,
+html[data-theme="dark"] .section-sub {
+  color: var(--text-muted);
+}
+
+html[data-theme="dark"] .btn-secondary {
+  border-color: var(--line-soft);
+  color: var(--dark);
+}
+
+html[data-theme="dark"] .btn-secondary:hover {
+  border-color: var(--orange);
+  color: var(--orange);
+}
+
+html[data-theme="dark"] .btn-outline {
+  border-color: var(--line-soft);
+  color: var(--dark);
+}
+
+html[data-theme="dark"] .free-modal-overlay {
+  background: rgba(0, 0, 0, 0.65);
+}
+
+html[data-theme="dark"] .free-modal-close:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+html[data-theme="dark"] .pay-overlay {
+  background: rgba(0, 0, 0, 0.72) !important;
+}
+
+html[data-theme="dark"] .pay-page-bg {
+  background:
+    radial-gradient(ellipse 60% 50% at 80% 20%, rgba(255, 122, 74, 0.12) 0%, transparent 60%),
+    radial-gradient(ellipse 40% 40% at 10% 80%, rgba(212, 168, 37, 0.08) 0%, transparent 60%),
+    var(--cream);
+}
+
+html[data-theme="dark"] .pay-summary-inner {
+  background: linear-gradient(160deg, #2a3038 0%, #1a1f28 100%);
+  color: #fff;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
+}
+
+html[data-theme="dark"] .pay-card {
+  background: var(--card-bg) !important;
+  border-color: var(--line-soft) !important;
+}
+
+html[data-theme="dark"] .pay-card-header {
+  background: var(--card-bg-soft) !important;
+  border-bottom-color: var(--line-soft) !important;
+}
+
+html[data-theme="dark"] .pay-card-num {
+  background: #3a424d;
+  color: #fff;
+}
+
+html[data-theme="dark"] footer {
+  background: #0a0c10;
+  color: rgba(255, 255, 255, 0.65);
+}
+
+html[data-theme="dark"] footer a:not(.logo) {
+  color: rgba(255, 255, 255, 0.82);
+}
+
+html[data-theme="dark"] footer a:not(.logo):hover {
+  color: var(--orange);
+}
+
+html[data-theme="dark"] .footer-brand .logo {
+  color: #fff;
+}
+
+html[data-theme="dark"] .scanner-demo {
+  background: #151920;
+}
+
+.nav-theme-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  padding: 0;
+  border: 1.5px solid rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  background: #fff;
+  cursor: pointer;
+  transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
+}
+
+.nav-theme-toggle:hover {
+  border-color: var(--orange);
+  box-shadow: 0 2px 12px rgba(255, 107, 43, 0.15);
+}
+
+html[data-theme="dark"] .nav-theme-toggle {
+  background: var(--card-bg);
+  border-color: var(--line-soft);
+}
+
+.nav-theme-icon {
+  display: none;
+  font-size: 1.15rem;
+  line-height: 1;
+}
+
+.nav-theme-icon.is-visible {
+  display: block;
+}
+
+@media (max-width: 768px) {
+  .nav-theme-toggle {
+    display: flex;
+  }
+}

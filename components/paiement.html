@@ -2,6 +2,13 @@
 <html lang="fr" dir="ltr">
 <head>
   <meta charset="UTF-8">
+  <script>
+    try {
+      var __th = localStorage.getItem("fideliio-theme");
+      if (__th === "dark") document.documentElement.setAttribute("data-theme", "dark");
+      else document.documentElement.removeAttribute("data-theme");
+    } catch (e) {}
+  </script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Passer au Plan Pro — Fideliio</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -14,6 +21,7 @@
   <link rel="stylesheet" href="../css/navbar.css">
   <link rel="stylesheet" href="../css/footer.css">
   <link rel="stylesheet" href="../css/payment-page.css">
+  <link rel="stylesheet" href="../css/theme.css">
 
   <!-- Style hamburger pour cette page -->
   <style>
@@ -71,7 +79,7 @@
   <!-- ══ NAVBAR ══ -->
   <nav>
     <a class="logo" href="../index.html">
-      <div class="logo-icon">🍟</div>
+      <img class="logo-mark" src="../img/logo-fideliio.svg" width="38" height="38" alt="Fideliio" decoding="async">
       Fideliio
     </a>
 
@@ -79,11 +87,15 @@
       <li><a href="../index.html#Accueil" data-i18n="nav.home">Accueil</a></li>
       <li><a href="../index.html#comment" data-i18n="nav.how">Comment ça marche</a></li>
       <li><a href="../index.html#tarifs" data-i18n="nav.pricing">Tarifs</a></li>
-      <li><a href="../index.html#marques" data-i18n="nav.brands">Marques</a></li>
+      <li><a href="../index.html#marques" data-i18n="nav.brands">Nos partenaires</a></li>
       <li><a href="../contact.html" data-i18n="nav.contact">Contact</a></li>
     </ul>
 
     <div class="nav-right">
+      <button type="button" class="nav-theme-toggle" id="navThemeToggle" onclick="toggleTheme()" aria-pressed="false" aria-label="Basculer le thème clair ou sombre" title="Thème">
+        <span class="nav-theme-icon nav-theme-icon--moon is-visible" aria-hidden="true">🌙</span>
+        <span class="nav-theme-icon nav-theme-icon--sun" aria-hidden="true">☀️</span>
+      </button>
       <div class="lang-dropdown" id="langDropdown">
         <button type="button" class="lang-selected" onclick="toggleLangMenu()">
           <img id="currentFlag" src="https://flagcdn.com/w20/fr.png" width="20" alt="FR">
@@ -380,6 +392,7 @@
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="../js/i18n-locale-extra.js"></script>
   <script src="../js/i18n.js"></script>
+  <script src="../js/theme-toggle.js"></script>
   <script src="../js/loader.js"></script>
   <script src="../js/navbar.js"></script>
   <script src="../js/payment-page.js"></script>
