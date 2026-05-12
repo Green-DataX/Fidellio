@@ -41,14 +41,30 @@ async function loadComponents() {
   if (typeof initPricing === "function") initPricing();
 }
 
-/* ── FAQ toggle ── */
+/* ── FAQ accordéon (une entrée ouverte, aria-expanded) — uniquement le panneau principal, pas la copie décorative marquee */
 function initFaq() {
-  document.querySelectorAll('.faq-q').forEach(btn => {
+  const faqRoot = document.querySelector('.faq-section .faq-panel:not(.faq-panel--marquee)');
+  if (!faqRoot) return;
+
+  faqRoot.querySelectorAll('.faq-item').forEach(item => {
+    const btn = item.querySelector('.faq-q');
+    if (btn) btn.setAttribute('aria-expanded', item.classList.contains('open'));
+  });
+
+  faqRoot.querySelectorAll('.faq-q').forEach(btn => {
     btn.addEventListener('click', function () {
-      const item = this.parentElement;
+      const item = this.closest('.faq-item');
+      if (!item || !faqRoot.contains(item)) return;
       const isOpen = item.classList.contains('open');
-      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
-      if (!isOpen) item.classList.add('open');
+      faqRoot.querySelectorAll('.faq-item').forEach(i => {
+        i.classList.remove('open');
+        const b = i.querySelector('.faq-q');
+        if (b) b.setAttribute('aria-expanded', 'false');
+      });
+      if (!isOpen) {
+        item.classList.add('open');
+        this.setAttribute('aria-expanded', 'true');
+      }
     });
   });
 }
@@ -64,7 +80,7 @@ function initScrollReveal() {
     });
   }, { threshold: 0.1 });
 
-  document.querySelectorAll('.step-card, .reward-card, .testi-card, .brand-card, .pricing-card').forEach(el => {
+  document.querySelectorAll('.step-card, .reward-card, .testi-card, .brand-card, .pricing-card, .faq-section .faq-panel:not(.faq-panel--marquee) .faq-item').forEach(el => {
     el.style.opacity = '0';
     el.style.transform = 'translateY(20px)';
     el.style.transition = 'opacity .5s ease, transform .5s ease';

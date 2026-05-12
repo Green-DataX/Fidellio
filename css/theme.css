@@ -99,20 +99,42 @@ html[data-theme="dark"] .pricing-card.popular {
   box-shadow: 0 12px 40px rgba(0, 0, 0, 0.45);
 }
 
-html[data-theme="dark"] .toggle-switch,
-html[data-theme="dark"] .faq-icon {
-  background: var(--card-bg-soft) !important;
+html[data-theme="dark"] .faq-item {
+  background: var(--card-bg) !important;
+  border-color: var(--line-soft) !important;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.35) !important;
 }
 
-html[data-theme="dark"] .faq-item {
-  border-bottom-color: var(--line-soft);
+html[data-theme="dark"] .faq-item:hover {
+  border-color: rgba(255, 122, 74, 0.28) !important;
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.4) !important;
+}
+
+html[data-theme="dark"] .faq-item.open {
+  border-color: rgba(255, 122, 74, 0.38) !important;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.45) !important;
+}
+
+html[data-theme="dark"] .faq-q {
+  color: var(--dark) !important;
+}
+
+html[data-theme="dark"] .faq-q-index {
+  color: rgba(255, 122, 74, 0.95) !important;
+}
+
+html[data-theme="dark"] .faq-chevron {
+  background: rgba(255, 122, 74, 0.14) !important;
+  color: var(--orange) !important;
 }
 
 html[data-theme="dark"] .faq-a {
-  color: var(--text-muted);
+  color: var(--text-muted) !important;
+  border-top-color: var(--line-soft) !important;
+  background: rgba(0, 0, 0, 0.2) !important;
 }
 
-html[data-theme="dark"] .feat {
+html[data-theme="dark"] .toggle-switch,
   background: var(--card-bg) !important;
   border-color: var(--line-soft) !important;
   color: var(--dark);

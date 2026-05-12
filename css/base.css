@@ -43,6 +43,10 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+#main {
+  background: var(--cream);
+}
+
 body.rtl {
   font-family: 'Noto Sans Arabic', var(--font-body);
 }
