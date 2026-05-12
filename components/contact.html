@@ -1,0 +1,91 @@
+<section class="contact-page" id="contact">
+  <header class="contact-hero">
+    <h1 class="contact-hero-title" data-i18n="contact.hero_title">Contactez notre équipe</h1>
+    <p class="contact-hero-sub" data-i18n="contact.hero_sub">Nous sommes là pour vous accompagner dans votre parcours. Partagez vos questions, vos idées ou vos défis avec notre équipe !</p>
+  </header>
+
+  <div class="contact-grid">
+    <article class="contact-panel contact-panel--form">
+      <div class="contact-form-head">
+        <span class="contact-icon-ring" aria-hidden="true">💬</span>
+        <div class="contact-form-head-text">
+          <h2 class="contact-form-title" data-i18n="contact.form_title">Écrivez-nous</h2>
+          <p class="contact-form-lead" data-i18n="contact.form_sub">Nous vous répondons sous 24 h</p>
+        </div>
+      </div>
+      <p class="contact-hint" data-i18n="contact.form_hint">Ce formulaire sert aussi pour une demande de suppression de compte.</p>
+
+      <form id="contactForm" class="contact-form" novalidate>
+        <div class="contact-row">
+          <label class="contact-field">
+            <span class="contact-label" data-i18n="contact.f_name">Votre nom</span>
+            <input type="text" name="name" id="contactName" autocomplete="name" required data-i18n-placeholder="contact.ph_name" placeholder="Jean Dupont" />
+          </label>
+          <label class="contact-field">
+            <span class="contact-label" data-i18n="contact.f_email">Votre email</span>
+            <input type="email" name="email" id="contactEmail" autocomplete="email" required data-i18n-placeholder="contact.ph_email" placeholder="vous@exemple.com" />
+          </label>
+        </div>
+        <label class="contact-field contact-field--full">
+          <span class="contact-label" data-i18n="contact.f_subject">Sujet</span>
+          <select name="subject" id="contactSubject" required>
+            <option value="" disabled selected data-i18n="contact.subj_ph">Choisissez un sujet</option>
+            <option value="general" data-i18n="contact.subj_general">Question générale</option>
+            <option value="merchant" data-i18n="contact.subj_merchant">Compte commerçant</option>
+            <option value="app" data-i18n="contact.subj_app">Problème avec l'app</option>
+            <option value="partnership" data-i18n="contact.subj_partnership">Partenariat / presse</option>
+            <option value="delete" data-i18n="contact.subj_delete">Suppression de compte / RGPD</option>
+          </select>
+        </label>
+        <label class="contact-field contact-field--full">
+          <span class="contact-label" data-i18n="contact.f_message">Votre message</span>
+          <textarea name="message" id="contactMessage" rows="5" required data-i18n-placeholder="contact.ph_message" placeholder="Décrivez votre demande…"></textarea>
+        </label>
+        <button type="submit" class="contact-submit">
+          <span class="contact-submit-icon" aria-hidden="true">✈️</span>
+          <span data-i18n="contact.send">Envoyer le message</span>
+        </button>
+      </form>
+    </article>
+
+    <aside class="contact-aside">
+      <div class="contact-mini-card">
+        <span class="contact-mini-icon" aria-hidden="true">✉️</span>
+        <div>
+          <h3 class="contact-mini-title" data-i18n="contact.card_email">Email</h3>
+          <a class="contact-mini-value contact-mini-link" href="mailto:contact@fideliio.com">contact@fideliio.com</a>
+        </div>
+      </div>
+      <div class="contact-mini-card">
+        <span class="contact-mini-icon" aria-hidden="true">🎧</span>
+        <div>
+          <h3 class="contact-mini-title" data-i18n="contact.card_support">Support</h3>
+          <p class="contact-mini-value" data-i18n="contact.card_support_hours">Lun–Ven · 9h–18h</p>
+        </div>
+      </div>
+      <div class="contact-mini-card">
+        <span class="contact-mini-icon" aria-hidden="true">📍</span>
+        <div>
+          <h3 class="contact-mini-title" data-i18n="contact.card_office">Siège</h3>
+          <p class="contact-mini-value" data-i18n="contact.card_office_val">Casablanca, Maroc</p>
+        </div>
+      </div>
+      <a class="contact-mini-card contact-mini-card--wa" href="https://wa.me/212600000000?text=Bonjour%20Fideliio%2C%20" target="_blank" rel="noopener noreferrer">
+        <span class="contact-mini-icon contact-mini-icon--wa" aria-hidden="true">📱</span>
+        <div>
+          <h3 class="contact-mini-title" data-i18n="contact.card_wa_title">WhatsApp</h3>
+          <p class="contact-mini-muted" data-i18n="contact.card_wa_sub">Réponse rapide sur mobile</p>
+          <span class="contact-wa-cta" data-i18n="contact.card_wa_btn">Ouvrir WhatsApp</span>
+        </div>
+      </a>
+      <div class="contact-mini-card contact-mini-card--faq">
+        <span class="contact-mini-icon contact-mini-icon--faq" aria-hidden="true">❓</span>
+        <div>
+          <h3 class="contact-mini-title" data-i18n="contact.faq_title">Besoin d'aide rapide ?</h3>
+          <p class="contact-faq-text" data-i18n="contact.faq_text">Consultez la FAQ pour des réponses immédiates aux questions les plus courantes.</p>
+          <a class="contact-faq-link" href="index.html#faq" data-i18n="contact.faq_link">Voir la FAQ →</a>
+        </div>
+      </div>
+    </aside>
+  </div>
+</section>

@@ -21,7 +21,7 @@ async function loadComponents() {
   document.dispatchEvent(new CustomEvent('fideliio:components-loaded'));
   initFaq();
   initScrollReveal();
-  initPricing();
+  if (typeof initPricing === "function") initPricing();
 }
 
 /* ── FAQ toggle ── */
