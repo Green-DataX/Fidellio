@@ -1,22 +1,31 @@
 /* ═══ FAQ — accordéon cartes, animation fluide ═══ */
 
 .faq-section {
-  padding: 96px 6vw 120px;
+  padding: 28px 6vw 96px;
   background: var(--cream);
 }
 
 .faq-section-head {
   text-align: center;
-  max-width: 640px;
-  margin: 0 auto 48px;
+  max-width: min(920px, 100%);
+  margin: 0 auto 28px;
+}
+
+/* Tag + titre sur 2 lignes : le h2 global (jusqu’à 6rem) forçait « QUESTIONS » / « FRÉQUENTES » sur 2 lignes */
+.faq-section .section-tag {
+  margin-bottom: 8px;
 }
 
 .faq-section h2 {
-  margin-bottom: 10px;
+  font-size: clamp(1.55rem, 3.2vw + 0.65rem, 2.75rem);
+  line-height: 1.05;
+  letter-spacing: 0.06em;
+  margin-bottom: 12px;
+  text-wrap: balance;
 }
 
 .faq-section .section-sub {
-  margin-bottom: 0;
+  margin: 0 auto;
 }
 
 .faq-panel {
@@ -185,7 +194,15 @@
 
 @media (max-width: 520px) {
   .faq-section {
-    padding: 64px 5vw 80px;
+    padding: 22px 5vw 72px;
+  }
+
+  .faq-section-head {
+    margin-bottom: 22px;
+  }
+
+  .faq-section h2 {
+    font-size: clamp(1.45rem, 5.5vw + 0.35rem, 2.1rem);
   }
 
   .faq-q {

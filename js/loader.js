@@ -43,7 +43,7 @@ async function loadComponents() {
 
 /* ── FAQ accordéon (une entrée ouverte, aria-expanded) — uniquement le panneau principal, pas la copie décorative marquee */
 function initFaq() {
-  const faqRoot = document.querySelector('.faq-section .faq-panel:not(.faq-panel--marquee)');
+  const faqRoot = document.querySelector('.faq-section .faq-panel');
   if (!faqRoot) return;
 
   faqRoot.querySelectorAll('.faq-item').forEach(item => {
@@ -80,7 +80,7 @@ function initScrollReveal() {
     });
   }, { threshold: 0.1 });
 
-  document.querySelectorAll('.step-card, .reward-card, .testi-card, .brand-card, .pricing-card, .faq-section .faq-panel:not(.faq-panel--marquee) .faq-item').forEach(el => {
+  document.querySelectorAll('.step-card, .reward-card, .testi-card, .brand-card, .pricing-card, .faq-section .faq-panel .faq-item').forEach(el => {
     el.style.opacity = '0';
     el.style.transform = 'translateY(20px)';
     el.style.transition = 'opacity .5s ease, transform .5s ease';

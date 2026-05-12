@@ -1,7 +1,13 @@
 .brands-section {
-  padding: 80px 6vw 96px;
+  padding: 80px 6vw 48px;
   text-align: center;
   background: var(--cream);
+}
+
+/* Section suivante = avis clients (entre marques et FAQ) : évite la grande bande vide */
+#marques + section {
+  padding-top: 40px;
+  padding-bottom: 48px;
 }
 
 .brands-section h2 {
@@ -177,7 +183,12 @@ body.rtl .brands-marquee-track {
 
 @media (max-width: 520px) {
   .brands-section {
-    padding: 56px 5vw 72px;
+    padding: 56px 5vw 40px;
+  }
+
+  #marques + section {
+    padding-top: 28px;
+    padding-bottom: 36px;
   }
 
   .brands-marquee-track {
