@@ -12,6 +12,10 @@
 
 .brands-section h2 {
   margin-bottom: 12px;
+  /* Titres de section : même ordre de grandeur que la FAQ (plus petit que le h2 global) */
+  font-size: clamp(1.45rem, 2.5vw + 0.55rem, 2.35rem);
+  line-height: 1.05;
+  letter-spacing: 0.05em;
 }
 
 .brands-lead {
@@ -193,6 +197,10 @@ body.rtl .brands-marquee-track {
 
   .brands-marquee-track {
     animation-duration: 32s;
+  }
+
+  .brands-section h2 {
+    font-size: clamp(1.3rem, 4.2vw + 0.4rem, 1.95rem);
   }
 
   .brand-card {

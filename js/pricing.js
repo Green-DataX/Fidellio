@@ -8,8 +8,8 @@ function syncPricingPeriodLabels() {
   const yearlyLabel  = document.getElementById("yearlyLabel");
   const prices       = document.querySelectorAll(".price-amount:not(.no-toggle)");
   const periods      = document.querySelectorAll(".price-period");
-  const priceOld     = document.getElementById("priceOld");
-  const priceSaving  = document.getElementById("priceSaving");
+  const priceOldEls  = document.querySelectorAll(".pricing-card .price-old");
+  const priceSavingEls = document.querySelectorAll(".pricing-card .price-saving");
 
   if (!toggle) return;
 
@@ -38,8 +38,12 @@ function syncPricingPeriodLabels() {
     period.textContent = yearly && yearlyBundle ? yearlyBundle : monthly;
   });
 
-  if (priceOld)    priceOld.style.display    = yearly ? "inline" : "none";
-  if (priceSaving) priceSaving.style.display = yearly ? "block"  : "none";
+  priceOldEls.forEach((el) => {
+    el.style.display = yearly ? "inline" : "none";
+  });
+  priceSavingEls.forEach((el) => {
+    el.style.display = yearly ? "block" : "none";
+  });
 }
 
 function initPricingToggle() {
@@ -85,6 +89,16 @@ function initProBtn() {
   };
 }
 
+function initProPlusBtn() {
+  const btn = document.getElementById("proPlusBtnMain");
+  if (!btn) return;
+
+  btn.onclick = () => {
+    const yearly = document.getElementById("pricingToggle")?.classList.contains("active");
+    window.location.href = `components/paiement.html?plan=${yearly ? "proplus-yearly" : "proplus-monthly"}`;
+  };
+}
+
 /* ── Bouton Gratuit ── */
 function initFreeBtn() {
   const freeBtn = document.querySelector(".pricing-btn.outline");
@@ -112,6 +126,7 @@ document.addEventListener("DOMContentLoaded", () => {
   setTimeout(() => {
     initPricingToggle();
     initProBtn();
+    initProPlusBtn();
     initFreeBtn();
   }, 400);
 });

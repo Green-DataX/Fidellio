@@ -70,10 +70,10 @@
 
 .pricing-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 24px;
   align-items: stretch;
-  max-width: 1000px;
+  max-width: 1180px;
   margin: 0 auto;
 }
 
@@ -148,6 +148,12 @@
   color: var(--orange);
 }
 
+.pricing-badge.proplus {
+  background: linear-gradient(135deg, #ede7f6 0%, #e3f2fd 100%);
+  color: #4527a0;
+  letter-spacing: 1px;
+}
+
 /* ───────── Price ───────── */
 
 .pricing-price {
@@ -167,6 +173,19 @@
 
 .pricing-card.popular .price-amount {
   color: var(--orange);
+}
+
+.pricing-card--proplus {
+  border-color: rgba(69, 39, 160, 0.35);
+  box-shadow: 0 16px 48px rgba(69, 39, 160, 0.08);
+}
+
+.pricing-card--proplus:hover {
+  box-shadow: 0 24px 60px rgba(69, 39, 160, 0.14);
+}
+
+.pricing-card--proplus .price-amount {
+  color: #4527a0;
 }
 
 .price-currency {
@@ -310,12 +329,84 @@
   box-shadow: 0 12px 32px rgba(255,107,43,.4);
 }
 
+.pricing-btn--proplus {
+  background: linear-gradient(135deg, #5e35b1 0%, #3949ab 100%);
+  box-shadow: 0 8px 24px rgba(69, 39, 160, 0.35);
+}
+
+.pricing-btn--proplus:hover {
+  box-shadow: 0 12px 32px rgba(69, 39, 160, 0.45);
+}
+
+/* ───────── Franchises / devis ───────── */
+
+.pricing-franchise {
+  margin: 48px auto 0;
+  max-width: 1180px;
+  padding: 0 2px;
+}
+
+.pricing-franchise-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px 24px;
+  padding: 22px 26px;
+  background: #fff;
+  border: 2px solid rgba(0, 0, 0, 0.07);
+  border-radius: 20px;
+  text-align: left;
+}
+
+.pricing-franchise-copy {
+  flex: 1 1 260px;
+  min-width: 0;
+}
+
+.pricing-franchise-title {
+  margin: 0 0 6px;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--dark);
+}
+
+.pricing-franchise-text {
+  margin: 0;
+  font-size: 0.88rem;
+  line-height: 1.55;
+  color: var(--text-muted);
+}
+
+.pricing-franchise-cta {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 22px;
+  border-radius: 12px;
+  border: 2px solid rgba(0, 0, 0, 0.12);
+  background: transparent;
+  color: var(--dark);
+  font-size: 0.92rem;
+  font-weight: 700;
+  font-family: "Inter", sans-serif;
+  text-decoration: none;
+  transition: border-color 0.2s, color 0.2s, transform 0.2s;
+}
+
+.pricing-franchise-cta:hover {
+  border-color: var(--orange);
+  color: var(--orange);
+  transform: translateY(-2px);
+}
+
 /* ───────── Responsive ───────── */
 
 @media (max-width: 860px) {
   .pricing-grid {
     grid-template-columns: 1fr;
-    max-width: 420px;
+    max-width: 440px;
   }
 
   .pricing-card.popular {
@@ -324,6 +415,22 @@
 
   .pricing-card.popular:hover {
     transform: translateY(-6px);
+  }
+
+  .pricing-franchise-inner {
+    flex-direction: column;
+    align-items: stretch;
+    text-align: center;
+  }
+
+  .pricing-franchise {
+    max-width: 440px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .pricing-franchise-cta {
+    width: 100%;
   }
 }
 

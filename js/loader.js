@@ -38,6 +38,7 @@ async function loadComponents() {
   document.dispatchEvent(new CustomEvent('fideliio:components-loaded'));
   initFaq();
   initScrollReveal();
+  initHeroTitleScroll();
   if (typeof initPricing === "function") initPricing();
 }
 
@@ -86,4 +87,28 @@ function initScrollReveal() {
     el.style.transition = 'opacity .5s ease, transform .5s ease';
     observer.observe(el);
   });
+}
+
+/* ── Hero : titre réagit au scroll (léger parallax / fondu) ── */
+function initHeroTitleScroll() {
+  const wrap = document.querySelector('.hero-title-scroll');
+  if (!wrap) return;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  const maxScroll = () => Math.min(window.innerHeight * 0.55, 520);
+
+  function tick() {
+    const y = window.scrollY || document.documentElement.scrollTop;
+    const range = maxScroll();
+    const p = range <= 0 ? 0 : Math.min(1, Math.max(0, y / range));
+    const translateY = p * -64;
+    const scale = 1 - p * 0.05;
+    const opacity = 1 - p * 0.38;
+    wrap.style.transform = `translateY(${translateY}px) scale(${scale})`;
+    wrap.style.opacity = String(Math.max(0.52, opacity));
+  }
+
+  window.addEventListener('scroll', tick, { passive: true });
+  window.addEventListener('resize', tick, { passive: true });
+  tick();
 }

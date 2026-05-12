@@ -99,6 +99,21 @@ html[data-theme="dark"] .pricing-card.popular {
   box-shadow: 0 12px 40px rgba(0, 0, 0, 0.45);
 }
 
+html[data-theme="dark"] .pricing-franchise-inner {
+  background: var(--card-bg) !important;
+  border-color: var(--line-soft) !important;
+}
+
+html[data-theme="dark"] .pricing-franchise-cta {
+  border-color: var(--line-soft);
+  color: var(--dark);
+}
+
+html[data-theme="dark"] .pricing-franchise-cta:hover {
+  border-color: var(--orange);
+  color: var(--orange-light);
+}
+
 html[data-theme="dark"] .faq-item {
   background: var(--card-bg) !important;
   border-color: var(--line-soft) !important;

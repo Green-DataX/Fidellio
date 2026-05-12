@@ -17,17 +17,27 @@ const CONFIG = {
   EMAIL: 'contact@fideliio.com',
   PRIX_MENSUEL: 99,
   PRIX_ANNUEL: 82,
+  PRIX_PROPLUS_MENSUEL: 189,
+  PRIX_PROPLUS_ANNUEL: 150,
 };
 
 /* ── Plan depuis URL ── */
 const params = new URLSearchParams(window.location.search);
-const isYearly = params.get('plan') === 'yearly';
+const planParam = params.get('plan') || 'monthly';
+const isProPlusPlan =
+  planParam === 'proplus-monthly' || planParam === 'proplus-yearly';
+const isYearly =
+  planParam === 'yearly' ||
+  planParam === 'proplus-yearly';
 
 function TT(key) {
   return typeof window.FideliioT === 'function' ? window.FideliioT(key) : '';
 }
 
 function planPrice() {
+  if (isProPlusPlan) {
+    return isYearly ? CONFIG.PRIX_PROPLUS_ANNUEL : CONFIG.PRIX_PROPLUS_MENSUEL;
+  }
   return isYearly ? CONFIG.PRIX_ANNUEL : CONFIG.PRIX_MENSUEL;
 }
 

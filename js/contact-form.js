@@ -27,11 +27,20 @@
     window.location.href = buildMailto();
   }
 
+  function applyFranchiseDevisParam() {
+    const params = new URLSearchParams(window.location.search);
+    if (params.get("devis") !== "franchise") return;
+    const sel = document.getElementById("contactSubject");
+    const opt = sel?.querySelector('option[value="franchise"]');
+    if (sel && opt) sel.value = "franchise";
+  }
+
   function bind() {
     const form = document.getElementById("contactForm");
     if (!form || form.dataset.bound === "1") return;
     form.dataset.bound = "1";
     form.addEventListener("submit", onSubmit);
+    applyFranchiseDevisParam();
   }
 
   document.addEventListener("fideliio:components-loaded", bind);

@@ -36,6 +36,19 @@
 
 .hero-content { position: relative; z-index: 1; max-width: 580px; }
 
+/* Conteneur du titre : effet lié au scroll (transform appliquée en JS) */
+.hero-title-scroll {
+  margin-bottom: 32px;
+  transform-origin: left top;
+  will-change: transform, opacity;
+}
+
+@media (max-width: 1024px) {
+  .hero-title-scroll {
+    transform-origin: center top;
+  }
+}
+
 .hero-badge {
   display: inline-flex; align-items: center; gap: 8px;
   background: var(--dark); color: #fff; border-radius: 50px;
@@ -56,7 +69,7 @@
   font-family: var(--font-display); font-weight: 400;
   font-size: clamp(3.2rem, 7vw, 5.5rem);
   line-height: .92; color: var(--dark); letter-spacing: 3px;
-  margin-bottom: 32px; animation: fadeUp .7s .1s ease both;
+  margin-bottom: 0; animation: fadeUp .7s .1s ease both;
 }
 .hero-title .line-1 { display: block; animation: slideInLeft .6s .1s cubic-bezier(0.22,1,0.36,1) both; }
 .hero-title .line-2 { display: block; animation: slideInLeft .6s .25s cubic-bezier(0.22,1,0.36,1) both; }
